@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">PizzeriaMobile</string>
+    <string name="SERVER_URL_NO_SSL">"http://192.168.0.14:5000/"</string>
+    <string name="SERVER_URL_SSL">https://192.168.0.14:5001/</string>
+
+    <string name="orderListIdInscription">Id</string>
+    <string name="orderListDateTimeInscription">Дата и время</string>
+    <string name="orderListTotalPriceInscription">Итого</string>
+    <string name="orderListStatusInscription">Статус</string>
+    <string name="orderListReceivingMethodInscription">Получение</string>
+
+    <string name="loginInscription">Login:</string>
+    <string name="passwordInscription">Password:</string>
+    <string name="loginButton">Sign In</string>
+    <string name="registerButton">Sign Up</string>
+
+    <string name="invalidUserAuthData">Invalid login or password value</string>
+</resources>

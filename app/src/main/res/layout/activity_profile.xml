@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ProfileActivity">
+
+    <TextView
+        android:id="@+id/textViewUserFullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewUserIdValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewUserIdInscription"
+        app:layout_constraintStart_toEndOf="@+id/textViewUserIdInscription"
+        app:layout_constraintTop_toTopOf="@+id/textViewUserIdInscription" />
+
+    <TextView
+        android:id="@+id/textViewUserIdInscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="User id:"
+        app:layout_constraintStart_toStartOf="@+id/textViewUserFullName"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUserFullName" />
+
+    <TextView
+        android:id="@+id/textViewTotalOrdersPriceInscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Total order sprice:"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textViewUserIdInscription"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUserIdInscription" />
+
+    <TextView
+        android:id="@+id/textViewTotalOrdersPriceValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewTotalOrdersPriceInscription"
+        app:layout_constraintStart_toEndOf="@+id/textViewTotalOrdersPriceInscription"
+        app:layout_constraintTop_toTopOf="@+id/textViewTotalOrdersPriceInscription" />
+
+    <TextView
+        android:id="@+id/textViewDiscountInscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Discount:"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textViewTotalOrdersPriceInscription"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTotalOrdersPriceInscription" />
+
+    <TextView
+        android:id="@+id/textViewDiscountValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textViewTotalOrdersPriceValue"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTotalOrdersPriceValue" />
+
+    <Button
+        android:id="@+id/buttonActiveOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Active orders"
+        app:layout_constraintBottom_toTopOf="@+id/buttonOrderArchive"
+        app:layout_constraintEnd_toEndOf="@+id/buttonOrderArchive"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/buttonOrderArchive" />
+
+    <Button
+        android:id="@+id/buttonOrderArchive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="Order archive"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Settings"
+        app:layout_constraintEnd_toEndOf="@+id/buttonOrderArchive"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/buttonOrderArchive"
+        app:layout_constraintTop_toBottomOf="@+id/buttonOrderArchive" />
+
+    <Button
+        android:id="@+id/buttonSignOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Sign out"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
