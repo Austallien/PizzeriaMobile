@@ -1,7 +1,10 @@
 package com.example.pizzeriamobile.logic.controller;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
+import com.example.pizzeriamobile.logic.handler.ServerConnectionHandler;
+import com.example.pizzeriamobile.logic.preference.AppPreferences;
 import com.example.pizzeriamobile.logic.user.User;
 import com.example.pizzeriamobile.logic.user.UserSingleton;
 
@@ -9,6 +12,8 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClients;
 import org.json.JSONObject;
 
@@ -19,8 +24,7 @@ public class AuthenticationController implements Runnable {
 
     final private Thread thread;
 
-    final private String URL_NO_SSL;
-    private String URL_SSL;
+    final private String SUB_URL;
 
     private String login;
     private String password;
@@ -28,8 +32,8 @@ public class AuthenticationController implements Runnable {
     private boolean isAuthenticateProcessComplete;
     private boolean authenticationResult;
 
-    protected AuthenticationController(@NonNull String serverUrl){
-        URL_NO_SSL = serverUrl+"user/auth";
+    protected AuthenticationController(@NonNull String resourceSubUrl){
+        SUB_URL = resourceSubUrl;
         thread = new Thread(this, "AuthenticationControllerThread");
     }
 
@@ -42,39 +46,29 @@ public class AuthenticationController implements Runnable {
 
     @Override
     public void run() {
-        authenticationResult = tryAuthenticate(login, password);
+        authenticationResult = start(login, password);
         isAuthenticateProcessComplete = true;
     }
 
-    private boolean tryAuthenticate(String Login, String Password) {
+    private boolean start(String Login, String Password) {
         isAuthenticateProcessComplete = false;
 
-        JSONObject jsonData = httpGetData(Login, Password);
-        if(jsonData == null)
+        JSONObject tokens = getTokens(Login, Password);
+        if (tokens == null)
             return false;
 
-        User user = UserSingleton.FromJson(jsonData);
-        if(user == null)
+        boolean result = writeTokens(tokens);
+        if (!result)
             return false;
 
         return true;
     }
 
-    /**
-     * Result: json file which contains user data;
-     * Keys:
-     *      | Integer id
-     *      | String  firstName
-     *      | String  middleName
-     *      | String  lastName
-     *      | String  role
-     *      | String  login
-     * */
-    private JSONObject httpGetData(String Login, String Password){
-        try {
-            HttpGet httpGet = new HttpGet(String.format(URL_NO_SSL + ":login=%s&password=%s", Login, Password));
-            HttpClient httpClient = HttpClients.createDefault();
-            HttpResponse httpResponse = httpClient.execute(httpGet);
+    /**returns: access and refresh JWT & userId*/
+    @Nullable
+    private JSONObject getTokens(@NonNull String Login, @NonNull String Password){
+        try{
+            HttpResponse httpResponse = ServerConnectionHandler.getHandler().execute(String.format(SUB_URL, Login, Password), false);
             HttpEntity httpEntity = httpResponse.getEntity();
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(httpEntity.getContent()));
@@ -84,14 +78,27 @@ public class AuthenticationController implements Runnable {
             while ((inputLine = reader.readLine()) != null) {
                 data.append(inputLine);
             }
-
-            JSONObject json = new JSONObject(data.toString());
-
-            return json;
+            return new JSONObject(data.toString());
         }
-        catch (Exception ex) {
+        catch(Exception ex){
             return null;
         }
+    }
+
+    private boolean writeTokens(JSONObject tokens){
+        try {
+            String accessJwtToken = tokens.getString("accessJwtToken");
+            String refreshJwtToken = tokens.getString("refreshJwtToken");
+            int userId = tokens.getInt("userId");
+
+            AppPreferences.SetAccessJWT(accessJwtToken);
+            AppPreferences.SetRefreshJWT(refreshJwtToken);
+            AppPreferences.SetUserId(userId);
+        }
+        catch(Exception ex){
+            return false;
+        }
+        return true;
     }
 
     public boolean isAuthenticateProcessComplete(){

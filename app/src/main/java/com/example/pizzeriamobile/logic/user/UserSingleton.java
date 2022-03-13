@@ -8,27 +8,27 @@ import java.util.HashSet;
 
 public class UserSingleton {
 
-    private static User User;
+    private static User user;
 
-    public static User GetUser(){
-        if(User == null)
-            User = new User();
-        return User;
+    public static User getUser(){
+        if(user == null)
+            user = new User();
+        return user;
     }
 
-    public static User FromJson(JSONObject Data){
+    public static User fromJson(JSONObject Data){
         try {
-            User = new User(
+            user = new User(
                     Data.getInt("id"),
                     Data.getString("firstName"),
                     Data.getString("middleName"),
                     Data.getString("lastName"),
-                    Data.getString("role"),
-                    Data.getString("login"));
-            return User;
+                    Data.getString("login"),
+                    Data.getString("role"));
+            return user;
         }
         catch (Exception ex){
-            return GetUser();
+            return getUser();
         }
     }
 }

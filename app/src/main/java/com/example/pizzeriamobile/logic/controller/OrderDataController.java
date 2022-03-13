@@ -30,15 +30,16 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class OrderDataController implements Runnable {
-    final private String SERVER_URL_NO_SSL_ORDER_DATA_BY_USER_ID;
+    //final private String SERVER_URL_NO_SSL_ORDER_DATA_BY_USER_ID;
+    final private String URL;
 
     final private Thread thread;
     private ArrayList<Order> orderData;
 
     private boolean isDataLoadProcessComplete;
 
-    protected OrderDataController(@NonNull String serverUrl){
-        SERVER_URL_NO_SSL_ORDER_DATA_BY_USER_ID = serverUrl+"order/get:idUser="+UserSingleton.GetUser().GetId();
+    protected OrderDataController(@NonNull String serverUrl) {
+        URL = serverUrl + "order/get:orderListByUserId=" + UserSingleton.getUser().GetId();
         thread = new Thread(this, "OrderDataControllerThread");
         thread.start();
     }
@@ -58,7 +59,7 @@ public class OrderDataController implements Runnable {
             isDataLoadProcessComplete = false;
             ArrayList<Order> orderDataList = new ArrayList<Order>();
 
-            HttpGet httpGet = new HttpGet(SERVER_URL_NO_SSL_ORDER_DATA_BY_USER_ID);
+            HttpGet httpGet = new HttpGet(URL);
             CloseableHttpClient httpClient = HttpClients.createDefault();
             CloseableHttpResponse response = httpClient.execute(httpGet);
             HttpEntity entity = response.getEntity();

@@ -25,7 +25,7 @@ public class ProfileActivity extends AppCompatActivity {
         TextView textViewUserFullName = (TextView) findViewById(R.id.textViewUserFullName);
         TextView textViewUserId = (TextView) findViewById(R.id.textViewUserIdValue);
 
-        User user = UserSingleton.GetUser();
+        User user = UserSingleton.getUser();
 
         textViewUserFullName.setText(user.GetFirstName() + " " + user.GetMiddleName() + " " + user.GetLastName());
         textViewUserId.setText(String.valueOf(user.GetId()));

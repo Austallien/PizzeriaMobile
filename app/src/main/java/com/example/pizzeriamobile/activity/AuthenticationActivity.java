@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.pizzeriamobile.R;
 import com.example.pizzeriamobile.logic.controller.AuthenticationController;
 import com.example.pizzeriamobile.logic.controller.MainController;
+import com.example.pizzeriamobile.logic.preference.AppPreferences;
 
 public class AuthenticationActivity extends AppCompatActivity {
 
@@ -26,6 +27,8 @@ public class AuthenticationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authentication);
+        AppPreferences.Initialize(this);
+        MainController.initialize(AuthenticationActivity.this);
         listenerBinding();
     }
 
@@ -59,8 +62,7 @@ public class AuthenticationActivity extends AppCompatActivity {
                         String login = editTextLogin.getText().toString();
                         String password = editTextPassword.getText().toString();
 
-                        MainController.Initialize(AuthenticationActivity.this);
-                        MainController.getMainController().Authenticate(login, password);
+                        MainController.getMainController().authenticate(login, password);
                         AuthenticationController controller = MainController.getMainController().getAuthenticationController();
 
                         while (!controller.isAuthenticateProcessComplete()) {
@@ -75,14 +77,7 @@ public class AuthenticationActivity extends AppCompatActivity {
                                 }
                             });
 
-                        } else
-                            mUiHandler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Toast.makeText(AuthenticationActivity.this, AuthenticationActivity.this.getResources().getString(R.string.invalidUserAuthData), Toast.LENGTH_LONG).show();
-                                }
-                            });
-
+                        }
                     } catch (Exception ex) {
                         mUiHandler.post(new Runnable() {
                             @Override

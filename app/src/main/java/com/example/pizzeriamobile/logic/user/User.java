@@ -12,13 +12,13 @@ public class User {
 
     }
 
-    public User(int Id, String FirstName, String MiddleName, String LastName, String Role, String Login){
+    public User(int Id, String FirstName, String MiddleName, String LastName,String Login, String Role){
         this.Id = Id;
         this.FirstName = FirstName;
         this.MiddleName = MiddleName;
         this.LastName = LastName;
-        this.Role = Role;
         this.Login = Login;
+        this.Role = Role;
     }
 
     public int GetId(){
