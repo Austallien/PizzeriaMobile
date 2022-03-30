@@ -21,27 +21,27 @@ public class User {
         this.Role = Role;
     }
 
-    public int GetId(){
+    public int getId(){
         return  Id;
     }
 
-    public String GetFirstName(){
+    public String getFirstName(){
         return FirstName;
     }
 
-    public String GetMiddleName(){
+    public String getMiddleName(){
         return MiddleName;
     }
 
-    public String GetLastName(){
+    public String getLastName(){
         return LastName;
     }
 
-    public String GetRole(){
+    public String getRole(){
         return Role;
     }
 
-    public String GetLogin(){
+    public String getLogin(){
         return Login;
     }
 }

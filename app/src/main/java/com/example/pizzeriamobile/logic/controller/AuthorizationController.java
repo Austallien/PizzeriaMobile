@@ -1,6 +1,11 @@
 package com.example.pizzeriamobile.logic.controller;
 
+import android.app.Service;
+import android.content.Intent;
+import android.os.IBinder;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.example.pizzeriamobile.logic.handler.ServerConnectionHandler;
 import com.example.pizzeriamobile.logic.preference.AppPreferences;
@@ -20,32 +25,39 @@ public class AuthorizationController implements Runnable {
 
     final private String SUB_URL;
 
-    private int userId;
-
     private boolean isAuthorizeProcessComplete;
     private boolean authorisationResult;
+    private boolean isTaskExecuting;
 
     protected AuthorizationController(@NonNull String resourceSubUrl){
         SUB_URL = resourceSubUrl;
         thread = new Thread(this, "AuthorizationControllerThread");
+        thread.start();
     }
 
-    public Thread authorize(int userId){
-        this.userId = userId;
-        thread.start();
+    /**If authorize process is already running, do nothing exclude thread returning*/
+    public Thread authorize(){
+        if(!isTaskExecuting)
+            isTaskExecuting = true;
         return thread;
     }
 
     @Override
     public void run() {
-        authorisationResult = start(userId);
-        isAuthorizeProcessComplete = true;
+        while(true) {
+            Thread.yield();
+            if(!isTaskExecuting)
+                continue;
+
+            isAuthorizeProcessComplete = false;
+            authorisationResult = start();
+            isAuthorizeProcessComplete = true;
+            isTaskExecuting = false;
+        }
     }
 
-    private boolean start(int userId){
-        isAuthorizeProcessComplete = false;
-
-        JSONObject userData = getUserData(userId);
+    private boolean start(){
+        JSONObject userData = getUserData();
         if(userData == null)
             return false;
 
@@ -56,9 +68,9 @@ public class AuthorizationController implements Runnable {
         return true;
     }
 
-    private JSONObject getUserData(int userId){
+    private JSONObject getUserData(){
         try {
-            HttpResponse httpResponse = ServerConnectionHandler.getHandler().execute(String.format(SUB_URL, userId), true);
+            HttpResponse httpResponse = ServerConnectionHandler.getHandler().execute(String.format(SUB_URL), true);
             HttpEntity httpEntity = httpResponse.getEntity();
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(httpEntity.getContent()));
@@ -71,27 +83,31 @@ public class AuthorizationController implements Runnable {
             return new JSONObject(data.toString());
         }
         catch (Exception ex){
+            ex.printStackTrace();
             return null;
         }
     }
 
     private boolean writeUserData(JSONObject data){
         try{
-            int id = data.getInt("id");
-            String firstName = data.getString("firstName");
-            String middleName = data.getString("lastname");
-            String lastName = data.getString("middleName");
-            String login = data.getString("login");
-            String role = data.getString("role");
-
-            AppPreferences.SetUserData(id, firstName, middleName, lastName, login, role);
             UserSingleton.fromJson(data);
-
             return true;
         }
         catch (Exception ex){
+            ex.printStackTrace();
             return false;
         }
     }
 
+    public boolean isAuthorizeProcessComplete() {
+        return isAuthorizeProcessComplete;
+    }
+
+    public boolean getAuthorizationResult() {
+        return authorisationResult;
+    }
+
+    public boolean isTaskExecuting() {
+        return isTaskExecuting;
+    }
 }

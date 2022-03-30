@@ -1,6 +1,7 @@
 package com.example.pizzeriamobile.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
 import android.view.View;
@@ -17,18 +18,28 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        initialize();
+    }
+
+    private void initialize(){
         loadData();
+        addDrawer();
         listenerBinding();
     }
 
     private void loadData(){
         TextView textViewUserFullName = (TextView) findViewById(R.id.textViewUserFullName);
-        TextView textViewUserId = (TextView) findViewById(R.id.textViewUserIdValue);
+        //TextView textViewUserId = (TextView) findViewById(R.id.textViewUserIdValue);
 
         User user = UserSingleton.getUser();
 
-        textViewUserFullName.setText(user.GetFirstName() + " " + user.GetMiddleName() + " " + user.GetLastName());
-        textViewUserId.setText(String.valueOf(user.GetId()));
+        textViewUserFullName.setText(String.format("%s %s %s",user.getFirstName(),user.getMiddleName(),user.getLastName()));
+        //textViewUserId.setText(String.valueOf(user.getId()));
+    }
+
+    private void addDrawer(){
+
+
     }
 
     private void listenerBinding(){

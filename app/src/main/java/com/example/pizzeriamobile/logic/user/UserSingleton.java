@@ -28,7 +28,12 @@ public class UserSingleton {
             return user;
         }
         catch (Exception ex){
+            ex.printStackTrace();
             return getUser();
         }
+    }
+
+    public static void deauthenticate(){
+        user = null;
     }
 }

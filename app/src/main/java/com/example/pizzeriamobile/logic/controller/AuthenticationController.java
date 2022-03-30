@@ -1,20 +1,17 @@
 package com.example.pizzeriamobile.logic.controller;
 
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.pizzeriamobile.logic.App;
 import com.example.pizzeriamobile.logic.handler.ServerConnectionHandler;
 import com.example.pizzeriamobile.logic.preference.AppPreferences;
-import com.example.pizzeriamobile.logic.user.User;
 import com.example.pizzeriamobile.logic.user.UserSingleton;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.HttpClients;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -31,28 +28,39 @@ public class AuthenticationController implements Runnable {
 
     private boolean isAuthenticateProcessComplete;
     private boolean authenticationResult;
+    private boolean isTaskExecuting;
 
     protected AuthenticationController(@NonNull String resourceSubUrl){
         SUB_URL = resourceSubUrl;
         thread = new Thread(this, "AuthenticationControllerThread");
+        thread.start();
     }
 
-    protected Thread authenticate(String login, String password) {
-        this.login = login;
-        this.password = password;
-        thread.start();
+    /**If authenticate process is already running, do nothing exclude thread returning*/
+    public Thread authenticate(String login, String password) {
+        if(!isTaskExecuting) {
+            this.login = login;
+            this.password = password;
+            isTaskExecuting = true;
+        }
         return thread;
     }
 
     @Override
     public void run() {
-        authenticationResult = start(login, password);
-        isAuthenticateProcessComplete = true;
+        while(true) {
+            Thread.yield();
+            if(!isTaskExecuting)
+                continue;
+
+            isAuthenticateProcessComplete = false;
+            authenticationResult = start(login, password);
+            isAuthenticateProcessComplete = true;
+            isTaskExecuting = false;
+        }
     }
 
     private boolean start(String Login, String Password) {
-        isAuthenticateProcessComplete = false;
-
         JSONObject tokens = getTokens(Login, Password);
         if (tokens == null)
             return false;
@@ -81,24 +89,33 @@ public class AuthenticationController implements Runnable {
             return new JSONObject(data.toString());
         }
         catch(Exception ex){
+            ex.printStackTrace();
             return null;
         }
     }
 
     private boolean writeTokens(JSONObject tokens){
         try {
-            String accessJwtToken = tokens.getString("accessJwtToken");
-            String refreshJwtToken = tokens.getString("refreshJwtToken");
-            int userId = tokens.getInt("userId");
+            String accessJwtToken = tokens.getString("accessToken");
+            String refreshJwtToken = tokens.getString("refreshToken");
 
-            AppPreferences.SetAccessJWT(accessJwtToken);
-            AppPreferences.SetRefreshJWT(refreshJwtToken);
-            AppPreferences.SetUserId(userId);
+            AppPreferences.setAccessJWT(accessJwtToken);
+            AppPreferences.setRefreshJWT(refreshJwtToken);
         }
         catch(Exception ex){
+            ex.printStackTrace();
             return false;
         }
         return true;
+    }
+
+
+    public void deauthenticate(){
+        AppPreferences.setAccessJWT(null);
+        AppPreferences.setRefreshJWT(null);
+        UserSingleton.deauthenticate();
+
+        Toast.makeText(App.context, "Access token is outdated, please sign in again",Toast.LENGTH_LONG).show();
     }
 
     public boolean isAuthenticateProcessComplete(){
@@ -107,5 +124,9 @@ public class AuthenticationController implements Runnable {
 
     public boolean getAuthenticationResult(){
         return authenticationResult;
+    }
+
+    public boolean isTaskExecuting(){
+        return isTaskExecuting;
     }
 }

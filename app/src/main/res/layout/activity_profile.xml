@@ -7,44 +7,44 @@
     tools:context=".activity.ProfileActivity">
 
     <TextView
-        android:id="@+id/textViewUserFullName"
+        android:id="@+id/textViewMailValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
-        android:textSize="22sp"
+        android:layout_marginTop="4dp"
+        android:text="mail"
+        app:layout_constraintStart_toStartOf="@+id/imageViewAvatar"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewAvatar" />
+
+    <ImageView
+        android:id="@+id/imageViewAvatar"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/view_imageview_avatar_blank"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/textViewUserIdValue"
+        android:id="@+id/textViewUserFullName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewUserIdInscription"
-        app:layout_constraintStart_toEndOf="@+id/textViewUserIdInscription"
-        app:layout_constraintTop_toTopOf="@+id/textViewUserIdInscription" />
-
-    <TextView
-        android:id="@+id/textViewUserIdInscription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="User id:"
-        app:layout_constraintStart_toStartOf="@+id/textViewUserFullName"
-        app:layout_constraintTop_toBottomOf="@+id/textViewUserFullName" />
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewAvatar"
+        app:layout_constraintStart_toEndOf="@+id/imageViewAvatar" />
 
     <TextView
         android:id="@+id/textViewTotalOrdersPriceInscription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Total order sprice:"
+        android:text="Total orders cost:"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/textViewUserIdInscription"
-        app:layout_constraintTop_toBottomOf="@+id/textViewUserIdInscription" />
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="156dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textViewTotalOrdersPriceValue"
@@ -92,7 +92,6 @@
         android:id="@+id/buttonOrderArchive"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:text="Order archive"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -118,4 +117,5 @@
         android:text="Sign out"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

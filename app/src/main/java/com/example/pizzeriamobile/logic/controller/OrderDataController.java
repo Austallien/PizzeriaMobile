@@ -39,7 +39,7 @@ public class OrderDataController implements Runnable {
     private boolean isDataLoadProcessComplete;
 
     protected OrderDataController(@NonNull String serverUrl) {
-        URL = serverUrl + "order/get:orderListByUserId=" + UserSingleton.getUser().GetId();
+        URL = serverUrl + "order/get:orderListByUserId=" + UserSingleton.getUser().getId();
         thread = new Thread(this, "OrderDataControllerThread");
         thread.start();
     }
@@ -87,6 +87,7 @@ public class OrderDataController implements Runnable {
             return orderDataList;
         }
         catch(Exception ex) {
+            ex.printStackTrace();
             return new ArrayList<Order>();
         }
     }

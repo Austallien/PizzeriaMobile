@@ -1,9 +1,10 @@
 <resources>
-    <string name="app_name">PizzeriaMobile</string>
+    <string name="app_name">Pizzeria Mobile</string>
     <string name="SERVER_URL">"http://192.168.0.14:5000/"</string> <!--No ssl url-->
     <string name="SERVER_URL_SSL">https://192.168.0.14:5001/</string>
     <string name="SUB_URL_AUTHENTICATION">account/authenticate?Login=%s&amp;Password=%s</string>>
-    <string name="SUB_URL_AUTHORIZATION">account/authorize?UserId=%s</string>
+    <string name="SUB_URL_REFRESH_ACCESS_TOKEN">account/refreshAccessToken</string>
+    <string name="SUB_URL_AUTHORIZATION">account/authorize</string>
 
     <string name="orderListIdInscription">Id</string>
     <string name="orderListDateTimeInscription">Дата и время</string>
@@ -16,5 +17,14 @@
     <string name="loginButton">Sign In</string>
     <string name="registerButton">Sign Up</string>
 
+    <string name="alertActivityTitle">Предупреждение</string>
+
     <string name="invalidUserAuthData">Invalid login or password value</string>
+
+    <string-array name="navigationMenu">
+        <item>Profile</item>
+        <item>Orders</item>
+        <item>Settings</item>
+        <item>Sign Out</item>
+    </string-array>
 </resources>

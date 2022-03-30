@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.pizzeriamobile.R;
-import com.example.pizzeriamobile.activity.MainActivity;
+import com.example.pizzeriamobile.activity.ActivityNavigation;
 import com.example.pizzeriamobile.logic.model.Order;
 
 import java.util.ArrayList;
@@ -40,13 +40,13 @@ public class OrderTableController {
                 TextView orderId = (TextView) tableRow.findViewById(R.id.textViewHeaderOrderId);
                 TextView orderDate = (TextView) tableRow.findViewById(R.id.textViewHeaderOrderDate);
                 TextView orderTotalPrice = (TextView) tableRow.findViewById(R.id.textViewHeaderOrderTotalPrice);
-                TextView orderStatus = (TextView) tableRow.findViewById(R.id.textViewRowOrderStatus);
+                //TextView orderStatus = (TextView) tableRow.findViewById(R.id.textViewRowOrderStatus);
                 TextView orderReceivingMethod = (TextView) tableRow.findViewById(R.id.textViewHeaderOrderReceivingMethod);
 
                 orderId.setText(String.valueOf(orderData.getId()));
                 orderDate.setText(new java.sql.Date(orderData.getRegistrationDate()).toString());
                 orderTotalPrice.setText(String.valueOf(orderData.getTotalPrice()));
-                orderStatus.setText(orderData.getStatus());
+                //orderStatus.setText(orderData.getStatus());
                 orderReceivingMethod.setText(orderData.getReceivingMethod());
 
                 if(i%2 == 1)
@@ -64,14 +64,13 @@ public class OrderTableController {
                 });
             }
             catch (Exception ex){
+                ex.printStackTrace();
                 throw new Exception("TableRowAddingException_DataPosition="+i);
             }
         }
 
         //if data has been loaded faster than activity layout reflected
-        while(!MainActivity.IsHasFocus){
-            Thread.sleep(1000);
-        }
+
 
         //Relocates table header after onWindowFocusChanged event
         new Handler().post(new Runnable() {
