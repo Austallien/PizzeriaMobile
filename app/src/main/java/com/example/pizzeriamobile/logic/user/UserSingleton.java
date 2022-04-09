@@ -1,5 +1,7 @@
 package com.example.pizzeriamobile.logic.user;
 
+import android.graphics.Bitmap;
+
 import org.json.JSONObject;
 
 import java.util.ArrayList;

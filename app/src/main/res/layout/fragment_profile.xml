@@ -21,15 +21,19 @@
         android:id="@+id/textViewId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:text="id"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="193dp" />
+        app:layout_constraintEnd_toEndOf="@+id/textViewMail"
+        app:layout_constraintStart_toStartOf="@+id/textViewMail"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMail" />
 
     <TextView
         android:id="@+id/textViewMail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Mail"
-        tools:layout_editor_absoluteX="54dp"
-        tools:layout_editor_absoluteY="235dp" />
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

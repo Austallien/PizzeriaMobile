@@ -55,7 +55,7 @@ public class ServerConnectionHandler {
                 }
 
                 httpResponse = request(subUrl, addJWT, true);
-            }while(httpResponse.getStatusLine().getStatusCode() != HttpStatus.SC_OK && ++iteration < 2);
+            }while(httpResponse.getStatusLine().getStatusCode() != HttpStatus.SC_OK || ++iteration < 2);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InvalidRefreshToken e){

@@ -43,11 +43,11 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void listenerBinding(){
-        Button buttonSignOut = (Button) findViewById(R.id.buttonSignOut);
-        Button buttonSettings = (Button) findViewById(R.id.buttonSettings);
+       /* Button buttonSignOut = (Button) findViewById(R.id.buttonSignOut);
+        Button buttonSettings = (Button) findViewById(R.id.buttonSettings);*/
 
-        buttonSignOut.setOnClickListener(signOutListener);
-        buttonSettings.setOnClickListener(settingsListener);
+      /*  buttonSignOut.setOnClickListener(signOutListener);
+        buttonSettings.setOnClickListener(settingsListener);*/
     }
 
     private View.OnClickListener settingsListener = new View.OnClickListener() {

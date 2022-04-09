@@ -65,8 +65,8 @@ public class FragmentProfile extends Fragment {
     }
 
     private void listenerBinding(View view){
-        Button buttonSignOut = (Button) view.findViewById(R.id.buttonSignOut);
-        Button buttonSettings = (Button) view.findViewById(R.id.buttonSettings);
+       /* Button buttonSignOut = (Button) view.findViewById(R.id.buttonSignOut);
+        Button buttonSettings = (Button) view.findViewById(R.id.buttonSettings);*/
 
 
     }

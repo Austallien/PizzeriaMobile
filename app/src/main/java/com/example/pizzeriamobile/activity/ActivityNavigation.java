@@ -1,19 +1,21 @@
 package com.example.pizzeriamobile.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.pizzeriamobile.R;
+import com.example.pizzeriamobile.fragment.FragmentFood;
 import com.example.pizzeriamobile.fragment.FragmentProfile;
+import com.example.pizzeriamobile.logic.activity.navigation.Drawer;
+import com.example.pizzeriamobile.logic.fragment.FragmentHandler;
 
 public class ActivityNavigation extends AppCompatActivity {
 
@@ -31,34 +33,39 @@ public class ActivityNavigation extends AppCompatActivity {
     }
 
     private void setupMenu(){
-        RelativeLayout left_drawer = (RelativeLayout) findViewById(R.id.left_drawer);
-        ActivityNavigationDrawer activityNavigationDrawer = new ActivityNavigationDrawer(getApplicationContext(), left_drawer);
-        left_drawer.addView(activityNavigationDrawer);
-        navigationList = activityNavigationDrawer.getListView();
+        RelativeLayout drawerContainer = (RelativeLayout) findViewById(R.id.left_drawer);
+        Drawer drawer = new Drawer(getApplicationContext(), drawerContainer);
+        drawerContainer.addView(drawer);
+        navigationList = drawer.getListView();
         navigationList.setOnItemClickListener(onItemClickListener);
+    }
+
+    private void loadFragment(Fragment fragment){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, fragment);
+        transaction.commit();
     }
 
     private ListView.OnItemClickListener onItemClickListener = new ListView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-            //(ListView.ConstraintLayout).RelativeLayout.DrawerLayout
-            //FrameLayout fragmentContainer = ((DrawerLayout)adapterView.getParent().getParent().getParent()).findViewById(R.id.fragment_container) ;
-            switch(position){
-                case 0: //profile
-                    getSupportFragmentManager().beginTransaction()
-                            .add(R.id.fragment_container, FragmentProfile.class, null)
-                            .commit();
+            String key = ((TextView)view.findViewById(R.id.textViewKey)).getText().toString();
+
+            switch(key){
+                case FragmentHandler.FOOD:
+                    loadFragment(FragmentFood.newInstance());
                     break;
-                case 1: //orders
+                case FragmentHandler.PROFILE:
+                    loadFragment(FragmentProfile.newInstance());
                     break;
-                case 2: //settings
+                case FragmentHandler.ORDERS:
                     break;
-                case 3: //sign out
+                case FragmentHandler.SETTINGS:
+                    break;
+                case FragmentHandler.SIGN_OUT:
+                    finish();
                     break;
             }
-
-
-            //fragmentContainer.addView(fragment.getView());
         }
     };
 

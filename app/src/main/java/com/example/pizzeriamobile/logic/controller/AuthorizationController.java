@@ -60,7 +60,7 @@ public class AuthorizationController implements Runnable {
         JSONObject userData = getUserData();
         if(userData == null)
             return false;
-
+        
         boolean result = writeUserData(userData);
             if(!result)
                 return false;
