@@ -26,12 +26,17 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/PizzeriaMobile/app/src/main/res/layout/activity_main_menu.xml" value="0.35104166666666664" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/PizzeriaMobile/app/src/main/res/layout/activity_profile.xml" value="0.33" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/PizzeriaMobile/app/src/main/res/layout/content_profile.xml" value="0.221875" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/PizzeriaMobile/app/src/main/res/layout/fragment_food_category_content_list_item.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/PizzeriaMobile/app/src/main/res/layout/fragment_food_category_list_item.xml" value="0.33" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/PizzeriaMobile/app/src/main/res/layout/fragment_main.xml" value="0.27219202898550726" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/PizzeriaMobile/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/PizzeriaMobile/app/src/main/res/layout/general_navigation_view.xml" value="0.19479166666666667" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/PizzeriaMobile/app/src/main/res/layout/general_navigation_view_header.xml" value="0.221875" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/PizzeriaMobile/app/src/main/res/layout/layout_food_category_list_item.xml" value="0.221875" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/PizzeriaMobile/app/src/main/res/layout/layout_navigation.xml" value="0.234375" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/PizzeriaMobile/app/src/main/res/layout/layout_navigation_content.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/PizzeriaMobile/app/src/main/res/layout/layout_navigation_drawer.xml" value="0.2966485507246377" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/PizzeriaMobile/app/src/main/res/layout/layout_navigation_drawer_header.xml" value="0.2966485507246377" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/PizzeriaMobile/app/src/main/res/layout/layout_navigation_drawer_list_item.xml" value="0.2708333333333333" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/PizzeriaMobile/app/src/main/res/layout/mein_menu.xml" value="0.35104166666666664" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/PizzeriaMobile/app/src/main/res/layout/navigation_menu_item.xml" value="0.33" />

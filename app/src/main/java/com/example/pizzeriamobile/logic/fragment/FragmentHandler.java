@@ -6,5 +6,4 @@ public class FragmentHandler {
     public static final String ORDERS = "ORDERS";
     public static final String SETTINGS = "SETTINGS";
     public static final String SIGN_OUT = "SIGN_OUT";
-
 }

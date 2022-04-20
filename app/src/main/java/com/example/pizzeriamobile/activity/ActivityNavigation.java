@@ -5,39 +5,34 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.example.pizzeriamobile.R;
 import com.example.pizzeriamobile.fragment.FragmentFood;
 import com.example.pizzeriamobile.fragment.FragmentProfile;
 import com.example.pizzeriamobile.logic.activity.navigation.Drawer;
+import com.example.pizzeriamobile.logic.activity.navigation.NavigationListAdapter;
 import com.example.pizzeriamobile.logic.fragment.FragmentHandler;
 
-public class ActivityNavigation extends AppCompatActivity {
-
-    ListView navigationList;
+public class ActivityNavigation extends AppCompatActivity implements NavigationListAdapter.OnTouchClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_navigation);
+        setContentView(R.layout.activity_navigation);
         initialize();
     }
 
     private void initialize(){
         setupMenu();
+        loadFragment(FragmentFood.newInstance());
     }
 
     private void setupMenu(){
         RelativeLayout drawerContainer = (RelativeLayout) findViewById(R.id.left_drawer);
         Drawer drawer = new Drawer(getApplicationContext(), drawerContainer);
         drawerContainer.addView(drawer);
-        navigationList = drawer.getListView();
-        navigationList.setOnItemClickListener(onItemClickListener);
+        NavigationListAdapter.registerCallback(this);
     }
 
     private void loadFragment(Fragment fragment){
@@ -46,28 +41,23 @@ public class ActivityNavigation extends AppCompatActivity {
         transaction.commit();
     }
 
-    private ListView.OnItemClickListener onItemClickListener = new ListView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-            String key = ((TextView)view.findViewById(R.id.textViewKey)).getText().toString();
-
-            switch(key){
-                case FragmentHandler.FOOD:
-                    loadFragment(FragmentFood.newInstance());
-                    break;
-                case FragmentHandler.PROFILE:
-                    loadFragment(FragmentProfile.newInstance());
-                    break;
-                case FragmentHandler.ORDERS:
-                    break;
-                case FragmentHandler.SETTINGS:
-                    break;
-                case FragmentHandler.SIGN_OUT:
-                    finish();
-                    break;
-            }
+    public void navigationListItemTouched(String key) {
+        switch(key){
+            case FragmentHandler.FOOD:
+                loadFragment(FragmentFood.newInstance());
+                break;
+            case FragmentHandler.PROFILE:
+                loadFragment(FragmentProfile.newInstance());
+                break;
+            case FragmentHandler.ORDERS:
+                break;
+            case FragmentHandler.SETTINGS:
+                break;
+            case FragmentHandler.SIGN_OUT:
+                finish();
+                break;
         }
-    };
+    }
 
     /*private void onLoad(){
         //TableLayout table = (TableLayout)findViewById(R.id.TableLayout);

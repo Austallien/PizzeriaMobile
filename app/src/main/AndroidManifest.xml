@@ -20,10 +20,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Dialog" />
         <activity
-            android:name=".activity.ProfileActivity"
-            android:exported="true"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".activity.DetailInfoActivity"
             android:exported="true"
             android:screenOrientation="portrait" />

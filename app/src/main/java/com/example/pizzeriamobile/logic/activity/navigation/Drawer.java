@@ -3,13 +3,15 @@ package com.example.pizzeriamobile.logic.activity.navigation;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pizzeriamobile.R;
 import com.example.pizzeriamobile.logic.fragment.FragmentHandler;
+
+import java.util.ArrayList;
 
 public class Drawer extends RelativeLayout {
 
@@ -21,7 +23,7 @@ public class Drawer extends RelativeLayout {
     }
 
     private void initialize(Context context, RelativeLayout parent){
-        view = LayoutInflater.from(context).inflate(R.layout.layout_navigation_drawer_header,parent,true);
+        view = LayoutInflater.from(context).inflate(R.layout.activity_navigation_drawer,parent,true);
 
         initializeHeader(context, parent);
         initializeNavigationList(context);
@@ -33,22 +35,15 @@ public class Drawer extends RelativeLayout {
 
     private void initializeNavigationList(Context context){
         String[] inscriptions = getResources().getStringArray(R.array.navigationMenu);
-        NavigationListItem[] data = new NavigationListItem[]{
-                new NavigationListItem(R.drawable.ic_drawer_food_24, inscriptions[0], FragmentHandler.FOOD),
-                new NavigationListItem(R.drawable.ic_drawer_profile_24, inscriptions[1], FragmentHandler.PROFILE),
-                new NavigationListItem(R.drawable.ic_drawer_orders_24, inscriptions[2], FragmentHandler.ORDERS),
-                new NavigationListItem(R.drawable.ic_drawer_settings_24, inscriptions[3], FragmentHandler.SETTINGS),
-                new NavigationListItem(R.drawable.ic_drawer_sign_out_24, inscriptions[4], FragmentHandler.SIGN_OUT)
-        };
+        ArrayList<NavigationListAdapter.State> states = new ArrayList<NavigationListAdapter.State>();
+        states.add(new NavigationListAdapter.State(R.drawable.ic_drawer_food_24, inscriptions[0], FragmentHandler.FOOD));
+        states.add(new NavigationListAdapter.State(R.drawable.ic_drawer_profile_24, inscriptions[1], FragmentHandler.PROFILE));
+        states.add(new NavigationListAdapter.State(R.drawable.ic_drawer_orders_24, inscriptions[2], FragmentHandler.ORDERS));
+        states.add(new NavigationListAdapter.State(R.drawable.ic_drawer_settings_24, inscriptions[3], FragmentHandler.SETTINGS));
+        states.add(new NavigationListAdapter.State(R.drawable.ic_drawer_sign_out_24, inscriptions[4], FragmentHandler.SIGN_OUT));
 
-        ListView list = (ListView)view.findViewById(R.id.drawer_list);
-        NavigationList adapter = new NavigationList(context, R.layout.layout_navigation_drawer_list_item, data);
+        RecyclerView list = (RecyclerView) view.findViewById(R.id.drawerNavigationList);
+        NavigationListAdapter adapter = new NavigationListAdapter(context, states);
         list.setAdapter(adapter);
     }
-
-    public ListView getListView(){
-        ListView list = (ListView)view.findViewById(R.id.drawer_list);
-        return list;
-    }
-
 }
