@@ -97,8 +97,10 @@ public class ActivityAuthentication extends AppCompatActivity {
                         mUiHandler.post(new Runnable() {
                             @Override
                             public void run() {
-                                if (authenticationResult)
+                                if (authenticationResult) {
                                     startActivity(new Intent(ActivityAuthentication.this, ActivityNavigation.class));
+                                    ControllerHandler.getHandler().getDataController().reloadData();
+                                }
                                 else
                                     Toast.makeText(ActivityAuthentication.this, "Unexpected error occurred.", Toast.LENGTH_LONG).show();
                                 isCommandGiven = false;
@@ -115,6 +117,7 @@ public class ActivityAuthentication extends AppCompatActivity {
                         });
                     }
                 }
+
             }).start();
         }
     };

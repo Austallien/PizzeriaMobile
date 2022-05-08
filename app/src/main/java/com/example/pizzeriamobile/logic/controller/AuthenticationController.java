@@ -8,13 +8,15 @@ import androidx.annotation.Nullable;
 import com.example.pizzeriamobile.logic.App;
 import com.example.pizzeriamobile.logic.handler.ServerConnectionHandler;
 import com.example.pizzeriamobile.logic.preference.AppPreferences;
-import com.example.pizzeriamobile.logic.user.UserSingleton;
+import com.example.pizzeriamobile.logic.model.user.UserSingleton;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class AuthenticationController implements Runnable {
@@ -76,19 +78,10 @@ public class AuthenticationController implements Runnable {
     @Nullable
     private JSONObject getTokens(@NonNull String Login, @NonNull String Password){
         try{
-            HttpResponse httpResponse = ServerConnectionHandler.getHandler().execute(String.format(SUB_URL, Login, Password), false);
-            HttpEntity httpEntity = httpResponse.getEntity();
-
-            BufferedReader reader = new BufferedReader(new InputStreamReader(httpEntity.getContent()));
-
-            String inputLine;
-            StringBuilder data = new StringBuilder();
-            while ((inputLine = reader.readLine()) != null) {
-                data.append(inputLine);
-            }
-            return new JSONObject(data.toString());
+            String data = ServerConnectionHandler.getHandler().act(String.format(SUB_URL, Login, Password), false);
+            return new JSONObject(data);
         }
-        catch(Exception ex){
+        catch(IOException | JSONException ex){
             ex.printStackTrace();
             return null;
         }
@@ -115,7 +108,7 @@ public class AuthenticationController implements Runnable {
         AppPreferences.setRefreshJWT(null);
         UserSingleton.deauthenticate();
 
-        Toast.makeText(App.context, "Access token is outdated, please sign in again",Toast.LENGTH_LONG).show();
+        Toast.makeText(App.context, "Refresh token is outdated, please sign in again",Toast.LENGTH_LONG).show();
     }
 
     public boolean isAuthenticateProcessComplete(){

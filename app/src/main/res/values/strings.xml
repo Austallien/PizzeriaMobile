@@ -1,10 +1,14 @@
 <resources>
     <string name="app_name">Pizzeria Mobile</string>
     <string name="SERVER_URL">"http://192.168.0.15:5000/"</string> <!--No ssl url-->
-    <string name="SERVER_URL_SSL">https://192.168.0.14:5001/</string>
-    <string name="SUB_URL_AUTHENTICATION">account/authenticate?Login=%s&amp;Password=%s</string>>
-    <string name="SUB_URL_REFRESH_ACCESS_TOKEN">account/refreshAccessToken</string>
-    <string name="SUB_URL_AUTHORIZATION">account/authorize</string>
+    <string name="SERVER_URL_SSL">https://192.168.0.15:5001/</string>
+    <string name="SUB_URL_ACCOUNT_AUTHENTICATION">account/authenticate?Login=%s&amp;Password=%s</string>>
+    <string name="SUB_URL_ACCOUNT_AUTHORIZATION">account/authorize</string>
+    <string name="SUB_URL_ACCOUNT_REFRESH_ACCESS_TOKEN">account/refreshAccessToken</string>
+    <string name="SUB_URL_ACCOUNT_DATA">account/data</string>
+    <string name="SUB_URL_DATA_FOOD_GENERAL">data/food/general</string>
+    <string name="SUB_URL_DATA_FOOD_SETS">data/food/set</string>
+
 
     <string name="orderListIdInscription">Id</string>
     <string name="orderListDateTimeInscription">Дата и время</string>

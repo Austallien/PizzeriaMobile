@@ -1,7 +1,6 @@
-package com.example.pizzeriamobile.logic.user;
+package com.example.pizzeriamobile.logic.model.user;
 
 import android.graphics.Bitmap;
-import android.media.Image;
 
 public class User {
     private int Id;

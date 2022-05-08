@@ -68,7 +68,7 @@ public class ActivityNavigation extends AppCompatActivity implements NavigationL
                 (TextView)findViewById(R.id.textViewHeaderOrderReceivingMethod),
                 (TextView)findViewById(R.id.textViewHeaderOrderStatus)
         };
-        //new Thread(OrderDataController.InitializeAsync(this, headerTableRow, table)).start();
+        //new Thread(DataController.InitializeAsync(this, headerTableRow, table)).start();
     }
 
     public boolean onCreateOptionsMenu(Menu menu){

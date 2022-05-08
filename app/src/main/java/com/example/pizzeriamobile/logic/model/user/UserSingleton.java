@@ -1,12 +1,6 @@
-package com.example.pizzeriamobile.logic.user;
-
-import android.graphics.Bitmap;
+package com.example.pizzeriamobile.logic.model.user;
 
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 
 public class UserSingleton {
 

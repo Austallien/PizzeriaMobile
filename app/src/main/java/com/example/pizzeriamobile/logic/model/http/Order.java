@@ -1,12 +1,9 @@
-package com.example.pizzeriamobile.logic.model;
+package com.example.pizzeriamobile.logic.model.http;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.sql.Date;
-import java.sql.Time;
 import java.util.ArrayList;
-import java.util.regex.Pattern;
 
 public class Order {
     private int Id;

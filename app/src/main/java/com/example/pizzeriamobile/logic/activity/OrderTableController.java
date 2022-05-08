@@ -13,8 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.pizzeriamobile.R;
-import com.example.pizzeriamobile.activity.ActivityNavigation;
-import com.example.pizzeriamobile.logic.model.Order;
+import com.example.pizzeriamobile.logic.model.http.Order;
 
 import java.util.ArrayList;
 

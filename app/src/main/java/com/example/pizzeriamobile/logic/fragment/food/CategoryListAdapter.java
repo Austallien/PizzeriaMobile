@@ -64,9 +64,9 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
 
     public static class State{
         private String categoryName;
-        private List<CategoryListContentAdapter.State> contentStates;
+        private ArrayList<CategoryListContentAdapter.State> contentStates;
 
-        public State(String categoryName, List<CategoryListContentAdapter.State> contentStates){
+        public State(String categoryName, ArrayList<CategoryListContentAdapter.State> contentStates){
             this.categoryName = categoryName;
             this.contentStates = contentStates;
         }
@@ -75,7 +75,7 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
             return categoryName;
         }
 
-        public List<CategoryListContentAdapter.State> getContentStates() {
+        public ArrayList<CategoryListContentAdapter.State> getContentStates() {
             return contentStates;
         }
     }

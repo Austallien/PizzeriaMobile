@@ -1,18 +1,13 @@
 package com.example.pizzeriamobile.logic.controller;
 
-import android.app.Service;
-import android.content.Intent;
-import android.os.IBinder;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.example.pizzeriamobile.logic.handler.ServerConnectionHandler;
-import com.example.pizzeriamobile.logic.preference.AppPreferences;
-import com.example.pizzeriamobile.logic.user.UserSingleton;
+import com.example.pizzeriamobile.logic.model.user.UserSingleton;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -70,19 +65,9 @@ public class AuthorizationController implements Runnable {
 
     private JSONObject getUserData(){
         try {
-            HttpResponse httpResponse = ServerConnectionHandler.getHandler().execute(String.format(SUB_URL), true);
-            HttpEntity httpEntity = httpResponse.getEntity();
-
-            BufferedReader reader = new BufferedReader(new InputStreamReader(httpEntity.getContent()));
-
-            String inputLine;
-            StringBuilder data = new StringBuilder();
-            while ((inputLine = reader.readLine()) != null) {
-                data.append(inputLine);
-            }
-            return new JSONObject(data.toString());
-        }
-        catch (Exception ex){
+            String data = ServerConnectionHandler.getHandler().act(SUB_URL, true);
+            return new JSONObject(data);
+        } catch (IOException | JSONException ex) {
             ex.printStackTrace();
             return null;
         }

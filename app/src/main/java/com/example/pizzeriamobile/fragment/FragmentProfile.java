@@ -9,12 +9,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.pizzeriamobile.R;
-import com.example.pizzeriamobile.logic.user.User;
-import com.example.pizzeriamobile.logic.user.UserSingleton;
+import com.example.pizzeriamobile.logic.model.user.User;
+import com.example.pizzeriamobile.logic.model.user.UserSingleton;
 
 /**
  * A simple {@link Fragment} subclass.
