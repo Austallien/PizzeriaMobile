@@ -33,6 +33,7 @@ public class DataController implements Runnable {
     private boolean isTaskExecuting;
 
     private ArrayList<Product> products;
+    private ArrayList<String> categories;
     private ArrayList<Set> sets;
 
 
@@ -68,7 +69,6 @@ public class DataController implements Runnable {
         if(products == null)
             return false;
 
-
         return true;
     }
 
@@ -77,7 +77,16 @@ public class DataController implements Runnable {
         try{
             String data = ServerConnectionHandler.getHandler().act(SUB_URL_FOOD_GENERAL, false);
             JSONArray array = new JSONArray(data);
-            return Product.getFromJsonArray(array);
+            ArrayList<Product> list =  Product.getFromJsonArray(array);
+            categories = new ArrayList<>();
+            int index = 0;
+            do{
+                if(!categories.contains(list.get(index).Category))
+                    categories.add(list.get(index).Category);
+                index++;
+            }while(index < list.size());
+
+            return list;
         }
         catch (Exception e){
             e.printStackTrace();
@@ -101,6 +110,10 @@ public class DataController implements Runnable {
 
     public ArrayList<Product> getProductData(){
         return products;
+    }
+
+    public ArrayList<String> getCategories(){
+        return categories;
     }
 
     public boolean isDataLoadProcessComplete(){

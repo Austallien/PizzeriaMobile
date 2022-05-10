@@ -14,16 +14,6 @@
         android:theme="@style/Theme.PizzeriaMobile"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".activity.ActivityAlert"
-            android:exported="true"
-            android:label="@string/alertActivityTitle"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Dialog" />
-        <activity
-            android:name=".activity.DetailInfoActivity"
-            android:exported="true"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".activity.ActivityAuthentication"
             android:exported="true"
             android:screenOrientation="portrait">
@@ -35,9 +25,15 @@
         </activity>
         <activity
             android:name=".activity.ActivityNavigation"
-            android:exported="true" >
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.DayNight"/>
+        <activity
+            android:name=".activity.ActivityDialog"
+            android:exported="true"
+            android:label="@string/alertActivityTitle"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Dialog" />
 
-        </activity>
     </application>
-
 </manifest>

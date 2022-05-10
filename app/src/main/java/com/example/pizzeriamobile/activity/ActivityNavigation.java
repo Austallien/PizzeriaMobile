@@ -1,10 +1,15 @@
 package com.example.pizzeriamobile.activity;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spanned;
 import android.widget.RelativeLayout;
 
 import com.example.pizzeriamobile.R;
@@ -12,20 +17,26 @@ import com.example.pizzeriamobile.fragment.FragmentFood;
 import com.example.pizzeriamobile.fragment.FragmentProfile;
 import com.example.pizzeriamobile.logic.activity.navigation.Drawer;
 import com.example.pizzeriamobile.logic.activity.navigation.NavigationListAdapter;
+import com.example.pizzeriamobile.logic.controller.ControllerHandler;
 import com.example.pizzeriamobile.logic.fragment.FragmentHandler;
 
 public class ActivityNavigation extends AppCompatActivity implements NavigationListAdapter.OnTouchClickListener {
+
+    private ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
+        actionBar = getSupportActionBar();
         initialize();
     }
 
     private void initialize(){
         setupMenu();
+        actionBar.setTitle(Html.fromHtml( "<font color=\"#ffffff\">" + "Food" + "<font>"));
         loadFragment(FragmentFood.newInstance());
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(135,138,138)));
     }
 
     private void setupMenu(){
@@ -44,9 +55,11 @@ public class ActivityNavigation extends AppCompatActivity implements NavigationL
     public void navigationListItemTouched(String key) {
         switch(key){
             case FragmentHandler.FOOD:
+                actionBar.setTitle(Html.fromHtml( "<font color=\"#ffffff\">" + "Food" + "<font>"));
                 loadFragment(FragmentFood.newInstance());
                 break;
             case FragmentHandler.PROFILE:
+                actionBar.setTitle(Html.fromHtml( "<font color=\"#ffffff\">" + "Profile" + "<font>"));
                 loadFragment(FragmentProfile.newInstance());
                 break;
             case FragmentHandler.ORDERS:
@@ -54,6 +67,7 @@ public class ActivityNavigation extends AppCompatActivity implements NavigationL
             case FragmentHandler.SETTINGS:
                 break;
             case FragmentHandler.SIGN_OUT:
+                ControllerHandler.getHandler().getAuthenticationController().deauthenticate();
                 finish();
                 break;
         }

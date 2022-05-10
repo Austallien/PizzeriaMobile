@@ -78,7 +78,8 @@ public class AuthenticationController implements Runnable {
     @Nullable
     private JSONObject getTokens(@NonNull String Login, @NonNull String Password){
         try{
-            String data = ServerConnectionHandler.getHandler().act(String.format(SUB_URL, Login, Password), false);
+            String link = String.format(SUB_URL, Login, Password);
+            String data = ServerConnectionHandler.getHandler().act(link , false);
             return new JSONObject(data);
         }
         catch(IOException | JSONException ex){

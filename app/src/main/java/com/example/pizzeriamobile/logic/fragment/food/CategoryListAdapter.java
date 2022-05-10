@@ -2,81 +2,93 @@ package com.example.pizzeriamobile.logic.fragment.food;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bignerdranch.expandablerecyclerview.ChildViewHolder;
+import com.bignerdranch.expandablerecyclerview.ExpandableRecyclerAdapter;
+import com.bignerdranch.expandablerecyclerview.ParentViewHolder;
+import com.bignerdranch.expandablerecyclerview.model.Parent;
 import com.example.pizzeriamobile.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapter.ViewHolder> {
+public class CategoryListAdapter extends ExpandableRecyclerAdapter<Category, CategoryContent, CategoryListAdapter.ParentViewHolder, CategoryListAdapter.ChildViewHolder> {
 
     final LayoutInflater inflater;
-    final List<State> states;
+    final ArrayList<Category> data;
+    final Context context;
 
-    public CategoryListAdapter(Context context, List<State> states){
+    public CategoryListAdapter(Context context, @NonNull ArrayList<Category> categories) {
+        super(categories);
         inflater = LayoutInflater.from(context);
-        this.states = states;
+        data = categories;
+        this.context = context;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.fragment_food_category_list_item, parent, false);
-        return new ViewHolder(view);
+    public ParentViewHolder onCreateParentViewHolder(@NonNull ViewGroup parentViewGroup, int viewType) {
+        View view = inflater.inflate(R.layout.fragment_food_category_parent_item, parentViewGroup, false);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view.setBackgroundColor(Color.rgb(new Random().nextInt(255),new Random().nextInt(255),new Random().nextInt(255)));
+            }
+        });
+        return new ParentViewHolder(view);
+    }
+
+    @NonNull
+    @Override
+    public ChildViewHolder onCreateChildViewHolder(@NonNull ViewGroup childViewGroup, int viewType) {
+        View view = inflater.inflate(R.layout.fragment_food_category_child_item, childViewGroup, false);
+        return new ChildViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        State state = states.get(position);
-        holder.textViewCategoryName.setText(state.getCategoryName());
-
-        ArrayList<CategoryListContentAdapter.State> contentStateList = new ArrayList<CategoryListContentAdapter.State>();
-        for(int i = 0; i < state.contentStates.size(); i++){
-            CategoryListContentAdapter.State _state = state.contentStates.get(i);
-            contentStateList.add(new CategoryListContentAdapter.State(_state.productImage, _state.productName));
-        }
-
-        CategoryListContentAdapter adapter = new CategoryListContentAdapter(holder.itemView.getContext(), contentStateList);
-        holder.recyclerViewCategoryContent.setAdapter(adapter);
+    public void onBindParentViewHolder(@NonNull ParentViewHolder parentViewHolder, int parentPosition, @NonNull Category category) {
+        parentViewHolder.bind(category);
     }
 
     @Override
-    public int getItemCount() {
-        return states.size();
+    public void onBindChildViewHolder(@NonNull ChildViewHolder childViewHolder, int parentPosition, int childPosition, @NonNull CategoryContent content) {
+        childViewHolder.bind(content);
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
-        final TextView textViewCategoryName;
-        final RecyclerView recyclerViewCategoryContent;
-        public ViewHolder(@NonNull View view) {
+    public class ParentViewHolder extends com.bignerdranch.expandablerecyclerview.ParentViewHolder<Category, CategoryContent>{
+        final private TextView textViewCategoryName;
+
+        public ParentViewHolder(@NonNull View view) {
             super(view);
-            textViewCategoryName = (TextView) view.findViewById(R.id.textViewCategoryName);
-            recyclerViewCategoryContent = (RecyclerView) view.findViewById(R.id.recycleViewCategoryContent);
+            textViewCategoryName = view.findViewById(R.id.textViewCategoryName);
+        }
+
+        public void bind(Category category){
+            textViewCategoryName.setText(category.Category);
         }
     }
 
-    public static class State{
-        private String categoryName;
-        private ArrayList<CategoryListContentAdapter.State> contentStates;
+    public class ChildViewHolder extends com.bignerdranch.expandablerecyclerview.ChildViewHolder<List<CategoryContent>> {
+        final RecyclerView recyclerViewCategoryContent;
 
-        public State(String categoryName, ArrayList<CategoryListContentAdapter.State> contentStates){
-            this.categoryName = categoryName;
-            this.contentStates = contentStates;
+        public ChildViewHolder(@NonNull View view) {
+            super(view);
+            recyclerViewCategoryContent = view.findViewById(R.id.recyclerViewCategoryContent);
         }
 
-        public String getCategoryName() {
-            return categoryName;
-        }
-
-        public ArrayList<CategoryListContentAdapter.State> getContentStates() {
-            return contentStates;
+        public void bind(CategoryContent content){
+            CategoryListContentAdapter adapter = new CategoryListContentAdapter(context, content.Content);
+            recyclerViewCategoryContent.setAdapter(adapter);
         }
     }
 }
