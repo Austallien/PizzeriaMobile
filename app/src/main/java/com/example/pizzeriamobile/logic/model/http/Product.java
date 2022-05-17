@@ -26,7 +26,7 @@ public class Product {
     public final ArrayList<String> Composition;
     public final boolean IsDeleted;
 
-    private static class Variety {
+    public static class Variety {
         public final int Id;
         public final double Quantity;
         public final String MeasurementUnit;

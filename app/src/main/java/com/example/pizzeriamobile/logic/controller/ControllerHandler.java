@@ -6,41 +6,40 @@ import androidx.annotation.NonNull;
 
 import com.example.pizzeriamobile.R;
 
-public class ControllerHandler{
+public class ControllerHandler {
     private static ControllerHandler mainController;
 
     private AuthenticationController authenticationController;
     private AuthorizationController authorizationController;
     private DataController dataController;
 
-    public static void initialize(@NonNull Context context){
+    public static boolean create(@NonNull Context context) {
         mainController = new ControllerHandler(context);
+        return true;
     }
 
-    public ControllerHandler(@NonNull Context context){
+    private ControllerHandler() {
+
+    }
+
+    private ControllerHandler(@NonNull Context context) {
         String authenticateSubUrl = context.getResources().getString(R.string.SUB_URL_ACCOUNT_AUTHENTICATION);
         String authorizeSubUrl = context.getResources().getString(R.string.SUB_URL_ACCOUNT_AUTHORIZATION);
         String productDataSubUrl = context.getResources().getString(R.string.SUB_URL_DATA_FOOD_GENERAL);
+        String addressData = context.getResources().getString(R.string.SUB_URL_DATA_ADDRESS);
         String setsDataSubUrl = context.getResources().getString(R.string.SUB_URL_DATA_FOOD_SETS);
+        String building = context.getResources().getString(R.string.SUB_URL_DATA_BUILDINGS);
 
         authenticationController = new AuthenticationController(authenticateSubUrl);
         authorizationController = new AuthorizationController(authorizeSubUrl);
-        dataController = new DataController(productDataSubUrl, setsDataSubUrl);
+        dataController = new DataController(productDataSubUrl, addressData, setsDataSubUrl, building);
     }
 
-    public static ControllerHandler getHandler(){
-        return mainController;
-    }
+    public static ControllerHandler getHandler() { return mainController; }
 
-    public AuthenticationController getAuthenticationController(){
-        return authenticationController;
-    }
+    public AuthenticationController getAuthenticationController() { return authenticationController; }
 
-    public AuthorizationController getAuthorizationController(){
-        return authorizationController;
-    }
+    public AuthorizationController getAuthorizationController() { return authorizationController; }
 
-    public DataController getDataController(){
-        return dataController;
-    }
+    public DataController getDataController() { return dataController; }
 }

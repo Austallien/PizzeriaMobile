@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import com.example.pizzeriamobile.R;
 import com.example.pizzeriamobile.logic.controller.ControllerHandler;
 import com.example.pizzeriamobile.logic.exception.InvalidRefreshToken;
-import com.example.pizzeriamobile.logic.preference.AppPreferences;
+import com.example.pizzeriamobile.logic.preference.PreferencesHandler;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
@@ -16,7 +16,6 @@ import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClients;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,7 +27,7 @@ public class ServerConnectionHandler {
     private static String SUB_URL_REFRESH_ACCESS_TOKEN;
     private static ServerConnectionHandler handler;
 
-    public static void initialize(@NonNull Context context){
+    public static void create(@NonNull Context context){
         String baseServerUrl = context.getResources().getString(R.string.SERVER_URL);
         String refreshAccessTokenUrl = context.getResources().getString(R.string.SUB_URL_ACCOUNT_REFRESH_ACCESS_TOKEN);
         handler = new ServerConnectionHandler(baseServerUrl, refreshAccessTokenUrl);
@@ -82,7 +81,7 @@ public class ServerConnectionHandler {
                     }
 
                 httpResponse = request(subUrl, JWT, true);
-            } while (httpResponse.getStatusLine().getStatusCode() != HttpStatus.SC_OK || ++iteration < 2);
+            } while (httpResponse.getStatusLine().getStatusCode() != HttpStatus.SC_OK && ++iteration < 2);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InvalidRefreshToken e) {
@@ -107,7 +106,9 @@ public class ServerConnectionHandler {
 
     private boolean addJWTHeader(HttpPost httpPost, boolean isAccessToken){
         try{
-            String JWT = isAccessToken ? AppPreferences.getAccessJWT() : AppPreferences.getRefreshJWT();
+            String JWT = isAccessToken ?
+                    PreferencesHandler.getHandler().getAccessPreference().getAccessJWT() :
+                    PreferencesHandler.getHandler().getAccessPreference().getRefreshJWT();
             httpPost.addHeader(HttpHeaders.AUTHORIZATION, "Bearer " + JWT);
             return true;
         }

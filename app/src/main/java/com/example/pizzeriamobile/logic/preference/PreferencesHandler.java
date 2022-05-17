@@ -3,8 +3,45 @@ package com.example.pizzeriamobile.logic.preference;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-public class AppPreferences {
-    final private static String PREFERENCE_FILE_NAME = "PIZZERIA_APP_PREFERENCES";
+public class PreferencesHandler {
+    private static PreferencesHandler handler;
+
+    private AccessPreference accessPreference;
+    private UserPreference userPreference;
+    private ProductPreferences productPreferences;
+
+    public static boolean create(Context context){
+        handler = new PreferencesHandler(context);
+        return true;
+    }
+
+    private PreferencesHandler(){
+
+    }
+
+    private PreferencesHandler(Context context){
+        accessPreference = new AccessPreference(context);
+        userPreference = new UserPreference(context);
+        productPreferences = new ProductPreferences(context);
+    }
+
+    public static PreferencesHandler getHandler(){
+        return handler;
+    }
+
+    public AccessPreference getAccessPreference(){
+        return accessPreference;
+    }
+
+    public UserPreference getUserPreference(){
+        return userPreference;
+    }
+
+    public ProductPreferences getProductPreferences(){
+        return productPreferences;
+    }
+
+    /*final private static String PREFERENCE_FILE_NAME = "PIZZERIA_APP_PREFERENCES";
 
     final private static String ACCESS_JWT = "ACCESS_JWT";
     final private static String REFRESH_JWT = "REFRESH_JWT";
@@ -44,5 +81,5 @@ public class AppPreferences {
 
     public static String getRefreshJWT(){
         return preferences.getString(REFRESH_JWT, null);
-    }
+    }*/
 }

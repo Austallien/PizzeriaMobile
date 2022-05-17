@@ -19,6 +19,7 @@
         android:choiceMode="none"
         android:clickable="true"
         android:background="#FFFFFF"
-        xmlns:android="http://schemas.android.com/apk/res/android" />
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:focusable="true" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

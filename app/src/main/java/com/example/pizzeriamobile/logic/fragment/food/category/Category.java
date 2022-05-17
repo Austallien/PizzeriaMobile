@@ -1,8 +1,7 @@
-package com.example.pizzeriamobile.logic.fragment.food;
+package com.example.pizzeriamobile.logic.fragment.food.category;
 
 import com.bignerdranch.expandablerecyclerview.model.Parent;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Category implements Parent<CategoryContent> {

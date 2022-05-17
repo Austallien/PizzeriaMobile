@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.example.pizzeriamobile.R;
 import com.example.pizzeriamobile.fragment.FragmentFood;
@@ -67,8 +68,9 @@ public class ActivityNavigation extends AppCompatActivity implements NavigationL
             case FragmentHandler.SETTINGS:
                 break;
             case FragmentHandler.SIGN_OUT:
-                ControllerHandler.getHandler().getAuthenticationController().deauthenticate();
-                finish();
+                Toast.makeText(this, "Not implemented", Toast.LENGTH_LONG).show();
+                //ControllerHandler.getHandler().getAuthenticationController().deauthenticate();
+                //finish();
                 break;
         }
     }

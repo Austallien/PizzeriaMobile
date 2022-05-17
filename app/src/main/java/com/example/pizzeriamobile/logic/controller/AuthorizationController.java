@@ -3,16 +3,12 @@ package com.example.pizzeriamobile.logic.controller;
 import androidx.annotation.NonNull;
 
 import com.example.pizzeriamobile.logic.handler.ServerConnectionHandler;
-import com.example.pizzeriamobile.logic.model.user.UserSingleton;
+import com.example.pizzeriamobile.logic.userdata.person.UserSingleton;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class AuthorizationController implements Runnable {
 

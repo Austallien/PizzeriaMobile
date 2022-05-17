@@ -11,6 +11,125 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/imageViewDialogFoodImage"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_marginTop="16dp"
+            android:background="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/textViewDialogFoodVarietyInscription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewDialogFoodImage">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewDialogFoodComposition"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="TextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/textViewDialogFoodVarietyInscription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/inscriptionVariety"
+            app:layout_constraintBottom_toTopOf="@+id/textViewDialogFoodPriceInscription"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Spinner
+            android:id="@+id/spinnerDialogFoodVariety"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:paddingLeft="0px"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewDialogFoodVarietyInscription"
+            app:layout_constraintStart_toEndOf="@+id/textViewDialogFoodVarietyInscription"
+            app:layout_constraintTop_toTopOf="@+id/textViewDialogFoodVarietyInscription"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/textViewDialogFoodPriceInscription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/inscriptionTotal"
+            app:layout_constraintBottom_toTopOf="@+id/editTextDialogFoodAmount"
+            app:layout_constraintStart_toStartOf="@+id/textViewDialogFoodVarietyInscription" />
+
+        <TextView
+            android:id="@+id/textViewDialogFoodPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="TextView"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewDialogFoodPriceInscription"
+            app:layout_constraintStart_toStartOf="@+id/spinnerDialogFoodVariety"
+            app:layout_constraintTop_toTopOf="@+id/textViewDialogFoodPriceInscription" />
+
+        <EditText
+            android:id="@+id/editTextDialogFoodAmount"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:ems="10"
+            android:enabled="false"
+            android:inputType="number"
+            android:text="1"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/imageButtonFavourite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <Button
+            android:id="@+id/buttonDecrease"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="-"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextDialogFoodAmount"
+            app:layout_constraintEnd_toStartOf="@+id/editTextDialogFoodAmount"
+            app:layout_constraintTop_toTopOf="@+id/editTextDialogFoodAmount"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <Button
+            android:id="@+id/buttonIncrease"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="+"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextDialogFoodAmount"
+            app:layout_constraintStart_toEndOf="@+id/editTextDialogFoodAmount"
+            app:layout_constraintTop_toTopOf="@+id/editTextDialogFoodAmount"
+            tools:ignore="TouchTargetSizeCheck" />
+
         <ImageButton
             android:id="@+id/imageButtonFavourite"
             android:layout_width="48dp"
@@ -22,72 +141,13 @@
             app:layout_constraintStart_toEndOf="@+id/buttonDialogCancel"
             app:layout_constraintTop_toTopOf="@+id/buttonDialogConfirm" />
 
-        <TextView
-            android:id="@+id/textViewDialogName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewDialogImage" />
-
-        <ImageView
-            android:id="@+id/imageViewDialogImage"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            android:layout_marginTop="16dp"
-            android:background="#000000"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ScrollView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewDialogName">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="500dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textViewDialogComposition"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="TextView"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/textViewDoalogTime"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="TextView"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textViewDialogComposition" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </ScrollView>
-
         <Button
             android:id="@+id/buttonDialogCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="16dp"
-            android:text="@string/cancel"
+            android:text="@string/buttonCancel"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -97,9 +157,10 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:text="@string/confirm"
+            android:text="@string/buttonConfirm"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>

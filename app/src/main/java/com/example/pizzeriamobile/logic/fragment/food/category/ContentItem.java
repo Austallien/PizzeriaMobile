@@ -1,4 +1,4 @@
-package com.example.pizzeriamobile.logic.fragment.food;
+package com.example.pizzeriamobile.logic.fragment.food.category;
 
 import android.graphics.Bitmap;
 import android.provider.ContactsContract;

@@ -1,4 +1,4 @@
-package com.example.pizzeriamobile.logic.fragment.food;
+package com.example.pizzeriamobile.logic.fragment.food.category;
 
 import com.example.pizzeriamobile.logic.controller.ControllerHandler;
 import com.example.pizzeriamobile.logic.controller.DataController;

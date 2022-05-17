@@ -21,9 +21,12 @@ import android.widget.Toast;
 import com.example.pizzeriamobile.R;
 import com.example.pizzeriamobile.activity.ActivityDialog;
 import com.example.pizzeriamobile.logic.activity.dialog.Appearance;
-import com.example.pizzeriamobile.logic.fragment.food.CategoryListAdapter;
-import com.example.pizzeriamobile.logic.fragment.food.CategoryListContentAdapter;
-import com.example.pizzeriamobile.logic.fragment.food.ContentLoader;
+import com.example.pizzeriamobile.logic.fragment.food.drawer.CartListAdapter;
+import com.example.pizzeriamobile.logic.fragment.food.category.CategoryListAdapter;
+import com.example.pizzeriamobile.logic.fragment.food.category.CategoryListContentAdapter;
+import com.example.pizzeriamobile.logic.fragment.food.category.ContentLoader;
+import com.example.pizzeriamobile.logic.fragment.food.drawer.Drawer;
+import com.example.pizzeriamobile.logic.userdata.cart.Cart;
 
 public class FragmentFood extends Fragment implements CategoryListContentAdapter.OnTouchListener {
 
@@ -58,6 +61,8 @@ public class FragmentFood extends Fragment implements CategoryListContentAdapter
                 CategoryListAdapter adapter = new CategoryListAdapter(view.getContext(), ContentLoader.loadFoodData());
                 recyclerView.setAdapter(adapter);
                 adapter.expandAllParents();
+
+                Drawer.create(getActivity(), getActivity().findViewById(R.id.right_drawer));
             }
         });
     }

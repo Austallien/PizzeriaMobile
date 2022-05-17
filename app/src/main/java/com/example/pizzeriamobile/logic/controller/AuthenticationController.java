@@ -7,17 +7,13 @@ import androidx.annotation.Nullable;
 
 import com.example.pizzeriamobile.logic.App;
 import com.example.pizzeriamobile.logic.handler.ServerConnectionHandler;
-import com.example.pizzeriamobile.logic.preference.AppPreferences;
-import com.example.pizzeriamobile.logic.model.user.UserSingleton;
+import com.example.pizzeriamobile.logic.preference.PreferencesHandler;
+import com.example.pizzeriamobile.logic.userdata.person.UserSingleton;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class AuthenticationController implements Runnable {
 
@@ -93,8 +89,8 @@ public class AuthenticationController implements Runnable {
             String accessJwtToken = tokens.getString("accessToken");
             String refreshJwtToken = tokens.getString("refreshToken");
 
-            AppPreferences.setAccessJWT(accessJwtToken);
-            AppPreferences.setRefreshJWT(refreshJwtToken);
+            PreferencesHandler.getHandler().getAccessPreference().setAccessJWT(accessJwtToken);
+            PreferencesHandler.getHandler().getAccessPreference().setRefreshJWT(refreshJwtToken);
         }
         catch(Exception ex){
             ex.printStackTrace();
@@ -105,8 +101,8 @@ public class AuthenticationController implements Runnable {
 
 
     public void deauthenticate(){
-        AppPreferences.setAccessJWT(null);
-        AppPreferences.setRefreshJWT(null);
+        PreferencesHandler.getHandler().getAccessPreference().setAccessJWT(null);
+        PreferencesHandler.getHandler().getAccessPreference().setRefreshJWT(null);
         UserSingleton.deauthenticate();
 
         Toast.makeText(App.context, "Refresh token is outdated, please sign in again",Toast.LENGTH_LONG).show();

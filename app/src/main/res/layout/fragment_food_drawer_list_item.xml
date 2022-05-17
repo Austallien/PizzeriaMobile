@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/Theme.PizzeriaMobile">
+
+    <TextView
+        android:id="@+id/textViewFoodDrawerNameValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/patternFieldValue"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/textViewFoodDrawerNumberValue"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewFoodDrawerVarietyInscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/inscriptionVariety"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/textViewFoodDrawerNumberValue"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFoodDrawerNameValue" />
+
+    <TextView
+        android:id="@+id/textViewFoodDrawerVarietyValue"
+        style="@style/TextViewValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/patternFieldValue"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewFoodDrawerVarietyInscription"
+        app:layout_constraintStart_toEndOf="@+id/textViewFoodDrawerVarietyInscription"
+        app:layout_constraintTop_toTopOf="@+id/textViewFoodDrawerVarietyInscription" />
+
+    <TextView
+        android:id="@+id/textViewFoodDrawerPriceInscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:text="@string/inscriptionPrice"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textViewFoodDrawerVarietyInscription"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFoodDrawerVarietyInscription" />
+
+    <TextView
+        android:id="@+id/textViewFoodDrawerPriceValue"
+        style="@style/TextViewValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/patternFieldValue"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewFoodDrawerPriceInscription"
+        app:layout_constraintStart_toStartOf="@+id/textViewFoodDrawerVarietyValue"
+        app:layout_constraintTop_toTopOf="@+id/textViewFoodDrawerPriceInscription" />
+
+    <TextView
+        android:id="@+id/textViewFoodDrawerAmountValue"
+        style="@style/TextViewValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="@string/patternFieldValue"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewFoodDrawerTotalValue"
+        app:layout_constraintStart_toStartOf="@+id/textViewFoodDrawerTotalValue" />
+
+    <TextView
+        android:id="@+id/textViewFoodDrawerAmountInscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:text="@string/inscriptionAmount"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewFoodDrawerTotalValue"
+        app:layout_constraintEnd_toStartOf="@+id/textViewFoodDrawerTotalValue" />
+
+    <TextView
+        android:id="@+id/textViewFoodDrawerTotalInscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/inscriptionTotal"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/textViewFoodDrawerAmountInscription"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFoodDrawerAmountInscription" />
+
+    <TextView
+        android:id="@+id/textViewFoodDrawerTotalValue"
+        style="@style/TextViewValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/patternFieldValue"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textViewFoodDrawerPriceInscription" />
+
+    <TextView
+        android:id="@+id/textViewFoodDrawerNumberValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/patternFieldValue"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewFoodDrawerNameValue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textViewFoodDrawerNameValue" />
+
+    <Button
+        android:id="@+id/buttonFoodDrawerRemove"
+        android:layout_width="30sp"
+        android:layout_height="40sp"
+        android:layout_marginEnd="4dp"
+        android:paddingLeft="0sp"
+        android:paddingTop="0sp"
+        android:paddingRight="0sp"
+        android:paddingBottom="0sp"
+        android:text="–"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewFoodDrawerNameValue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textViewFoodDrawerNameValue" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

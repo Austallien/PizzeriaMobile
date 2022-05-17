@@ -1,4 +1,4 @@
-package com.example.pizzeriamobile.logic.model.user;
+package com.example.pizzeriamobile.logic.userdata.person;
 
 import android.graphics.Bitmap;
 

@@ -11,6 +11,7 @@ import android.view.View;
 import com.example.pizzeriamobile.R;
 import com.example.pizzeriamobile.logic.activity.dialog.Appearance;
 import com.example.pizzeriamobile.logic.activity.dialog.FoodBinder;
+import com.example.pizzeriamobile.logic.activity.dialog.OrderBinder;
 
 public class ActivityDialog extends AppCompatActivity {
 
@@ -19,7 +20,6 @@ public class ActivityDialog extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dialog_product);
         setAppearance(getIntent().getExtras());
     }
 
@@ -27,7 +27,12 @@ public class ActivityDialog extends AppCompatActivity {
         int key = bundle.getInt(Appearance.KEY);
         switch (key){
             case Appearance.FOOD:
+                setContentView(R.layout.activity_dialog_product);
                 new FoodBinder(this);
+                break;
+            case Appearance.ORDER:
+                setContentView(R.layout.activity_dialog_order);
+                new OrderBinder(this);
                 break;
         }
     }

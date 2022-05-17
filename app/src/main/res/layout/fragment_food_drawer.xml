@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/foodFragmentDrawerTitle"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/drawer_cart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/textViewDiscountInscription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textViewDiscountInscription"
+        style="@style/TextViewInscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/inscriptionDiscount"
+        app:layout_constraintBottom_toTopOf="@+id/textViewTotalInscription"
+        app:layout_constraintStart_toStartOf="@+id/textViewTotalInscription" />
+
+    <TextView
+        android:id="@+id/textViewTotalInscription"
+        style="@style/TextViewInscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/inscriptionTotal"
+        app:layout_constraintBottom_toTopOf="@+id/textViewTotalDiscountInscription"
+        app:layout_constraintStart_toStartOf="@+id/textViewTotalDiscountInscription" />
+
+    <TextView
+        android:id="@+id/textViewTotalDiscountInscription"
+        style="@style/TextViewInscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/inscriptionTotalDiscount"
+        app:layout_constraintBottom_toTopOf="@+id/buttonPlace"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewDiscountValue"
+        style="@style/TextViewValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/patternFieldValue"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewDiscountInscription"
+        app:layout_constraintEnd_toEndOf="@+id/textViewTotalvalue"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textViewTotalvalue"
+        app:layout_constraintTop_toTopOf="@+id/textViewDiscountInscription" />
+
+    <TextView
+        android:id="@+id/textViewTotalvalue"
+        style="@style/TextViewValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/patternFieldValue"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewTotalInscription"
+        app:layout_constraintEnd_toEndOf="@+id/textViewTotalDiscountValue"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textViewTotalDiscountValue"
+        app:layout_constraintTop_toTopOf="@+id/textViewTotalInscription" />
+
+    <TextView
+        android:id="@+id/textViewTotalDiscountValue"
+        style="@style/TextViewValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/patternFieldValue"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewTotalDiscountInscription"
+        app:layout_constraintStart_toEndOf="@+id/textViewTotalDiscountInscription"
+        app:layout_constraintTop_toTopOf="@+id/textViewTotalDiscountInscription" />
+
+    <Button
+        android:id="@+id/buttonPlace"
+        style="@style/Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/buttonPlace"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/buttonClear"
+        style="@style/Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/buttonClear"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonPlace"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

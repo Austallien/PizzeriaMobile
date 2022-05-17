@@ -17,11 +17,17 @@
         <!-- Customize your theme here. -->
         <item name="editTextStyle">@style/EditText</item>
         <item name="android:textViewStyle">@style/TextViewInscription</item>
+        <item name="android:buttonStyle">@style/Button</item>
     </style>
 
     <style name="Theme.PizzeriaMobile.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.PizzeriaMobile.ActionBar">
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">false</item>
     </style>
 
     <style name="Theme.PizzeriaMobile.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

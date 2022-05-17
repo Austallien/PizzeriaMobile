@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    style="@style/DialogActivity"
+    tools:context=".activity.ActivityDialog">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewDialogOrderCart"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/spinnerDialogOrderCity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/buttonDialogOrderCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/buttonCancel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/buttonDialogOrderConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/buttonConfirm"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewDialogOrderDiscountInscription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/inscriptionDiscount"
+            app:layout_constraintBottom_toTopOf="@+id/textViewDialogOrderTotalInscription"
+            app:layout_constraintStart_toStartOf="@+id/textViewDialogOrderTotalInscription" />
+
+        <TextView
+            android:id="@+id/textViewDialogOrderDiscountValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewDialogOrderDiscountInscription"
+            app:layout_constraintStart_toStartOf="@+id/textViewDialogOrderTotalValue"
+            app:layout_constraintTop_toTopOf="@+id/textViewDialogOrderDiscountInscription" />
+
+        <TextView
+            android:id="@+id/textViewDialogOrderTotalInscription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/inscriptionTotal"
+            app:layout_constraintBottom_toTopOf="@+id/textViewDialogOrderTotalDiscountInscription"
+            app:layout_constraintStart_toStartOf="@+id/textViewDialogOrderTotalDiscountInscription" />
+
+        <TextView
+            android:id="@+id/textViewDialogOrderTotalValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewDialogOrderTotalInscription"
+            app:layout_constraintStart_toStartOf="@+id/textViewDialogOrderTotalDiscountValue"
+            app:layout_constraintTop_toTopOf="@+id/textViewDialogOrderTotalInscription" />
+
+        <TextView
+            android:id="@+id/textViewDialogOrderTotalDiscountInscription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/inscriptionTotalDiscount"
+            app:layout_constraintBottom_toTopOf="@+id/buttonDialogOrderConfirm"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewDialogOrderTotalDiscountValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewDialogOrderTotalDiscountInscription"
+            app:layout_constraintStart_toEndOf="@+id/textViewDialogOrderTotalDiscountInscription"
+            app:layout_constraintTop_toTopOf="@+id/textViewDialogOrderTotalDiscountInscription" />
+
+        <Spinner
+            android:id="@+id/spinnerDialogOrderCity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/spinnerDialogOrderBuilding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/spinnerDialogOrderBuilding" />
+
+        <TextView
+            android:id="@+id/textViewDialogOrderCityInscription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/inscriptionCity"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/spinnerDialogOrderCity"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/spinnerDialogOrderCity" />
+
+        <Spinner
+            android:id="@+id/spinnerDialogOrderBuilding"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/textViewDialogOrderDiscountValue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewDialogOrderBuilding" />
+
+        <TextView
+            android:id="@+id/textViewDialogOrderBuilding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/inscriptionBuilding"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/spinnerDialogOrderBuilding"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/spinnerDialogOrderBuilding" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

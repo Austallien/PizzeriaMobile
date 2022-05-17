@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.pizzeriamobile.R;
-import com.example.pizzeriamobile.logic.model.user.User;
-import com.example.pizzeriamobile.logic.model.user.UserSingleton;
+import com.example.pizzeriamobile.logic.userdata.person.User;
+import com.example.pizzeriamobile.logic.userdata.person.UserSingleton;
 
 /**
  * A simple {@link Fragment} subclass.

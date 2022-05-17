@@ -1,6 +1,4 @@
-package com.example.pizzeriamobile.logic.fragment.food;
-
-import android.graphics.Bitmap;
+package com.example.pizzeriamobile.logic.fragment.food.category;
 
 import java.util.ArrayList;
 

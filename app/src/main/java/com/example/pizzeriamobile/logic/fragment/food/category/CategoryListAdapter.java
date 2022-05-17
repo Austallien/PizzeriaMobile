@@ -1,21 +1,16 @@
-package com.example.pizzeriamobile.logic.fragment.food;
+package com.example.pizzeriamobile.logic.fragment.food.category;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bignerdranch.expandablerecyclerview.ChildViewHolder;
 import com.bignerdranch.expandablerecyclerview.ExpandableRecyclerAdapter;
-import com.bignerdranch.expandablerecyclerview.ParentViewHolder;
-import com.bignerdranch.expandablerecyclerview.model.Parent;
 import com.example.pizzeriamobile.R;
 
 import java.util.ArrayList;

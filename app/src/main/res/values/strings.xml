@@ -1,35 +1,61 @@
 <resources>
-    <string name="app_name">Pizzeria Mobile</string>
-    <string name="SERVER_URL">"http://192.168.0.15:5000/"</string> <!--No ssl url-->
-    <string name="SERVER_URL_SSL">https://192.168.0.15:5001/</string>
-    <string name="SUB_URL_ACCOUNT_AUTHENTICATION" formatted="false">account/authenticate?Login=%s&amp;Password=%s</string>
-    <string name="SUB_URL_ACCOUNT_AUTHORIZATION">account/authorize</string>
-    <string name="SUB_URL_ACCOUNT_REFRESH_ACCESS_TOKEN">account/refreshAccessToken</string>
-    <string name="SUB_URL_ACCOUNT_DATA">account/data</string>
-    <string name="SUB_URL_DATA_FOOD_GENERAL">data/food/general</string>
-    <string name="SUB_URL_DATA_FOOD_SETS">data/food/set</string>
+    <string name="app_name" translatable="false">Pizzeria Mobile</string>
+    <string name="SERVER_URL" translatable="false">"http://192.168.0.15:5000/"</string> <!--No ssl url-->
+    <string name="SERVER_URL_SSL" translatable="false">https://192.168.0.15:5001/</string>
+    <string name="SUB_URL_ACCOUNT_AUTHENTICATION" translatable="false">account/authenticate?Login=%s&amp;Password=%s</string>
+    <string name="SUB_URL_ACCOUNT_AUTHORIZATION" translatable="false">account/authorize</string>
+    <string name="SUB_URL_ACCOUNT_REFRESH_ACCESS_TOKEN" translatable="false">account/refreshAccessToken</string>
+    <string name="SUB_URL_ACCOUNT_DATA" translatable="false">account/data</string>
+    <string name="SUB_URL_DATA_FOOD_GENERAL" translatable="false">data/food/general</string>
+    <string name="SUB_URL_DATA_FOOD_SETS" translatable="false">data/food/set</string>
+    <string name="SUB_URL_DATA_ADDRESS" translatable="false">data/address</string>
+    <string name="SUB_URL_DATA_BUILDINGS" translatable="false">data/location/building</string>
 
+    <string name="SUB_URL_DATA_PLACE_ORDER">data/order/place:building=%s&amp;data=%s</string>
 
+    <!--Custom table headers-->
     <string name="orderListIdInscription">Id</string>
-    <string name="orderListDateTimeInscription">Дата и время</string>
-    <string name="orderListTotalPriceInscription">Итого</string>
-    <string name="orderListStatusInscription">Статус</string>
-    <string name="orderListReceivingMethodInscription">Получение</string>
+    <string name="orderListDateTimeInscription">DateTime</string>
+    <string name="orderListTotalPriceInscription">Total</string>
+    <string name="orderListStatusInscription">Status</string>
+    <string name="orderListReceivingMethodInscription">Receiving</string>
 
     <!--View text-->
-    <string name="loginInscription">Login:</string>
-    <string name="passwordInscription">Password:</string>
-    <string name="loginButton">Sign In</string>
-    <string name="registerButton">Sign Up</string>
-    <string name="cancel">Cancel</string>
-    <string name="confirm">Confirm</string>
+    <string name="buttonSignIn">Sign In</string>
+    <string name="buttonSignUp">Sign Up</string>
+    <string name="buttonCancel">Cancel</string>
+    <string name="buttonConfirm">Confirm</string>
+    <string name="buttonPlace">Place</string>
+    <string name="buttonClear">Clear</string>
 
-    <!--Activity title-->
-    <string name="alertActivityTitle">Предупреждение</string>
+    <!--Titles-->
+    <string name="dialogActivityWarningTitle">Warning</string>
+    <string name="foodFragmentDrawerTitle">Cart</string>
+    <string name="dialogActivityPlaceTitle">Place order</string>
+
+    <!--Inscriptions-->
+    <string name="inscriptionLogin">Login:</string>
+    <string name="inscriptionPassword">Password:</string>
+    <string name="inscriptionComposition">Composition:</string>
+    <string name="inscriptionVariety">Variety:</string>
+    <string name="inscriptionAmount">Amount:</string>
+    <string name="inscriptionTotal">Total:</string>
+    <string name="inscriptionDiscount">Discount:</string>
+    <string name="inscriptionTotalDiscount">Total (discount):</string>
+    <string name="inscriptionPrice">Price:</string>
+    <string name="inscriptionCity">City:</string>
+    <string name="inscriptionBuilding">Building:</string>
+
+    <!--Patterns-->
+    <string name="patternTitle">Title</string>
+    <string name="patternFieldInscription">Inscription</string>
+    <string name="patternFieldValue">Value</string>
+    <string name="patternFieldValueNull">Null</string>
 
     <!--Exception-->
     <string name="exceptionInvalidUserAuthData">Invalid login or password value</string>
 
+    <!--Navigation menu items-->
     <string-array name="navigationMenu">
         <item>Food</item>
         <item>Profile</item>

@@ -1,4 +1,4 @@
-package com.example.pizzeriamobile.logic.model.user;
+package com.example.pizzeriamobile.logic.userdata.person;
 
 import org.json.JSONObject;
 
@@ -8,7 +8,7 @@ public class UserSingleton {
 
     public static User getUser(){
         if(user == null)
-            user = new User();
+            user = new User(-1, null,null,null,null,null);
         return user;
     }
 

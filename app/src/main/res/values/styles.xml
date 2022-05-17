@@ -16,15 +16,22 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <!--TextView inscription-->
     <style name="TextViewInscription" parent="Theme.MaterialComponents">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">16sp</item>
     </style>
+    <!--TextView value-->
     <style name="TextViewValue" parent="Theme.MaterialComponents">
-
-    </style>
-    <style name="Button" parent="Theme.MaterialComponents">
+        <item name="android:textColor">#FF6C6C6C</item>
         <item name="android:textSize">16sp</item>
+    </style>
+    <style name="Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:colorBackground">@color/colorPrimary</item>
+        <item name="android:textColor">@android:color/white</item>
     </style>
     <style name="CheckBox" parent="Theme.MaterialComponents">
 

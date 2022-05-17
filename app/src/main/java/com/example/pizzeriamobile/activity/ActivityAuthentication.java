@@ -18,7 +18,7 @@ import com.example.pizzeriamobile.logic.controller.AuthenticationController;
 import com.example.pizzeriamobile.logic.controller.AuthorizationController;
 import com.example.pizzeriamobile.logic.controller.ControllerHandler;
 import com.example.pizzeriamobile.logic.handler.ServerConnectionHandler;
-import com.example.pizzeriamobile.logic.preference.AppPreferences;
+import com.example.pizzeriamobile.logic.preference.PreferencesHandler;
 
 public class ActivityAuthentication extends AppCompatActivity {
 
@@ -33,13 +33,11 @@ public class ActivityAuthentication extends AppCompatActivity {
     }
 
     private void initialize(){
-        AppPreferences.initialize(this);
-        ServerConnectionHandler.initialize(this);
-        ControllerHandler.initialize(ActivityAuthentication.this);
-        listenerBinding();
+
+        bindListeners();
     }
 
-    private void listenerBinding() {
+    private void bindListeners() {
         Button signInButton = (Button) findViewById(R.id.buttonSignIn);
         Button signUpButton = (Button) findViewById(R.id.buttonSignUp);
         CheckBox hidePasswordCheckBox = (CheckBox) findViewById(R.id.checkBoxHidePassword);
@@ -99,7 +97,6 @@ public class ActivityAuthentication extends AppCompatActivity {
                             public void run() {
                                 if (authenticationResult) {
                                     startActivity(new Intent(ActivityAuthentication.this, ActivityNavigation.class));
-                                    ControllerHandler.getHandler().getDataController().reloadData();
                                 }
                                 else
                                     Toast.makeText(ActivityAuthentication.this, "Unexpected error occurred.", Toast.LENGTH_LONG).show();
