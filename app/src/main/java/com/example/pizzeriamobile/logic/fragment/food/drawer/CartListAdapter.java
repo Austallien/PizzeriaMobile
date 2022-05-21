@@ -9,10 +9,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.transition.Visibility;
 
 import com.example.pizzeriamobile.R;
-import com.example.pizzeriamobile.logic.model.http.Product;
+import com.example.pizzeriamobile.logic.userdata.cart.Cart;
+import com.example.pizzeriamobile.model.http.receive.Product;
 import com.example.pizzeriamobile.logic.userdata.cart.model.CartItem;
 
 import java.util.ArrayList;
@@ -59,7 +59,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
         TextView textViewPrice;
         TextView textViewTotal;
 
-        public ViewHolder(View view){
+        public ViewHolder(View view) {
             super(view);
             buttonRemove = (Button) view.findViewById(R.id.buttonFoodDrawerRemove);
             textViewNumber = (TextView) view.findViewById(R.id.textViewFoodDrawerNumberValue);
@@ -88,6 +88,19 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
             textViewAmount.setText(textAmount);
             textViewPrice.setText(textPrice);
             textViewTotal.setText(textTotal);
+
+            buttonRemove.setOnClickListener(onRemoveClick);
         }
+
+        final private View.OnClickListener onRemoveClick = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String textNumber = textViewNumber.getText().toString();
+                int index = textNumber.charAt(0) == '0' ? textNumber.charAt(1) - '0' : Integer.parseInt(textNumber);
+
+                Cart.handler.remove(index);
+                CartListAdapter.this.notifyItemRemoved(index);
+            }
+        };
     }
 }

@@ -7,4 +7,9 @@ public class Appearance {
     final public static int FOOD = 1;
     final public static int ORDER = 2;
     final public static int ABOUT_PROGRAM = 3;
+
+    public static class Food{
+        final public static String KEY = "KEY_FOOD";
+
+    }
 }

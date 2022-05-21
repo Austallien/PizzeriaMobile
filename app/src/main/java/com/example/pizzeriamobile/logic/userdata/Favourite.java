@@ -1,31 +1,21 @@
 package com.example.pizzeriamobile.logic.userdata;
 
-import com.example.pizzeriamobile.logic.controller.ControllerHandler;
-import com.example.pizzeriamobile.logic.model.http.Product;
-import com.example.pizzeriamobile.logic.preference.PreferencesHandler;
-import com.example.pizzeriamobile.logic.preference.ProductPreferences;
+import com.example.pizzeriamobile.preference.PreferencesHandler;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 
 public class Favourite {
-    private static Favourite favourite;
+    final static public Favourite handler = new Favourite();
     final private ArrayList<Integer> content = new ArrayList<>();
 
-    public static boolean load(){
-        favourite = new Favourite();
-        return true;
+    private Favourite(){
+        restore();
     }
 
-    private Favourite(){
+    private boolean restore(){
         ArrayList<Integer> list = PreferencesHandler.getHandler().getProductPreferences().getFavourites();
         content.addAll(list);
-    }
-
-    public static Favourite getInstance(){
-        return favourite;
+        return true;
     }
 
     public boolean put(int id){

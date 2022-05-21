@@ -2,103 +2,104 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayoutFragmentFoodDrawerContent"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textViewTitle"
+        android:id="@+id/textViewFragmentFoodDrawerTitleValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/foodFragmentDrawerTitle"
+        android:text="@string/fragmentFoodDrawerTitle"
         android:textSize="22sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/drawer_cart"
+        android:id="@+id/recyclerViewFragmentFoodDrawer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@+id/textViewDiscountInscription"
+        app:layout_constraintBottom_toTopOf="@+id/textViewFragemtnFoodDrawerDiscountInscription"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFragmentFoodDrawerTitleValue"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textViewDiscountInscription"
+        android:id="@+id/textViewFragemtnFoodDrawerDiscountInscription"
         style="@style/TextViewInscription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="@string/inscriptionDiscount"
-        app:layout_constraintBottom_toTopOf="@+id/textViewTotalInscription"
-        app:layout_constraintStart_toStartOf="@+id/textViewTotalInscription" />
+        app:layout_constraintBottom_toTopOf="@+id/textViewFragmentFoodDrawerTotalInscription"
+        app:layout_constraintStart_toStartOf="@+id/textViewFragmentFoodDrawerTotalInscription" />
 
     <TextView
-        android:id="@+id/textViewTotalInscription"
+        android:id="@+id/textViewFragmentFoodDrawerTotalInscription"
         style="@style/TextViewInscription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="@string/inscriptionTotal"
-        app:layout_constraintBottom_toTopOf="@+id/textViewTotalDiscountInscription"
-        app:layout_constraintStart_toStartOf="@+id/textViewTotalDiscountInscription" />
+        app:layout_constraintBottom_toTopOf="@+id/textViewFragmentFoodDrawerTotalDiscountInscription"
+        app:layout_constraintStart_toStartOf="@+id/textViewFragmentFoodDrawerTotalDiscountInscription" />
 
     <TextView
-        android:id="@+id/textViewTotalDiscountInscription"
+        android:id="@+id/textViewFragmentFoodDrawerTotalDiscountInscription"
         style="@style/TextViewInscription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
         android:text="@string/inscriptionTotalDiscount"
-        app:layout_constraintBottom_toTopOf="@+id/buttonPlace"
+        app:layout_constraintBottom_toTopOf="@+id/buttonFragmentFoodDrawerPlace"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textViewDiscountValue"
+        android:id="@+id/textViewFragmentFoodDrawerDiscountValue"
         style="@style/TextViewValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/patternFieldValue"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewDiscountInscription"
-        app:layout_constraintEnd_toEndOf="@+id/textViewTotalvalue"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewFragemtnFoodDrawerDiscountInscription"
+        app:layout_constraintEnd_toEndOf="@+id/textViewFragmentFoodDrawerTotalValue"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textViewTotalvalue"
-        app:layout_constraintTop_toTopOf="@+id/textViewDiscountInscription" />
+        app:layout_constraintStart_toStartOf="@+id/textViewFragmentFoodDrawerTotalValue"
+        app:layout_constraintTop_toTopOf="@+id/textViewFragemtnFoodDrawerDiscountInscription" />
 
     <TextView
-        android:id="@+id/textViewTotalvalue"
+        android:id="@+id/textViewFragmentFoodDrawerTotalValue"
         style="@style/TextViewValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/patternFieldValue"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewTotalInscription"
-        app:layout_constraintEnd_toEndOf="@+id/textViewTotalDiscountValue"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewFragmentFoodDrawerTotalInscription"
+        app:layout_constraintEnd_toEndOf="@+id/textViewFragmentFoodDrawerTotalDiscountValue"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textViewTotalDiscountValue"
-        app:layout_constraintTop_toTopOf="@+id/textViewTotalInscription" />
+        app:layout_constraintStart_toStartOf="@+id/textViewFragmentFoodDrawerTotalDiscountValue"
+        app:layout_constraintTop_toTopOf="@+id/textViewFragmentFoodDrawerTotalInscription" />
 
     <TextView
-        android:id="@+id/textViewTotalDiscountValue"
+        android:id="@+id/textViewFragmentFoodDrawerTotalDiscountValue"
         style="@style/TextViewValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="@string/patternFieldValue"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewTotalDiscountInscription"
-        app:layout_constraintStart_toEndOf="@+id/textViewTotalDiscountInscription"
-        app:layout_constraintTop_toTopOf="@+id/textViewTotalDiscountInscription" />
+        app:layout_constraintBottom_toBottomOf="@+id/textViewFragmentFoodDrawerTotalDiscountInscription"
+        app:layout_constraintStart_toEndOf="@+id/textViewFragmentFoodDrawerTotalDiscountInscription"
+        app:layout_constraintTop_toTopOf="@+id/textViewFragmentFoodDrawerTotalDiscountInscription" />
 
     <Button
-        android:id="@+id/buttonPlace"
+        android:id="@+id/buttonFragmentFoodDrawerPlace"
         style="@style/Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -109,7 +110,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/buttonClear"
+        android:id="@+id/buttonFragmentFoodDrawerClear"
         style="@style/Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -117,7 +118,7 @@
         android:layout_marginBottom="16dp"
         android:text="@string/buttonClear"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonPlace"
+        app:layout_constraintEnd_toStartOf="@+id/buttonFragmentFoodDrawerPlace"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 

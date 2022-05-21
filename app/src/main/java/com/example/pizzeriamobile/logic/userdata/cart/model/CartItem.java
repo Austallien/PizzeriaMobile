@@ -1,6 +1,6 @@
 package com.example.pizzeriamobile.logic.userdata.cart.model;
 
-import com.example.pizzeriamobile.logic.model.http.Product;
+import com.example.pizzeriamobile.model.http.receive.Product;
 
 public class CartItem {
     final public Product Product;

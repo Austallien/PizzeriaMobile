@@ -1,4 +1,4 @@
-package com.example.pizzeriamobile.logic.model.http;
+package com.example.pizzeriamobile.model.http.receive;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -7,9 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class Geolocation {

@@ -18,22 +18,21 @@
         tools:src="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/textViewId"
+        android:id="@+id/textViewFragmentProfileInscription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="id"
-        app:layout_constraintEnd_toEndOf="@+id/textViewMail"
-        app:layout_constraintStart_toStartOf="@+id/textViewMail"
-        app:layout_constraintTop_toBottomOf="@+id/textViewMail" />
+        android:text="TextView"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="218dp" />
 
     <TextView
-        android:id="@+id/textViewMail"
+        android:id="@+id/textViewFragmentProfileValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Mail"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        android:text="TextView"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="198dp"
+        tools:layout_editor_absoluteY="218dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,7 +9,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
-import android.text.Spanned;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -18,24 +17,25 @@ import com.example.pizzeriamobile.fragment.FragmentFood;
 import com.example.pizzeriamobile.fragment.FragmentProfile;
 import com.example.pizzeriamobile.logic.activity.navigation.Drawer;
 import com.example.pizzeriamobile.logic.activity.navigation.NavigationListAdapter;
-import com.example.pizzeriamobile.logic.controller.ControllerHandler;
 import com.example.pizzeriamobile.logic.fragment.FragmentHandler;
 
 public class ActivityNavigation extends AppCompatActivity implements NavigationListAdapter.OnTouchClickListener {
 
     private ActionBar actionBar;
+    private String title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
         actionBar = getSupportActionBar();
+        title = getResources().getString(R.string.activityNavigationTitle);
         initialize();
     }
 
     private void initialize(){
         setupMenu();
-        actionBar.setTitle(Html.fromHtml( "<font color=\"#ffffff\">" + "Food" + "<font>"));
+        actionBar.setTitle(Html.fromHtml(String.format(title, getResources().getString(R.string.fragmentFoodTitle)), Html.FROM_HTML_MODE_LEGACY));
         loadFragment(FragmentFood.newInstance());
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(135,138,138)));
     }
@@ -56,11 +56,11 @@ public class ActivityNavigation extends AppCompatActivity implements NavigationL
     public void navigationListItemTouched(String key) {
         switch(key){
             case FragmentHandler.FOOD:
-                actionBar.setTitle(Html.fromHtml( "<font color=\"#ffffff\">" + "Food" + "<font>"));
+                actionBar.setTitle(Html.fromHtml(String.format(title, getResources().getString(R.string.fragmentFoodTitle)), Html.FROM_HTML_MODE_LEGACY));
                 loadFragment(FragmentFood.newInstance());
                 break;
             case FragmentHandler.PROFILE:
-                actionBar.setTitle(Html.fromHtml( "<font color=\"#ffffff\">" + "Profile" + "<font>"));
+                actionBar.setTitle(Html.fromHtml(String.format(title, getResources().getString(R.string.fragmentProfileTitle)), Html.FROM_HTML_MODE_LEGACY));
                 loadFragment(FragmentProfile.newInstance());
                 break;
             case FragmentHandler.ORDERS:
@@ -69,53 +69,9 @@ public class ActivityNavigation extends AppCompatActivity implements NavigationL
                 break;
             case FragmentHandler.SIGN_OUT:
                 Toast.makeText(this, "Not implemented", Toast.LENGTH_LONG).show();
-                //ControllerHandler.getHandler().getAuthenticationController().deauthenticate();
+                //ControllerHandler.handler.getAuthenticationController().deauthenticate();
                 //finish();
                 break;
         }
     }
-
-    /*private void onLoad(){
-        //TableLayout table = (TableLayout)findViewById(R.id.TableLayout);
-        TextView[] headerTableRow = new TextView[]{
-                (TextView)findViewById(R.id.textViewHeaderOrderId),
-                (TextView)findViewById(R.id.textViewHeaderOrderDate),
-                (TextView)findViewById(R.id.textViewHeaderOrderTotalPrice),
-                (TextView)findViewById(R.id.textViewHeaderOrderReceivingMethod),
-                (TextView)findViewById(R.id.textViewHeaderOrderStatus)
-        };
-        //new Thread(DataController.InitializeAsync(this, headerTableRow, table)).start();
-    }
-
-    public boolean onCreateOptionsMenu(Menu menu){
-        menu.add("Profile");
-        menu.add("About program");
-        menu.add("Help");
-        menu.add("Sign out");
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch(item.getTitle().toString()){
-            case "Profile":
-                Toast.makeText(this,"Profile", Toast.LENGTH_LONG).show();
-                break;
-            case "About program":
-                Toast.makeText(this,"About program", Toast.LENGTH_LONG).show();
-                break;
-            case "Help":
-                Toast.makeText(this,"Help", Toast.LENGTH_LONG).show();
-                break;
-            case "Sign Out":
-                Toast.makeText(this,"Sign out", Toast.LENGTH_LONG).show();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        IsHasFocus = hasFocus;
-    }*/
 }

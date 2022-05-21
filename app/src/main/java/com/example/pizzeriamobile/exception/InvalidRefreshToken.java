@@ -1,4 +1,4 @@
-package com.example.pizzeriamobile.logic.exception;
+package com.example.pizzeriamobile.exception;
 
 public class InvalidRefreshToken extends Exception{
 }

@@ -2,14 +2,14 @@ package com.example.pizzeriamobile.logic.fragment.food.category;
 
 import com.example.pizzeriamobile.logic.controller.ControllerHandler;
 import com.example.pizzeriamobile.logic.controller.DataController;
-import com.example.pizzeriamobile.logic.model.http.Product;
+import com.example.pizzeriamobile.model.http.receive.Product;
 
 import java.util.ArrayList;
 
 public class ContentLoader {
 
     public static ArrayList<Category> loadFoodData() {
-        DataController data = ControllerHandler.getHandler().getDataController();
+        DataController data = ControllerHandler.handler.getDataController();
         boolean a = true;
         boolean b = false;
         while (a && !b) {

@@ -1,16 +1,15 @@
 package com.example.pizzeriamobile.logic.controller;
 
-import android.os.Build;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.pizzeriamobile.general.Url;
 import com.example.pizzeriamobile.logic.handler.ServerConnectionHandler;
-import com.example.pizzeriamobile.logic.model.http.Building;
-import com.example.pizzeriamobile.logic.model.http.Geolocation;
-import com.example.pizzeriamobile.logic.model.http.Order;
-import com.example.pizzeriamobile.logic.model.http.Product;
-import com.example.pizzeriamobile.logic.model.http.Set;
+import com.example.pizzeriamobile.model.http.receive.Building;
+import com.example.pizzeriamobile.model.http.receive.Geolocation;
+import com.example.pizzeriamobile.model.http.send.Order;
+import com.example.pizzeriamobile.model.http.receive.Product;
+import com.example.pizzeriamobile.model.http.receive.Set;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -22,7 +21,6 @@ public class DataController implements Runnable {
     final private Thread thread;
 
     final private String SUB_URL_FOOD_GENERAL;
-    final private String SUB_URL_FOOD_SETS;
     final private String SUB_URL_ADDRESS;
     final private String SUB_URL_GEOLOCATION_BUILDING;
 
@@ -37,11 +35,10 @@ public class DataController implements Runnable {
     private ArrayList<Building> buildings;
 
 
-    protected DataController(@NonNull String resourceSubUrlProductData, @NonNull String resourceSubUrlGeolocationBuilding ,@NonNull String resourceSubUrlSetsData, @NonNull String resourceSubUrlBuildingData) {
-        SUB_URL_FOOD_GENERAL = resourceSubUrlProductData;
-        SUB_URL_FOOD_SETS = resourceSubUrlSetsData;
-        SUB_URL_ADDRESS = resourceSubUrlGeolocationBuilding;
-        SUB_URL_GEOLOCATION_BUILDING = resourceSubUrlBuildingData;
+    protected DataController() {
+        SUB_URL_FOOD_GENERAL = Url.Food.GENERAL;
+        SUB_URL_ADDRESS = Url.Food.ADDRESS;
+        SUB_URL_GEOLOCATION_BUILDING = Url.Food.BUILDING;
         thread = new Thread(this, "DataControllerThread");
         thread.start();
         reloadData();
@@ -167,6 +164,13 @@ public class DataController implements Runnable {
 
     public ArrayList<Building> getBuildings(){
         return buildings;
+    }
+
+    public Building getBuildingById(int id) {
+        for (Building b : buildings)
+            if (b.Id == id)
+                return b;
+        return null;
     }
 
     public boolean isDataLoadProcessComplete(){

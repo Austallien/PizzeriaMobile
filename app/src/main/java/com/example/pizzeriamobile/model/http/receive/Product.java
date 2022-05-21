@@ -1,8 +1,6 @@
-package com.example.pizzeriamobile.logic.model.http;
+package com.example.pizzeriamobile.model.http.receive;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.Image;
 
 import androidx.annotation.NonNull;
 
@@ -10,10 +8,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Collection;
 

@@ -1,4 +1,6 @@
-package com.example.pizzeriamobile.logic.model.http;
+package com.example.pizzeriamobile.model.http.send;
+
+import com.example.pizzeriamobile.model.http.receive.Product;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -29,9 +29,13 @@
     <string name="buttonClear">Clear</string>
 
     <!--Titles-->
-    <string name="dialogActivityWarningTitle">Warning</string>
-    <string name="foodFragmentDrawerTitle">Cart</string>
-    <string name="dialogActivityPlaceTitle">Place order</string>
+    <string name="activityDialogTitleWarning">Warning</string>
+    <string name="activityDialogTitlePlace">Place order</string>
+    <string name="fragmentFoodDrawerTitle">Cart</string>
+    <string name="activityNavigationTitle">&lt;font color=\"#ffffff\"&gt;%s&lt;font&gt;</string>
+    <string name="fragmentFoodTitle">Food</string>
+    <string name="fragmentProfileTitle">Profile</string>
+    <string name="fragmentOrderTitle">Order</string>
 
     <!--Inscriptions-->
     <string name="inscriptionLogin">Login:</string>
@@ -54,6 +58,7 @@
 
     <!--Exception-->
     <string name="exceptionInvalidUserAuthData">Invalid login or password value</string>
+    <string name="string_patternfieldvalue" />
 
     <!--Navigation menu items-->
     <string-array name="navigationMenu">

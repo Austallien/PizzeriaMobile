@@ -5,9 +5,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.pizzeriamobile.general.Url;
 import com.example.pizzeriamobile.logic.App;
 import com.example.pizzeriamobile.logic.handler.ServerConnectionHandler;
-import com.example.pizzeriamobile.logic.preference.PreferencesHandler;
+import com.example.pizzeriamobile.preference.PreferencesHandler;
 import com.example.pizzeriamobile.logic.userdata.person.UserSingleton;
 
 import org.json.JSONException;
@@ -28,8 +29,8 @@ public class AuthenticationController implements Runnable {
     private boolean authenticationResult;
     private boolean isTaskExecuting;
 
-    protected AuthenticationController(@NonNull String resourceSubUrl){
-        SUB_URL = resourceSubUrl;
+    protected AuthenticationController(){
+        SUB_URL = Url.Account.AUTHENTICATION;
         thread = new Thread(this, "AuthenticationControllerThread");
         thread.start();
     }
@@ -86,11 +87,7 @@ public class AuthenticationController implements Runnable {
 
     private boolean writeTokens(JSONObject tokens){
         try {
-            String accessJwtToken = tokens.getString("accessToken");
-            String refreshJwtToken = tokens.getString("refreshToken");
-
-            PreferencesHandler.getHandler().getAccessPreference().setAccessJWT(accessJwtToken);
-            PreferencesHandler.getHandler().getAccessPreference().setRefreshJWT(refreshJwtToken);
+            PreferencesHandler.getHandler().getAccessPreference().setJWTPair(tokens);
         }
         catch(Exception ex){
             ex.printStackTrace();
@@ -103,7 +100,7 @@ public class AuthenticationController implements Runnable {
     public void deauthenticate(){
         PreferencesHandler.getHandler().getAccessPreference().setAccessJWT(null);
         PreferencesHandler.getHandler().getAccessPreference().setRefreshJWT(null);
-        UserSingleton.deauthenticate();
+        UserSingleton.getSingleton().deauthenticate();
 
         Toast.makeText(App.context, "Refresh token is outdated, please sign in again",Toast.LENGTH_LONG).show();
     }

@@ -17,8 +17,8 @@ import com.example.pizzeriamobile.R;
 import com.example.pizzeriamobile.logic.controller.AuthenticationController;
 import com.example.pizzeriamobile.logic.controller.AuthorizationController;
 import com.example.pizzeriamobile.logic.controller.ControllerHandler;
-import com.example.pizzeriamobile.logic.handler.ServerConnectionHandler;
-import com.example.pizzeriamobile.logic.preference.PreferencesHandler;
+import com.example.pizzeriamobile.logic.controller.NewAuthenticationController;
+import com.example.pizzeriamobile.logic.controller.NewAuthorizationController;
 
 public class ActivityAuthentication extends AppCompatActivity {
 
@@ -51,23 +51,23 @@ public class ActivityAuthentication extends AppCompatActivity {
 
     private boolean signIn(String login, String password){
         //authenticate
-        AuthenticationController authenticationController = ControllerHandler.getHandler().getAuthenticationController();
-        authenticationController.authenticate(login, password);
-        while(!authenticationController.isTaskExecuting()){Thread.yield();} //awaiting authenticate starting
-        while(!authenticationController.isAuthenticateProcessComplete() || authenticationController.isTaskExecuting()) {
+        NewAuthenticationController newAuthenticationController = ControllerHandler.handler.getNewAuthenticationController();
+        newAuthenticationController.reload(login, password);
+        while(!newAuthenticationController.isTaskExecuting()){Thread.yield();} //awaiting authenticate starting
+        while(!newAuthenticationController.isProcessComplete() || newAuthenticationController.isTaskExecuting()) {
             Thread.yield();
         }
-        if(!authenticationController.getAuthenticationResult())
+        if(!newAuthenticationController.processResult())
             return false;
 
         //authorize
-        AuthorizationController authorizationController = ControllerHandler.getHandler().getAuthorizationController();
-        authorizationController.authorize();
-        while(!authorizationController.isTaskExecuting()){Thread.yield();} //awaiting authorize starting
-        while (!authorizationController.isAuthorizeProcessComplete() || authorizationController.isTaskExecuting()) {
+        NewAuthorizationController newAuthorizationController = ControllerHandler.handler.getNewAuthorizationController();
+        newAuthorizationController.reload();
+        while(!newAuthorizationController.isTaskExecuting()){Thread.yield();} //awaiting authorize starting
+        while (!newAuthorizationController.isProcessComplete() || newAuthorizationController.isTaskExecuting()) {
             Thread.yield();
         }
-        if(!authorizationController.getAuthorizationResult())
+        if(!newAuthorizationController.processResult())
             return false;
 
         return true;
@@ -99,7 +99,7 @@ public class ActivityAuthentication extends AppCompatActivity {
                                     startActivity(new Intent(ActivityAuthentication.this, ActivityNavigation.class));
                                 }
                                 else
-                                    Toast.makeText(ActivityAuthentication.this, "Unexpected error occurred.", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(ActivityAuthentication.this, "Unexpected error occurred", Toast.LENGTH_LONG).show();
                                 isCommandGiven = false;
                             }
                         });

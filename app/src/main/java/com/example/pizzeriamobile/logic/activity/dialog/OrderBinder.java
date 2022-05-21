@@ -1,15 +1,12 @@
 package com.example.pizzeriamobile.logic.activity.dialog;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,21 +15,13 @@ import com.example.pizzeriamobile.activity.ActivityDialog;
 import com.example.pizzeriamobile.logic.controller.ControllerHandler;
 import com.example.pizzeriamobile.logic.fragment.food.drawer.CartListAdapter;
 import com.example.pizzeriamobile.logic.handler.ServerConnectionHandler;
-import com.example.pizzeriamobile.logic.model.http.Building;
-import com.example.pizzeriamobile.logic.model.http.Geolocation;
-import com.example.pizzeriamobile.logic.model.http.Order;
+import com.example.pizzeriamobile.model.http.receive.Building;
+import com.example.pizzeriamobile.model.http.receive.Geolocation;
 import com.example.pizzeriamobile.logic.userdata.cart.Cart;
 import com.example.pizzeriamobile.logic.userdata.cart.model.CartItem;
 
-import org.w3c.dom.Text;
-
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class OrderBinder {
 
@@ -43,6 +32,9 @@ public class OrderBinder {
     ArrayAdapter<String> adapterCity;
     ArrayAdapter<String> adapterBuilding;
 
+    String url;
+    String data;
+
     double discount;
     double total;
 
@@ -52,6 +44,9 @@ public class OrderBinder {
     }
 
     private void initialize(){
+        url = activity.getResources().getString(R.string.SUB_URL_DATA_PLACE_ORDER);
+        data = "";
+
         bindListeners();
         loadData();
     }
@@ -63,10 +58,10 @@ public class OrderBinder {
     }
 
     private void loadData(){
-        country = ControllerHandler.getHandler().getDataController().getAddresses().getById(1);
-        buildings = ControllerHandler.getHandler().getDataController().getBuildings();
+        country = ControllerHandler.handler.getDataController().getAddresses().getById(1);
+        buildings = ControllerHandler.handler.getDataController().getBuildings();
         discount = 0;
-        total = Cart.getCart().getTotal();
+        total = Cart.handler.getTotal();
 
         displayData();
     }
@@ -79,12 +74,12 @@ public class OrderBinder {
     }
 
     private void setTitle(){
-        String title = activity.getResources().getString(R.string.dialogActivityPlaceTitle);
+        String title = activity.getResources().getString(R.string.activityDialogTitlePlace);
         activity.setTitle(title);
     }
 
     private void displayRecyclerView(){
-        CartListAdapter adapter = new CartListAdapter(activity, Cart.getCart().getAll(), View.GONE);
+        CartListAdapter adapter = new CartListAdapter(activity, Cart.handler.getAll(), View.GONE);
         RecyclerView recyclerViewCart = (RecyclerView)activity.findViewById(R.id.recyclerViewDialogOrderCart);
         recyclerViewCart.setAdapter(adapter);
     }
@@ -130,8 +125,7 @@ public class OrderBinder {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    ArrayList<CartItem> items = Cart.getCart().getAll();
-                    String data = "";
+                    ArrayList<CartItem> items = Cart.handler.getAll();
                     for (CartItem item : items)
                         data += item.Variety.Id + "+" + item.Amount + "_";
 
@@ -143,7 +137,6 @@ public class OrderBinder {
                         if (b.Street.Name.equals(build.split(", ")[0]) && b.Number.equals(build.split(", ")[1]))
                             buildingId = b.Id;
 
-                    String url = activity.getResources().getString(R.string.SUB_URL_DATA_PLACE_ORDER);
                     url = String.format(url, buildingId + "", data);
 
 
@@ -151,7 +144,7 @@ public class OrderBinder {
                         String rawData = ServerConnectionHandler.getHandler().act(url, true);
                         if(rawData.equals("true")) {
                             activity.finish();
-                            Cart.getCart().newCart();
+                            Cart.handler.clear();
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -175,7 +168,7 @@ public class OrderBinder {
 
         @Override
         public void onNothingSelected(AdapterView<?> adapterView) {
-
+            activity.finish();
         }
     };
 }

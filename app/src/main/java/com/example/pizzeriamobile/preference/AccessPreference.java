@@ -1,9 +1,11 @@
-package com.example.pizzeriamobile.logic.preference;
+package com.example.pizzeriamobile.preference;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
+
+import org.json.JSONObject;
 
 public class AccessPreference {
     private static SharedPreferences preference;
@@ -11,16 +13,18 @@ public class AccessPreference {
 
     final private static String PREFERENCE_NAME = "Access";
 
-    final private static String KEY_ACCESS_JWT = "ACCESS_JWT";
-    final private static String KEY_REFRESH_JWT = "REFRESH_JWT";
+    final private static String KEY_ACCESS_JWT = "accessToken";
+    final private static String KEY_REFRESH_JWT = "refreshToken";
 
     protected AccessPreference(@NonNull Context context){
         preference = context.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
         editor = preference.edit();
     }
 
-    public boolean setJWTPair(String access, String refresh){
+    public boolean setJWTPair(JSONObject object){
         try {
+            String access = object.getString(KEY_ACCESS_JWT);
+            String refresh = object.getString(KEY_REFRESH_JWT);
             editor.putString(KEY_ACCESS_JWT, access);
             editor.putString(KEY_REFRESH_JWT, refresh);
             editor.apply();
@@ -34,8 +38,9 @@ public class AccessPreference {
         return true;
     }
 
-    public boolean setAccessJWT(String access){
+    public boolean setAccessJWT(JSONObject object){
         try {
+            String access = object.getString(KEY_ACCESS_JWT);
             editor.putString(KEY_ACCESS_JWT, access);
             editor.apply();
         }
@@ -48,8 +53,9 @@ public class AccessPreference {
         return true;
     }
 
-    public boolean setRefreshJWT(String refresh){
+    public boolean setRefreshJWT(JSONObject object){
         try {
+            String refresh = object.getString(KEY_REFRESH_JWT);
             editor.putString(KEY_REFRESH_JWT, refresh);
             editor.apply();
         }

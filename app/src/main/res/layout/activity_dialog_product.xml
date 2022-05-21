@@ -42,7 +42,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
-                    android:text="TextView"
+                    android:text="@string/string_patternfieldvalue"
+                    android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -65,7 +66,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:paddingLeft="0px"
             app:layout_constraintBottom_toBottomOf="@+id/textViewDialogFoodVarietyInscription"
             app:layout_constraintStart_toEndOf="@+id/textViewDialogFoodVarietyInscription"
             app:layout_constraintTop_toTopOf="@+id/textViewDialogFoodVarietyInscription"
@@ -85,7 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="TextView"
+            android:text="@string/patternFieldValue"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/textViewDialogFoodPriceInscription"
@@ -139,7 +139,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/buttonDialogCancel"
             app:layout_constraintEnd_toStartOf="@+id/buttonDialogConfirm"
             app:layout_constraintStart_toEndOf="@+id/buttonDialogCancel"
-            app:layout_constraintTop_toTopOf="@+id/buttonDialogConfirm" />
+            app:layout_constraintTop_toTopOf="@+id/buttonDialogConfirm"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/buttonDialogCancel"

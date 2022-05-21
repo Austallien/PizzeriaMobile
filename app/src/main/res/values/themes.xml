@@ -33,5 +33,4 @@
     <style name="Theme.PizzeriaMobile.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.PizzeriaMobile.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
 </resources>

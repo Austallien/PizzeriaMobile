@@ -1,45 +1,33 @@
 package com.example.pizzeriamobile.logic.controller;
 
-import android.content.Context;
-
-import androidx.annotation.NonNull;
-
-import com.example.pizzeriamobile.R;
-
 public class ControllerHandler {
-    private static ControllerHandler mainController;
+    final static public ControllerHandler handler = new ControllerHandler();
 
-    private AuthenticationController authenticationController;
-    private AuthorizationController authorizationController;
-    private DataController dataController;
+    final private AuthenticationController authenticationController;
+    final private AuthorizationController authorizationController;
+    final private DataController dataController;
 
-    public static boolean create(@NonNull Context context) {
-        mainController = new ControllerHandler(context);
-        return true;
-    }
+    final private AddressController addressController;
+
+    final private NewAuthenticationController newAuthenticationController;
+    final private NewAuthorizationController newAuthorizationController;
 
     private ControllerHandler() {
+        authenticationController = new AuthenticationController();
+        authorizationController = new AuthorizationController();
+        dataController = new DataController();
 
+        newAuthenticationController = new NewAuthenticationController("AuthenticationControllerThread_0");
+        newAuthorizationController = new NewAuthorizationController("AuthorizationControllerThread_0");
+        addressController = new AddressController("AddressControllerThread");
     }
-
-    private ControllerHandler(@NonNull Context context) {
-        String authenticateSubUrl = context.getResources().getString(R.string.SUB_URL_ACCOUNT_AUTHENTICATION);
-        String authorizeSubUrl = context.getResources().getString(R.string.SUB_URL_ACCOUNT_AUTHORIZATION);
-        String productDataSubUrl = context.getResources().getString(R.string.SUB_URL_DATA_FOOD_GENERAL);
-        String addressData = context.getResources().getString(R.string.SUB_URL_DATA_ADDRESS);
-        String setsDataSubUrl = context.getResources().getString(R.string.SUB_URL_DATA_FOOD_SETS);
-        String building = context.getResources().getString(R.string.SUB_URL_DATA_BUILDINGS);
-
-        authenticationController = new AuthenticationController(authenticateSubUrl);
-        authorizationController = new AuthorizationController(authorizeSubUrl);
-        dataController = new DataController(productDataSubUrl, addressData, setsDataSubUrl, building);
-    }
-
-    public static ControllerHandler getHandler() { return mainController; }
 
     public AuthenticationController getAuthenticationController() { return authenticationController; }
 
     public AuthorizationController getAuthorizationController() { return authorizationController; }
 
     public DataController getDataController() { return dataController; }
+
+    public NewAuthenticationController getNewAuthenticationController(){return newAuthenticationController;}
+    public NewAuthorizationController getNewAuthorizationController(){return newAuthorizationController;}
 }

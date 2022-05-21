@@ -1,25 +1,19 @@
-package com.example.pizzeriamobile.logic.preference;
+package com.example.pizzeriamobile.preference;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.res.TypedArrayUtils;
 
 import com.example.pizzeriamobile.logic.controller.ControllerHandler;
-import com.example.pizzeriamobile.logic.model.http.Product;
+import com.example.pizzeriamobile.model.http.receive.Product;
 import com.example.pizzeriamobile.logic.userdata.cart.model.CartItem;
 import com.example.pizzeriamobile.logic.userdata.cart.model.CartItemType;
 
-import org.apache.commons.codec.binary.StringUtils;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import java.util.StringJoiner;
 
 public class ProductPreferences {
     private static SharedPreferences preference;
@@ -90,7 +84,7 @@ public class ProductPreferences {
                 CartItemType type = CartItemType.valueOf(item.split("_")[2]);
                 int amount = Integer.parseInt(item.split("_")[3]);
 
-                Product product = ControllerHandler.getHandler().getDataController().getById(productId);
+                Product product = ControllerHandler.handler.getDataController().getById(productId);
                 Product.Variety variety = null;
                 for(Product.Variety var : product.Varieties) {
                     if (var.Id == varietyId) {

@@ -1,7 +1,6 @@
 package com.example.pizzeriamobile.logic.controller;
 
-import androidx.annotation.NonNull;
-
+import com.example.pizzeriamobile.general.Url;
 import com.example.pizzeriamobile.logic.handler.ServerConnectionHandler;
 import com.example.pizzeriamobile.logic.userdata.person.UserSingleton;
 
@@ -20,8 +19,8 @@ public class AuthorizationController implements Runnable {
     private boolean authorisationResult;
     private boolean isTaskExecuting;
 
-    protected AuthorizationController(@NonNull String resourceSubUrl){
-        SUB_URL = resourceSubUrl;
+    protected AuthorizationController(){
+        SUB_URL = Url.Account.AUTHORIZATION;
         thread = new Thread(this, "AuthorizationControllerThread");
         thread.start();
     }
@@ -71,7 +70,7 @@ public class AuthorizationController implements Runnable {
 
     private boolean writeUserData(JSONObject data){
         try{
-            UserSingleton.fromJson(data);
+            UserSingleton.getSingleton().setUser(data);
             return true;
         }
         catch (Exception ex){

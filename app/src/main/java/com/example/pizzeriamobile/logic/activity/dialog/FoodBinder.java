@@ -7,7 +7,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,7 +18,7 @@ import com.example.pizzeriamobile.logic.userdata.cart.Cart;
 import com.example.pizzeriamobile.logic.controller.ControllerHandler;
 import com.example.pizzeriamobile.logic.userdata.cart.model.CartItem;
 import com.example.pizzeriamobile.logic.userdata.cart.model.CartItemType;
-import com.example.pizzeriamobile.logic.model.http.Product;
+import com.example.pizzeriamobile.model.http.receive.Product;
 
 import java.util.ArrayList;
 
@@ -40,8 +39,8 @@ public class FoodBinder {
     }
 
     private void initialize(){
-        int id = activity.getIntent().getExtras().getInt(ActivityDialog.PRODUCT_ID);
-        product = ControllerHandler.getHandler().getDataController().getById(id);
+        int id = activity.getIntent().getExtras().getInt(Appearance.Food.KEY,0);
+        product = ControllerHandler.handler.getDataController().getById(id);
         bindListeners();
         loadData();
         selectVariety(0);
@@ -67,7 +66,7 @@ public class FoodBinder {
     }
 
     private ArrayList<Integer> findInCart(int productId){
-        ArrayList<CartItem> items = Cart.getCart().getById(productId);
+        ArrayList<CartItem> items = Cart.handler.getVarietiesByProductId(productId);
         ArrayList<Integer> varieties = new ArrayList<>();
         for(CartItem item : items){
             varieties.add(item.Variety.Id);
@@ -76,7 +75,7 @@ public class FoodBinder {
     }
 
     private boolean findInFavourites(int productId){
-        boolean result = Favourite.getInstance().contain(productId);
+        boolean result = Favourite.handler.contain(productId);
         return result;
     }
 
@@ -92,7 +91,7 @@ public class FoodBinder {
     private String getComposition(Product product){
         String composition = activity.getResources().getString(R.string.inscriptionComposition);
         for(String item : product.Composition){
-            composition+= "\n -" + item;
+            composition+= "\n—\t" + item;
         }
         return composition;
     }
@@ -129,7 +128,7 @@ public class FoodBinder {
     private void selectVariety(int index){
         variety = product.Varieties.get(index);
         if(varietiesInCart.contains(variety.Id)){
-            CartItem item = Cart.getCart().getItemByVarietyId(variety.Id);
+            CartItem item = Cart.handler.getItemByVarietyId(variety.Id);
             amount = item.Amount;
         }
         else
@@ -161,7 +160,7 @@ public class FoodBinder {
         @Override
         public void onClick(View view) {
             if(isFavourite) {
-                boolean result = Favourite.getInstance().remove(product.Id);
+                boolean result = Favourite.handler.remove(product.Id);
                 if(result) {
                     isFavourite = false;
                     ((ImageButton) view).setImageResource(R.drawable.ic_dialog_favourites_off_24);
@@ -171,7 +170,7 @@ public class FoodBinder {
                     Toast.makeText(activity, "Something goes wrong", Toast.LENGTH_SHORT).show();
             }
             else{
-                boolean result = Favourite.getInstance().put(product.Id);
+                boolean result = Favourite.handler.put(product.Id);
                 if(result) {
                     isFavourite = true;
                     ((ImageButton) view).setImageResource(R.drawable.ic_dialog_favourites_on_24);
@@ -187,9 +186,9 @@ public class FoodBinder {
         @Override
         public void onClick(View view) {
             if(varietiesInCart.contains(variety.Id))
-                Cart.getCart().replace(product, variety, amount);
+                Cart.handler.replace(product, variety, amount);
             else
-                Cart.getCart().add(product, variety, CartItemType.PRODUCT, amount);
+                Cart.handler.add(product, variety, CartItemType.PRODUCT, amount);
             activity.setResult(Activity.RESULT_OK);
             activity.finish();
         }

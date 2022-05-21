@@ -1,33 +1,28 @@
 package com.example.pizzeriamobile.logic.userdata.cart;
 
-import com.example.pizzeriamobile.logic.fragment.food.drawer.Drawer;
-import com.example.pizzeriamobile.logic.model.http.Product;
-import com.example.pizzeriamobile.logic.preference.PreferencesHandler;
+import com.example.pizzeriamobile.model.http.receive.Product;
+import com.example.pizzeriamobile.preference.PreferencesHandler;
 import com.example.pizzeriamobile.logic.userdata.cart.model.CartItem;
 import com.example.pizzeriamobile.logic.userdata.cart.model.CartItemType;
 
 import java.util.ArrayList;
 
 public class Cart {
-    private static Cart cart;
-    final private ArrayList<CartItem> content = new ArrayList<>();
+    final static public Cart handler = new Cart();
+    private ArrayList<CartItem> content = new ArrayList<>();
 
-    public static boolean restore(){
-        cart = new Cart();
+    private Cart(){
+        restore();
+    }
+
+    public boolean restore(){
+        ArrayList<CartItem> list = PreferencesHandler.getHandler().getProductPreferences().getCart();
+        content.addAll(list);
         return true;
     }
 
-    private Cart(){
-        ArrayList<CartItem> list = PreferencesHandler.getHandler().getProductPreferences().getCart();
-        content.addAll(list);
-    }
-
-    public static Cart getCart(){
-        return cart;
-    }
-
-    public boolean newCart(){
-        content.clear();
+    public boolean clear(){
+        content = new ArrayList<>();
         boolean result = setCart();
         return result;
     }
@@ -40,7 +35,7 @@ public class Cart {
     }
 
     public CartItem get(int index){
-        CartItem item = cart.get(index);
+        CartItem item = content.get(index);
         return item;
     }
 
@@ -58,9 +53,9 @@ public class Cart {
         return false;
     }
 
-    public ArrayList<CartItem> getById(int id){
+    public ArrayList<CartItem> getVarietiesByProductId(int id){
         ArrayList<CartItem> list = new ArrayList<>();
-        for(CartItem cartItem : cart.content){
+        for(CartItem cartItem : content){
             if(cartItem.Product.Id == id)
                 list.add(cartItem);
         }
@@ -68,7 +63,7 @@ public class Cart {
     }
 
     public CartItem getItemByVarietyId(int varietyId){
-        for(CartItem item : cart.content){
+        for(CartItem item : content){
             if(item.Variety.Id == varietyId)
                 return item;
         }
@@ -85,22 +80,17 @@ public class Cart {
         return result;
     }
 
-    public double getTotal() {
-        double total = 0;
-        for (CartItem item : cart.content) {
-            total += item.Variety.Price * item.Amount;
-        }
-        return total;
-    }
 
     private boolean setCart(){
         boolean result = PreferencesHandler.getHandler().getProductPreferences().setCart(content);
-        onChanged();
         return result;
     }
 
-    private boolean onChanged(){
-        Drawer.getDrawer().notifyDataChanged();
-        return true;
+    public double getTotal() {
+        double total = 0;
+        for (CartItem item : content) {
+            total += item.Variety.Price * item.Amount;
+        }
+        return total;
     }
 }

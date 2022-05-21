@@ -5,9 +5,11 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 
 import com.example.pizzeriamobile.R;
+import com.example.pizzeriamobile.general.Url;
+import com.example.pizzeriamobile.logic.App;
 import com.example.pizzeriamobile.logic.controller.ControllerHandler;
-import com.example.pizzeriamobile.logic.exception.InvalidRefreshToken;
-import com.example.pizzeriamobile.logic.preference.PreferencesHandler;
+import com.example.pizzeriamobile.exception.InvalidRefreshToken;
+import com.example.pizzeriamobile.preference.PreferencesHandler;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
@@ -23,22 +25,11 @@ import java.io.InputStreamReader;
 
 public class ServerConnectionHandler {
 
-    private static String URL;
-    private static String SUB_URL_REFRESH_ACCESS_TOKEN;
-    private static ServerConnectionHandler handler;
+    private static String url;
+    final static public ServerConnectionHandler handler = new ServerConnectionHandler();
 
-    public static void create(@NonNull Context context){
-        String baseServerUrl = context.getResources().getString(R.string.SERVER_URL);
-        String refreshAccessTokenUrl = context.getResources().getString(R.string.SUB_URL_ACCOUNT_REFRESH_ACCESS_TOKEN);
-        handler = new ServerConnectionHandler(baseServerUrl, refreshAccessTokenUrl);
-    }
-
-    /**@param baseServerUrl server address
-     * @param refreshAccessTokenUrl SUB_URL to refresh access token
-     * */
-    protected ServerConnectionHandler(@NonNull String baseServerUrl, @NonNull String refreshAccessTokenUrl){
-        URL = baseServerUrl;
-        SUB_URL_REFRESH_ACCESS_TOKEN = refreshAccessTokenUrl;
+    protected ServerConnectionHandler(){
+        url = Url.handler.SERVER;
     }
 
     /**<p>
@@ -64,7 +55,7 @@ public class ServerConnectionHandler {
 
     /**Send http request "URL + connectionString" where URL is WebApi url which sets up by initialise() method.
      * Example: URL: http://192.168.0.2:5000/; subUrl: user/auth?login={value}*/
-    private HttpResponse execute(String subUrl, @NonNull boolean JWT) {
+    private HttpResponse execute(String subUrl, boolean JWT) {
         HttpResponse httpResponse = null;
         try {
             int iteration = 0;
@@ -85,7 +76,7 @@ public class ServerConnectionHandler {
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InvalidRefreshToken e) {
-            ControllerHandler.getHandler().getAuthenticationController().deauthenticate();
+            //ControllerHandler.handler.getAuthenticationController().deauthenticate();
         }
         return httpResponse;
     }
@@ -93,8 +84,8 @@ public class ServerConnectionHandler {
     /**Send http request
      * @return {@link HttpResponse}
      * */
-    private HttpResponse request(String subUrl, @NonNull boolean addJWT, boolean isAccessToken) throws IOException {
-        HttpPost httpPost = new HttpPost(URL + subUrl);
+    private HttpResponse request(String subUrl, boolean addJWT, boolean isAccessToken) throws IOException {
+        HttpPost httpPost = new HttpPost(url + subUrl);
         if (addJWT)
             addJWTHeader(httpPost, isAccessToken);
 
@@ -120,7 +111,7 @@ public class ServerConnectionHandler {
 
     private boolean refreshAccessToken(){
         try {
-            request(SUB_URL_REFRESH_ACCESS_TOKEN, true,false);
+            request(Url.Account.REFRESH, true,false);
             return true;
         } catch (IOException e) {
             e.printStackTrace();

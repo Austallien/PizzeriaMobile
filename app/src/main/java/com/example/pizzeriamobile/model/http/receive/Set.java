@@ -1,4 +1,4 @@
-package com.example.pizzeriamobile.logic.model.http;
+package com.example.pizzeriamobile.model.http.receive;
 
 import org.json.JSONObject;
 

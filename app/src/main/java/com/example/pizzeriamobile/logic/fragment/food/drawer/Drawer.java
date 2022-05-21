@@ -1,108 +1,150 @@
 package com.example.pizzeriamobile.logic.fragment.food.drawer;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pizzeriamobile.R;
 import com.example.pizzeriamobile.activity.ActivityDialog;
+import com.example.pizzeriamobile.fragment.FragmentFood;
 import com.example.pizzeriamobile.logic.activity.dialog.Appearance;
 import com.example.pizzeriamobile.logic.userdata.cart.Cart;
-import com.example.pizzeriamobile.logic.userdata.cart.model.CartItem;
-
-import java.io.BufferedReader;
-import java.util.ArrayList;
 
 public class Drawer {
-    private static Drawer drawer;
-    private View view;
-    private RecyclerView list;
+    final private Context context;
+
+    final private DrawerLayout layout;
+    final private View container;
+    final private View drawer;
+
+    private RecyclerView recyclerViewCart;
+    private CartListAdapter adapterCart;
+
     private TextView textViewDiscount;
     private TextView textViewTotal;
     private TextView textViewTotalDiscount;
 
-    public static void create(Context context, RelativeLayout parent){
-        drawer = new Drawer(context, parent);
+    private Button buttonPlace;
+    private Button buttonClear;
+
+    /**
+     * @param layout    Layout which contains drawer
+     * @param container Layout main content
+     * @param drawer    Layout side drawer
+     */
+    public Drawer(@NonNull DrawerLayout layout, @NonNull View container, @NonNull View drawer) {
+        this.layout = layout;
+        this.container = container;
+        this.drawer = drawer;
+
+        context = layout.getContext();
+
+        initialize();
     }
 
-    private Drawer(){
-
-    }
-
-    private Drawer(Context context, RelativeLayout parent){
-        view = inflateDrawer(context, parent);
+    private void initialize() {
+        inflateDrawer();
+        findView();
         bindListeners();
-        linkView();
+    }
+
+    private void findView() {
+        recyclerViewCart = drawer.findViewById(R.id.recyclerViewFragmentFoodDrawer);
+        textViewDiscount = drawer.findViewById(R.id.textViewFragmentFoodDrawerDiscountValue);
+        textViewTotal = drawer.findViewById(R.id.textViewFragmentFoodDrawerTotalValue);
+        textViewTotalDiscount = drawer.findViewById(R.id.textViewFragmentFoodDrawerTotalDiscountValue);
+        buttonClear = drawer.findViewById(R.id.buttonFragmentFoodDrawerClear);
+        buttonPlace = drawer.findViewById(R.id.buttonFragmentFoodDrawerPlace);
+    }
+
+    private void inflateDrawer() {
+        LayoutInflater.from(context).inflate(R.layout.fragment_food_drawer, (ViewGroup) drawer, true);
         inflateRecyclerView();
-        updateData();
     }
 
-    private void bindListeners(){
-        ((Button)view.findViewById(R.id.buttonPlace)).setOnClickListener(onPlaceClickListener);
+    private void inflateRecyclerView() {
+        RecyclerView recyclerView = drawer.findViewById(R.id.recyclerViewFragmentFoodDrawer);
+        adapterCart = new CartListAdapter(drawer.getContext(), Cart.handler.getAll(), View.VISIBLE);
+        recyclerView.setAdapter(adapterCart);
     }
 
-    private View inflateDrawer(Context context, RelativeLayout parent){
-        View view = LayoutInflater.from(context).inflate(R.layout.fragment_food_drawer, parent, true);
-        return view;
+    private void bindListeners() {
+        layout.addDrawerListener(drawerListener);
+        layout.findViewById(R.id.buttonFragmentFoodDrawerClear).setOnClickListener(onClearClickListener);
+        layout.findViewById(R.id.buttonFragmentFoodDrawerPlace).setOnClickListener(onPlaceClickListener);
     }
 
-    private void linkView(){
-        list = (RecyclerView) view.findViewById(R.id.drawer_cart);
-        textViewDiscount = (TextView) view.findViewById(R.id.textViewDiscountValue);
-        textViewTotal = (TextView) view.findViewById(R.id.textViewTotalvalue);
-        textViewTotalDiscount = (TextView) view.findViewById(R.id.textViewTotalDiscountValue);
+    protected void updateData() {
+        Cart cart = Cart.handler;
+        double discount = 0;
+        double total = cart.getTotal();
+        double totalDiscount = total * (1 - discount);
+
+        textViewDiscount.setText((int) (discount * 100) + " %");
+        textViewTotal.setText(total + " р.");
+        textViewTotalDiscount.setText(totalDiscount + " р.");
+
+        adapterCart.setCart(cart.getAll());
+        adapterCart.notifyDataSetChanged();
     }
 
-    private void inflateRecyclerView(){
-        RecyclerView recyclerView = view.findViewById(R.id.drawer_cart);
-        CartListAdapter adapter = new CartListAdapter(view.getContext(), Cart.getCart().getAll(), View.VISIBLE);
-        recyclerView.setAdapter(adapter);
-    }
+    final private View.OnClickListener onClearClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Cart.handler.clear();
+            updateData();
+        }
+    };
 
-    private void updateData() {
-        new Handler().post(new Runnable() {
-            @Override
-            public void run() {
-
-
-                Cart cart = Cart.getCart();
-                double discount = 0;
-                double total = cart.getTotal();
-                double totalDiscount = total * (1 - discount);
-
-                textViewDiscount.setText((int) (discount * 100) + " %");
-                textViewTotal.setText(total + " р.");
-                textViewTotalDiscount.setText(totalDiscount + " р.");
-
-                CartListAdapter adapter = (CartListAdapter) list.getAdapter();
-                adapter.setCart(cart.getAll());
-                adapter.notifyDataSetChanged();
-            }
-        });
-    }
-
-    public void notifyDataChanged(){
-        updateData();
-    }
-
-    public static Drawer getDrawer(){
-        return drawer;
-    }
-
-    private View.OnClickListener onPlaceClickListener = new View.OnClickListener() {
+    final private View.OnClickListener onPlaceClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(view.getContext(), ActivityDialog.class);
             intent.putExtra(Appearance.KEY, Appearance.ORDER);
             view.getContext().startActivity(intent);
+        }
+    };
+
+    final DrawerLayout.SimpleDrawerListener drawerListener = new DrawerLayout.SimpleDrawerListener() {
+        boolean updated = false;
+
+        @Override
+        public void onDrawerSlide(View drawerView, float slideOffset) {
+            super.onDrawerSlide(drawerView, slideOffset);
+            if (!updated) {
+                updateData();
+                updated = true;
+                Toast.makeText(layout.getContext(), "Updated", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        @Override
+        public void onDrawerOpened(View drawerView) {
+            super.onDrawerOpened(drawerView);
+        }
+
+        @Override
+        public void onDrawerClosed(View drawerView) {
+            super.onDrawerClosed(drawerView);
+            updated = false;
+        }
+
+        @Override
+        public void onDrawerStateChanged(int newState) {
+            super.onDrawerStateChanged(newState);
         }
     };
 }

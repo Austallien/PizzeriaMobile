@@ -1,4 +1,4 @@
-package com.example.pizzeriamobile.logic.model.http;
+package com.example.pizzeriamobile.model.http.receive;
 
 import com.example.pizzeriamobile.logic.controller.ControllerHandler;
 
@@ -6,7 +6,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Building {
@@ -18,7 +17,7 @@ public class Building {
 
     public Building(JSONObject jsonObject) throws JSONException {
         Id = jsonObject.getInt("id");
-        Country = ControllerHandler.getHandler().getDataController().getAddresses().getById(jsonObject.getInt("idCountry"));
+        Country = ControllerHandler.handler.getDataController().getAddresses().getById(jsonObject.getInt("idCountry"));
         City = Country.getById(jsonObject.getInt("idCity"));
         Street = City.getById(jsonObject.getInt("idStreet"));
         Number = jsonObject.getString("number");

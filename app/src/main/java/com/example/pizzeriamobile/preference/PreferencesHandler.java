@@ -1,23 +1,15 @@
-package com.example.pizzeriamobile.logic.preference;
+package com.example.pizzeriamobile.preference;
 
 import android.content.Context;
-import android.content.SharedPreferences;
+
+import com.example.pizzeriamobile.logic.App;
 
 public class PreferencesHandler {
-    private static PreferencesHandler handler;
+    final static private PreferencesHandler handler = new PreferencesHandler(App.context);
 
     private AccessPreference accessPreference;
     private UserPreference userPreference;
     private ProductPreferences productPreferences;
-
-    public static boolean create(Context context){
-        handler = new PreferencesHandler(context);
-        return true;
-    }
-
-    private PreferencesHandler(){
-
-    }
 
     private PreferencesHandler(Context context){
         accessPreference = new AccessPreference(context);

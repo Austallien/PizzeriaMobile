@@ -57,7 +57,7 @@ public class FragmentProfile extends Fragment {
         TextView textViewUserFullName = (TextView) view.findViewById(R.id.textViewUserFullName);
         //TextView textViewUserId = (TextView) findViewById(R.id.textViewUserIdValue);
 
-        User user = UserSingleton.getUser();
+        User user = UserSingleton.getSingleton().getUser();
 
         textViewUserFullName.setText(String.format("%s %s %s",user.getFirstName(),user.getMiddleName(),user.getLastName()));
         //textViewUserId.setText(String.valueOf(user.getId()));
