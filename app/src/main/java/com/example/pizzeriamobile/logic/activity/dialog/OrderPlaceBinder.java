@@ -23,7 +23,7 @@ import com.example.pizzeriamobile.logic.userdata.cart.model.CartItem;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class OrderBinder {
+public class OrderPlaceBinder {
 
     final private ActivityDialog activity;
     Geolocation.Country country;
@@ -38,7 +38,7 @@ public class OrderBinder {
     double discount;
     double total;
 
-    public OrderBinder(Context context){
+    public OrderPlaceBinder(Context context){
         activity = (ActivityDialog) context;
         initialize();
     }

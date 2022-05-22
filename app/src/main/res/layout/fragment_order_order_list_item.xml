@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/textViewFragmentOrderNumberValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/patternFieldValue"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewFragmentOrderTitleValue"
+        app:layout_constraintStart_toEndOf="@+id/textViewFragmentOrderTitleValue"
+        app:layout_constraintTop_toTopOf="@+id/textViewFragmentOrderTitleValue" />
+
+    <TextView
+        android:id="@+id/textViewFragmentOrderTitleValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/fragmentOrderListTitle"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutLeftContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textViewFragmentOrderTitleValue"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFragmentOrderTitleValue">
+
+        <TextView
+            android:id="@+id/textViewFragmentOrderDateInscription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/inscriptionDate"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewFragmentOrderDateValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/patternFieldValue"
+            android:textColor="#616161"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewFragmentOrderDateInscription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textViewFragmentOrderTimeValue"
+            app:layout_constraintTop_toTopOf="@+id/textViewFragmentOrderDateInscription" />
+
+        <TextView
+            android:id="@+id/textViewFragmentOrderTimeInscription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/inscriptionTime"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textViewFragmentOrderDateInscription"
+            app:layout_constraintTop_toBottomOf="@+id/textViewFragmentOrderDateInscription"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textViewFragmentOrderTimeValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/patternFieldValue"
+            android:textColor="#616161"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewFragmentOrderTimeInscription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/textViewFragmentOrderTimeInscription"
+            app:layout_constraintTop_toTopOf="@+id/textViewFragmentOrderTimeInscription"
+            app:layout_constraintVertical_bias="0.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutRightContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayoutLeftContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/androidFragmentOrderListItem"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayoutLeftContainer">
+
+        <TextView
+            android:id="@+id/textViewFragmentOrderTotalInscription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/inscriptionTotal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewFragmentOrderTotalValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/patternFieldValue"
+            android:textColor="#616161"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewFragmentOrderTotalInscription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textViewFragmentOrderStatusValue"
+            app:layout_constraintTop_toTopOf="@+id/textViewFragmentOrderTotalInscription" />
+
+        <TextView
+            android:id="@+id/textViewFragmentOrderStatusInscription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/inscriptionStatus"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewFragmentOrderTotalInscription"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textViewFragmentOrderStatusValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/patternFieldValue"
+            android:textColor="#616161"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewFragmentOrderStatusInscription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/textViewFragmentOrderStatusInscription"
+            app:layout_constraintTop_toTopOf="@+id/textViewFragmentOrderStatusInscription" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/androidFragmentOrderListItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

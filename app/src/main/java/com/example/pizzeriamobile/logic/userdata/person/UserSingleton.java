@@ -45,7 +45,9 @@ public class UserSingleton {
     }
 
     private boolean restore(){
-        JSONObject object = PreferencesHandler.getHandler().getUserPreference().getUser();
+        JSONObject object = new JSONObject();
+        if(PreferencesHandler.getHandler().getUserPreference().getRemember())
+            PreferencesHandler.getHandler().getUserPreference().getUser();
         boolean result = setUser(object);
         return result;
     }

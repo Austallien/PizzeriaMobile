@@ -34,6 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:text="@string/patternFieldValue"
+        android:textColor="#676767"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewFoodDrawerVarietyInscription"
         app:layout_constraintStart_toEndOf="@+id/textViewFoodDrawerVarietyInscription"
@@ -57,6 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/patternFieldValue"
+        android:textColor="#676767"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewFoodDrawerPriceInscription"
         app:layout_constraintStart_toStartOf="@+id/textViewFoodDrawerVarietyValue"
@@ -69,6 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:text="@string/patternFieldValue"
+        android:textColor="#676767"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/textViewFoodDrawerTotalValue"
         app:layout_constraintStart_toStartOf="@+id/textViewFoodDrawerTotalValue" />
@@ -101,6 +104,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:text="@string/patternFieldValue"
+        android:textColor="#676767"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textViewFoodDrawerPriceInscription" />
@@ -111,6 +115,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="@string/patternFieldValue"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewFoodDrawerNameValue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textViewFoodDrawerNameValue" />

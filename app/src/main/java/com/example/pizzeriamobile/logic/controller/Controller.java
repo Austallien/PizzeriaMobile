@@ -9,7 +9,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.concurrent.Callable;
 
-abstract public class Controller<T> implements Runnable{
+abstract public class Controller<ReceivingType> implements Runnable{
 
     final private Thread thread;
 
@@ -20,8 +20,6 @@ abstract public class Controller<T> implements Runnable{
     protected boolean processResult;
 
     private Runnable task;
-
-    protected T data;
 
     /**Initialize new controller
      * @param ThreadName set name of thread;
@@ -61,9 +59,7 @@ abstract public class Controller<T> implements Runnable{
         }
     }
 
-    abstract protected JSONObject load();
-
-    abstract protected T convert(JSONObject object);
+    abstract protected ReceivingType load();
 
     public boolean isProcessComplete(){
         return isProcessComplete;

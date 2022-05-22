@@ -3,6 +3,7 @@ package com.example.pizzeriamobile.model.http.receive;
 import android.graphics.Bitmap;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -96,5 +97,13 @@ public class Product {
             e.printStackTrace();
         }*/
         return bmp;
+    }
+
+    @Nullable
+    public Variety getVariety(int id) {
+        for (Variety variety : Varieties)
+            if (variety.Id == id)
+                return variety;
+        return null;
     }
 }

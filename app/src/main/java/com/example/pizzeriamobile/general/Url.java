@@ -36,11 +36,13 @@ public class Url {
         final public String GENERAL;
         final public String ADDRESS;
         final public String BUILDING;
+        final public String ORDER;
 
         private Food(@NonNull Context context){
             GENERAL = context.getResources().getString(R.string.SUB_URL_DATA_FOOD_GENERAL);
             ADDRESS = context.getResources().getString(R.string.SUB_URL_DATA_ADDRESS);
             BUILDING = context.getResources().getString(R.string.SUB_URL_DATA_BUILDINGS);
+            ORDER = context.getResources().getString(R.string.SUB_URL_DATA_ORDER);
         }
     }
 }

@@ -2,92 +2,56 @@ package com.example.pizzeriamobile.logic.controller;
 
 import com.example.pizzeriamobile.general.Url;
 import com.example.pizzeriamobile.logic.handler.ServerConnectionHandler;
-import com.example.pizzeriamobile.logic.userdata.person.UserSingleton;
+import com.example.pizzeriamobile.logic.userdata.UserHandler;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 
-public class AuthorizationController implements Runnable {
-
-    final private Thread thread;
-
-    final private String SUB_URL;
-
-    private boolean isAuthorizeProcessComplete;
-    private boolean authorisationResult;
-    private boolean isTaskExecuting;
-
-    protected AuthorizationController(){
-        SUB_URL = Url.Account.AUTHORIZATION;
-        thread = new Thread(this, "AuthorizationControllerThread");
-        thread.start();
+public class AuthorizationController extends Controller<JSONObject>{
+    /**
+     * Initialize new controller
+     *
+     * @param ThreadName set name of thread;
+     */
+    protected AuthorizationController(String ThreadName) {
+        super(ThreadName);
+        url = Url.Account.AUTHORIZATION;
     }
 
-    /**If authorize process is already running, do nothing exclude thread returning*/
-    public Thread authorize(){
-        if(!isTaskExecuting)
-            isTaskExecuting = true;
-        return thread;
+    /**
+     * reload();
+     * */
+    @Override
+    public void reload(Object... args) {
+        super.execute(runnable);
     }
+
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            processResult = true;
+
+            JSONObject object = load();
+            if(object.length() == 0)
+                processResult = false;
+
+            boolean result = UserHandler.handler.signIn(object);
+            if(!result)
+                processResult = false;
+        }
+    };
 
     @Override
-    public void run() {
-        while(true) {
-            Thread.yield();
-            if(!isTaskExecuting)
-                continue;
-
-            isAuthorizeProcessComplete = false;
-            authorisationResult = start();
-            isAuthorizeProcessComplete = true;
-            isTaskExecuting = false;
-        }
-    }
-
-    private boolean start(){
-        JSONObject userData = getUserData();
-        if(userData == null)
-            return false;
-        
-        boolean result = writeUserData(userData);
-            if(!result)
-                return false;
-
-        return true;
-    }
-
-    private JSONObject getUserData(){
+    protected JSONObject load() {
+        JSONObject object = new JSONObject();
         try {
-            String data = ServerConnectionHandler.getHandler().act(SUB_URL, true);
-            return new JSONObject(data);
-        } catch (IOException | JSONException ex) {
-            ex.printStackTrace();
-            return null;
+            String result = ServerConnectionHandler.handler.act(url, true);
+            object = new JSONObject(result);
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
         }
-    }
-
-    private boolean writeUserData(JSONObject data){
-        try{
-            UserSingleton.getSingleton().setUser(data);
-            return true;
-        }
-        catch (Exception ex){
-            ex.printStackTrace();
-            return false;
-        }
-    }
-
-    public boolean isAuthorizeProcessComplete() {
-        return isAuthorizeProcessComplete;
-    }
-
-    public boolean getAuthorizationResult() {
-        return authorisationResult;
-    }
-
-    public boolean isTaskExecuting() {
-        return isTaskExecuting;
+        return object;
     }
 }

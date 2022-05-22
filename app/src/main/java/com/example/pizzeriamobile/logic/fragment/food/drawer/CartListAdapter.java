@@ -41,7 +41,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.bind(position, content.get(position));
+        holder.bind(position);
     }
 
     @Override
@@ -51,6 +51,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
 
 
     protected class ViewHolder extends RecyclerView.ViewHolder {
+        View view;
         Button buttonRemove;
         TextView textViewNumber;
         TextView textViewName;
@@ -61,6 +62,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
 
         public ViewHolder(View view) {
             super(view);
+            this.view = view;
             buttonRemove = (Button) view.findViewById(R.id.buttonFoodDrawerRemove);
             textViewNumber = (TextView) view.findViewById(R.id.textViewFoodDrawerNumberValue);
             textViewName = (TextView) view.findViewById(R.id.textViewFoodDrawerNameValue);
@@ -70,7 +72,9 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
             textViewTotal = (TextView) view.findViewById(R.id.textViewFoodDrawerTotalValue);
         }
 
-        public void bind(int position, CartItem item) {
+        public void bind(int position) {
+            CartItem item = content.get(position);
+
             Product product = item.Product;
             Product.Variety variety = item.Variety;
 
@@ -80,6 +84,11 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
             String textAmount = item.Amount + "";
             String textPrice = variety.Price + " р.";
             String textTotal = item.Amount * variety.Price + " р.";
+
+            if(buttonRemoveVisibility != View.GONE)
+            view.setBackgroundColor(position % 2 == 0 ?
+                    view.getContext().getResources().getColor(R.color.list_item_0, null) :
+                    view.getContext().getResources().getColor(R.color.list_item_1, null));
 
             buttonRemove.setVisibility(buttonRemoveVisibility);
             textViewNumber.setText(textNumber);

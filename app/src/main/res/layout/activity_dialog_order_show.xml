@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/DialogActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewFragmentOrderActivityDialog"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="16dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayoutActivityDialogOrderShow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <Button
+            android:id="@+id/buttonActivityDialogOrderShowBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/buttonBack"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayoutActivityDialogOrderShow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonActivityDialogOrderShowBack"
+            app:layout_constraintEnd_toEndOf="@+id/buttonActivityDialogOrderShowBack"
+            app:layout_constraintStart_toStartOf="@+id/buttonActivityDialogOrderShowBack">
+
+            <TextView
+                android:id="@+id/textViewActivityDialogOrderShowReceivingInscription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="@string/inscriptionReceiving"
+                app:layout_constraintBottom_toTopOf="@+id/textViewActivityDialogOrderShowTotalInscription"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewActivityDialogOrderShowReceivingValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/patternFieldValue"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewActivityDialogOrderShowReceivingInscription"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textViewActivityDialogOrderShowTotalValue"
+                app:layout_constraintTop_toTopOf="@+id/textViewActivityDialogOrderShowReceivingInscription" />
+
+            <TextView
+                android:id="@+id/textViewActivityDialogOrderShowBuildingInscription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="@string/inscriptionBuilding"
+                app:layout_constraintBottom_toTopOf="@+id/textViewActivityDialogOrderShowDeliveryInscription"
+                app:layout_constraintStart_toStartOf="@+id/textViewActivityDialogOrderShowDeliveryInscription"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewActivityDialogOrderShowBuildingValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/patternFieldValue"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewActivityDialogOrderShowBuildingInscription"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textViewActivityDialogOrderShowDeliveryValue"
+                app:layout_constraintTop_toTopOf="@+id/textViewActivityDialogOrderShowBuildingInscription" />
+
+            <TextView
+                android:id="@+id/textViewActivityDialogOrderShowDeliveryInscription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="@string/inscriptionDelivery"
+                app:layout_constraintBottom_toTopOf="@+id/textViewActivityDialogOrderShowReceivingInscription"
+                app:layout_constraintStart_toStartOf="@+id/textViewActivityDialogOrderShowTotalInscription" />
+
+            <TextView
+                android:id="@+id/textViewActivityDialogOrderShowDeliveryValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/patternFieldValue"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewActivityDialogOrderShowDeliveryInscription"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textViewActivityDialogOrderShowReceivingValue"
+                app:layout_constraintTop_toTopOf="@+id/textViewActivityDialogOrderShowDeliveryInscription" />
+
+            <TextView
+                android:id="@+id/textViewActivityDialogOrderShowTotalInscription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="@string/inscriptionTotal"
+                app:layout_constraintBottom_toTopOf="@+id/textViewActivityDialogOrderShowDiscountInscription"
+                app:layout_constraintStart_toStartOf="@+id/textViewActivityDialogOrderShowDiscountInscription" />
+
+            <TextView
+                android:id="@+id/textViewActivityDialogOrderShowTotalValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/patternFieldValue"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewActivityDialogOrderShowTotalInscription"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textViewActivityDialogOrderShowDiscountValue"
+                app:layout_constraintTop_toTopOf="@+id/textViewActivityDialogOrderShowTotalInscription" />
+
+            <TextView
+                android:id="@+id/textViewActivityDialogOrderShowDiscountInscription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="@string/inscriptionDiscount"
+                app:layout_constraintBottom_toTopOf="@+id/textViewActivityDialogOrderShowTotalDiscountInscription"
+                app:layout_constraintStart_toStartOf="@+id/textViewActivityDialogOrderShowTotalDiscountInscription" />
+
+            <TextView
+                android:id="@+id/textViewActivityDialogOrderShowDiscountValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/patternFieldValue"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewActivityDialogOrderShowDiscountInscription"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textViewActivityDialogOrderShowTotalDiscountValue"
+                app:layout_constraintTop_toTopOf="@+id/textViewActivityDialogOrderShowDiscountInscription" />
+
+            <TextView
+                android:id="@+id/textViewActivityDialogOrderShowTotalDiscountInscription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/inscriptionTotalDiscount"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewActivityDialogOrderShowTotalDiscountValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/patternFieldValue"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewActivityDialogOrderShowTotalDiscountInscription"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/textViewActivityDialogOrderShowTotalDiscountInscription"
+                app:layout_constraintTop_toTopOf="@+id/textViewActivityDialogOrderShowTotalDiscountInscription" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

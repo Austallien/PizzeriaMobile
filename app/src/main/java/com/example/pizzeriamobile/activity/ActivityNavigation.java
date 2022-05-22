@@ -14,9 +14,12 @@ import android.widget.Toast;
 
 import com.example.pizzeriamobile.R;
 import com.example.pizzeriamobile.fragment.FragmentFood;
+import com.example.pizzeriamobile.fragment.FragmentOrder;
 import com.example.pizzeriamobile.fragment.FragmentProfile;
 import com.example.pizzeriamobile.logic.activity.navigation.Drawer;
 import com.example.pizzeriamobile.logic.activity.navigation.NavigationListAdapter;
+import com.example.pizzeriamobile.logic.controller.ControllerHandler;
+import com.example.pizzeriamobile.logic.controller.data.OrderController;
 import com.example.pizzeriamobile.logic.fragment.FragmentHandler;
 
 public class ActivityNavigation extends AppCompatActivity implements NavigationListAdapter.OnTouchClickListener {
@@ -34,6 +37,10 @@ public class ActivityNavigation extends AppCompatActivity implements NavigationL
     }
 
     private void initialize(){
+        OrderController controller = ControllerHandler.handler.getOrderController();
+        controller.reload();
+
+
         setupMenu();
         actionBar.setTitle(Html.fromHtml(String.format(title, getResources().getString(R.string.fragmentFoodTitle)), Html.FROM_HTML_MODE_LEGACY));
         loadFragment(FragmentFood.newInstance());
@@ -64,6 +71,8 @@ public class ActivityNavigation extends AppCompatActivity implements NavigationL
                 loadFragment(FragmentProfile.newInstance());
                 break;
             case FragmentHandler.ORDERS:
+                actionBar.setTitle(Html.fromHtml(String.format(title, getResources().getString(R.string.fragmentOrderTitle)), Html.FROM_HTML_MODE_LEGACY));
+                loadFragment(FragmentOrder.newInstance());
                 break;
             case FragmentHandler.SETTINGS:
                 break;
@@ -73,5 +82,10 @@ public class ActivityNavigation extends AppCompatActivity implements NavigationL
                 //finish();
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
     }
 }

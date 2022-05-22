@@ -10,6 +10,7 @@
     <string name="SUB_URL_DATA_FOOD_SETS" translatable="false">data/food/set</string>
     <string name="SUB_URL_DATA_ADDRESS" translatable="false">data/address</string>
     <string name="SUB_URL_DATA_BUILDINGS" translatable="false">data/location/building</string>
+    <string name="SUB_URL_DATA_ORDER" translatable="false">data/order/load</string>
 
     <string name="SUB_URL_DATA_PLACE_ORDER">data/order/place:building=%s&amp;data=%s</string>
 
@@ -27,6 +28,7 @@
     <string name="buttonConfirm">Confirm</string>
     <string name="buttonPlace">Place</string>
     <string name="buttonClear">Clear</string>
+    <string name="buttonBack">Back</string>
 
     <!--Titles-->
     <string name="activityDialogTitleWarning">Warning</string>
@@ -36,6 +38,7 @@
     <string name="fragmentFoodTitle">Food</string>
     <string name="fragmentProfileTitle">Profile</string>
     <string name="fragmentOrderTitle">Order</string>
+    <string name="fragmentOrderListTitle">Order #</string>
 
     <!--Inscriptions-->
     <string name="inscriptionLogin">Login:</string>
@@ -49,16 +52,20 @@
     <string name="inscriptionPrice">Price:</string>
     <string name="inscriptionCity">City:</string>
     <string name="inscriptionBuilding">Building:</string>
+    <string name="inscriptionDate">Date:</string>
+    <string name="inscriptionTime">Time:</string>
+    <string name="inscriptionStatus">Status:</string>
+    <string name="inscriptionDelivery">Delivery:</string>
+    <string name="inscriptionReceiving">Receiving:</string>
 
     <!--Patterns-->
     <string name="patternTitle">Title</string>
-    <string name="patternFieldInscription">Inscription</string>
+    <string name="patternFieldInscription">Inscription:</string>
     <string name="patternFieldValue">Value</string>
     <string name="patternFieldValueNull">Null</string>
 
     <!--Exception-->
     <string name="exceptionInvalidUserAuthData">Invalid login or password value</string>
-    <string name="string_patternfieldvalue" />
 
     <!--Navigation menu items-->
     <string-array name="navigationMenu">

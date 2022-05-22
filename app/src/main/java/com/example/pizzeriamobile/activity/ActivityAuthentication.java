@@ -14,11 +14,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.pizzeriamobile.R;
+import com.example.pizzeriamobile.logic.controller.ControllerHandler;
 import com.example.pizzeriamobile.logic.controller.AuthenticationController;
 import com.example.pizzeriamobile.logic.controller.AuthorizationController;
-import com.example.pizzeriamobile.logic.controller.ControllerHandler;
-import com.example.pizzeriamobile.logic.controller.NewAuthenticationController;
-import com.example.pizzeriamobile.logic.controller.NewAuthorizationController;
 
 public class ActivityAuthentication extends AppCompatActivity {
 
@@ -51,23 +49,23 @@ public class ActivityAuthentication extends AppCompatActivity {
 
     private boolean signIn(String login, String password){
         //authenticate
-        NewAuthenticationController newAuthenticationController = ControllerHandler.handler.getNewAuthenticationController();
-        newAuthenticationController.reload(login, password);
-        while(!newAuthenticationController.isTaskExecuting()){Thread.yield();} //awaiting authenticate starting
-        while(!newAuthenticationController.isProcessComplete() || newAuthenticationController.isTaskExecuting()) {
+        AuthenticationController authenticationController = ControllerHandler.handler.getNewAuthenticationController();
+        authenticationController.reload(login, password);
+        while(!authenticationController.isTaskExecuting()){Thread.yield();} //awaiting authenticate starting
+        while(!authenticationController.isProcessComplete() || authenticationController.isTaskExecuting()) {
             Thread.yield();
         }
-        if(!newAuthenticationController.processResult())
+        if(!authenticationController.processResult())
             return false;
 
         //authorize
-        NewAuthorizationController newAuthorizationController = ControllerHandler.handler.getNewAuthorizationController();
-        newAuthorizationController.reload();
-        while(!newAuthorizationController.isTaskExecuting()){Thread.yield();} //awaiting authorize starting
-        while (!newAuthorizationController.isProcessComplete() || newAuthorizationController.isTaskExecuting()) {
+        AuthorizationController authorizationController = ControllerHandler.handler.getNewAuthorizationController();
+        authorizationController.reload();
+        while(!authorizationController.isTaskExecuting()){Thread.yield();} //awaiting authorize starting
+        while (!authorizationController.isProcessComplete() || authorizationController.isTaskExecuting()) {
             Thread.yield();
         }
-        if(!newAuthorizationController.processResult())
+        if(!authorizationController.processResult())
             return false;
 
         return true;

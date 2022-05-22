@@ -1,17 +1,14 @@
 package com.example.pizzeriamobile.activity;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import com.example.pizzeriamobile.R;
 import com.example.pizzeriamobile.logic.activity.dialog.Appearance;
 import com.example.pizzeriamobile.logic.activity.dialog.FoodBinder;
-import com.example.pizzeriamobile.logic.activity.dialog.OrderBinder;
+import com.example.pizzeriamobile.logic.activity.dialog.OrderPlaceBinder;
+import com.example.pizzeriamobile.logic.activity.dialog.OrderShowBinder;
 
 public class ActivityDialog extends AppCompatActivity {
 
@@ -25,14 +22,18 @@ public class ActivityDialog extends AppCompatActivity {
 
     private void setAppearance(Bundle bundle){
         int key = bundle.getInt(Appearance.KEY);
-        switch (key){
+        switch (key) {
             case Appearance.FOOD:
                 setContentView(R.layout.activity_dialog_product);
                 new FoodBinder(this);
                 break;
-            case Appearance.ORDER:
-                setContentView(R.layout.activity_dialog_order);
-                new OrderBinder(this);
+            case Appearance.ORDER_PLACE:
+                setContentView(R.layout.activity_dialog_order_place);
+                new OrderPlaceBinder(this);
+                break;
+            case Appearance.ORDER_SHOW:
+                setContentView(R.layout.activity_dialog_order_show);
+                new OrderShowBinder(this);
                 break;
         }
     }

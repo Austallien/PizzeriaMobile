@@ -13,7 +13,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class AddressController extends Controller<ArrayList<Geolocation.Country>>{
+public class AddressController extends Controller<JSONObject>{
+
+    private ArrayList<Geolocation.Country> data;
+
     /**
      * Initialize new controller
      *
@@ -58,7 +61,6 @@ public class AddressController extends Controller<ArrayList<Geolocation.Country>
         return object;
     }
 
-    @Override
     protected ArrayList<Geolocation.Country> convert(JSONObject object){
         ArrayList<Geolocation.Country> list = new ArrayList<>();
         try {

@@ -16,6 +16,8 @@ public class UserPreference {
 
     final private static String PREFERENCE_NAME = "User";
 
+    final private static String KEY_REMEMBER = "remember";
+
     final private static String KEY_ID = "id";
     final private static String KEY_FIRST_NAME = "firstName";
     final private static String KEY_MIDDLE_NAME = "middleName";
@@ -26,6 +28,30 @@ public class UserPreference {
     protected UserPreference(@NonNull Context context){
         preference = context.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
         editor = preference.edit();
+    }
+
+    public boolean setRemember(boolean value) {
+        try {
+            editor.putBoolean(KEY_REMEMBER, value);
+            editor.apply();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean getRemember(){
+        boolean result = false;
+        try{
+            result = preference.getBoolean(KEY_REMEMBER, false);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return result;
     }
 
     public boolean setUser(User user){

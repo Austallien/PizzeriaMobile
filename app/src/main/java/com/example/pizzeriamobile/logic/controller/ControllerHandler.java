@@ -1,33 +1,40 @@
 package com.example.pizzeriamobile.logic.controller;
 
+import com.example.pizzeriamobile.logic.controller.data.OrderController;
+
 public class ControllerHandler {
     final static public ControllerHandler handler = new ControllerHandler();
 
-    final private AuthenticationController authenticationController;
-    final private AuthorizationController authorizationController;
     final private DataController dataController;
 
     final private AddressController addressController;
 
-    final private NewAuthenticationController newAuthenticationController;
-    final private NewAuthorizationController newAuthorizationController;
+    final private AuthenticationController authenticationController;
+    final private AuthorizationController authorizationController;
+    final private OrderController orderController;
 
     private ControllerHandler() {
-        authenticationController = new AuthenticationController();
-        authorizationController = new AuthorizationController();
         dataController = new DataController();
 
-        newAuthenticationController = new NewAuthenticationController("AuthenticationControllerThread_0");
-        newAuthorizationController = new NewAuthorizationController("AuthorizationControllerThread_0");
+        authenticationController = new AuthenticationController("AuthenticationControllerThread");
+        authorizationController = new AuthorizationController("AuthorizationControllerThread");
         addressController = new AddressController("AddressControllerThread");
+        orderController = new OrderController("OrderControllerThread");
     }
 
-    public AuthenticationController getAuthenticationController() { return authenticationController; }
+    public DataController getDataController() {
+        return dataController;
+    }
 
-    public AuthorizationController getAuthorizationController() { return authorizationController; }
+    public AuthenticationController getNewAuthenticationController() {
+        return authenticationController;
+    }
 
-    public DataController getDataController() { return dataController; }
+    public AuthorizationController getNewAuthorizationController() {
+        return authorizationController;
+    }
 
-    public NewAuthenticationController getNewAuthenticationController(){return newAuthenticationController;}
-    public NewAuthorizationController getNewAuthorizationController(){return newAuthorizationController;}
+    public OrderController getOrderController() {
+        return orderController;
+    }
 }

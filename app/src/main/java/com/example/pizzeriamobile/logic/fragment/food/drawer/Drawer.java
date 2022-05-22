@@ -1,6 +1,5 @@
 package com.example.pizzeriamobile.logic.fragment.food.drawer;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -10,16 +9,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pizzeriamobile.R;
 import com.example.pizzeriamobile.activity.ActivityDialog;
-import com.example.pizzeriamobile.fragment.FragmentFood;
 import com.example.pizzeriamobile.logic.activity.dialog.Appearance;
 import com.example.pizzeriamobile.logic.userdata.cart.Cart;
 
@@ -113,7 +108,7 @@ public class Drawer {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(view.getContext(), ActivityDialog.class);
-            intent.putExtra(Appearance.KEY, Appearance.ORDER);
+            intent.putExtra(Appearance.KEY, Appearance.ORDER_PLACE);
             view.getContext().startActivity(intent);
         }
     };
