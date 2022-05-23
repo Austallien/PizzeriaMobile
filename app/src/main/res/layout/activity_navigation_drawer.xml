@@ -16,34 +16,37 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
 
-        <TextView
-            android:id="@+id/textViewMailValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:text="mail"
-            app:layout_constraintStart_toStartOf="@+id/textViewUserFullName"
-            app:layout_constraintTop_toBottomOf="@+id/textViewUserFullName" />
-
         <ImageView
-            android:id="@+id/imageViewAvatar"
+            android:id="@+id/imageViewActivityNavigationDrawerPhoto"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/view_imageview_avatar_blank"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@color/black" />
 
         <TextView
-            android:id="@+id/textViewUserFullName"
+            android:id="@+id/textViewActivityNavigationDrawerMailValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="TextView"
-            app:layout_constraintStart_toStartOf="@+id/imageViewAvatar"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewAvatar" />
+            android:layout_marginTop="4dp"
+            android:text="@string/patternFieldValue"
+            app:layout_constraintStart_toStartOf="@+id/textViewActivityNavigationDrawerNameValue"
+            app:layout_constraintTop_toBottomOf="@+id/textViewActivityNavigationDrawerNameValue" />
+
+        <TextView
+            android:id="@+id/textViewActivityNavigationDrawerNameValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/patternFieldValue"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/imageViewActivityNavigationDrawerPhoto"
+            app:layout_constraintTop_toTopOf="@+id/imageViewActivityNavigationDrawerPhoto" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView

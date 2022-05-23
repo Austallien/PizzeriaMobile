@@ -57,14 +57,16 @@ public class CategoryListAdapter extends ExpandableRecyclerAdapter<Category, Cat
 
     @Override
     public void onBindChildViewHolder(@NonNull ChildViewHolder childViewHolder, int parentPosition, int childPosition, @NonNull CategoryContent content) {
-        childViewHolder.bind(content);
+        childViewHolder.bind(parentPosition, content);
     }
 
     public class ParentViewHolder extends com.bignerdranch.expandablerecyclerview.ParentViewHolder<Category, CategoryContent>{
+        final private View view;
         final private TextView textViewCategoryName;
 
         public ParentViewHolder(@NonNull View view) {
             super(view);
+            this.view = view;
             textViewCategoryName = view.findViewById(R.id.textViewCategoryName);
         }
 
@@ -74,16 +76,22 @@ public class CategoryListAdapter extends ExpandableRecyclerAdapter<Category, Cat
     }
 
     public class ChildViewHolder extends com.bignerdranch.expandablerecyclerview.ChildViewHolder<List<CategoryContent>> {
+        final View view;
         final RecyclerView recyclerViewCategoryContent;
 
         public ChildViewHolder(@NonNull View view) {
             super(view);
+            this.view = view;
             recyclerViewCategoryContent = view.findViewById(R.id.recyclerViewCategoryContent);
         }
 
-        public void bind(CategoryContent content){
+        public void bind(int position, CategoryContent content){
             CategoryListContentAdapter adapter = new CategoryListContentAdapter(context, content.Content);
             recyclerViewCategoryContent.setAdapter(adapter);
+
+            view.setBackgroundColor(position % 2 == 0 ?
+                    view.getContext().getResources().getColor(R.color.list_item_0, null) :
+                    view.getContext().getResources().getColor(R.color.list_item_1, null));
         }
     }
 }

@@ -77,9 +77,9 @@ public class ActivityNavigation extends AppCompatActivity implements NavigationL
             case FragmentHandler.SETTINGS:
                 break;
             case FragmentHandler.SIGN_OUT:
-                Toast.makeText(this, "Not implemented", Toast.LENGTH_LONG).show();
+                //Toast.makeText(this, "Not implemented", Toast.LENGTH_LONG).show();
                 //ControllerHandler.handler.getAuthenticationController().deauthenticate();
-                //finish();
+                finish();
                 break;
         }
     }
@@ -87,5 +87,6 @@ public class ActivityNavigation extends AppCompatActivity implements NavigationL
     @Override
     public void onBackPressed() {
         //super.onBackPressed();
+        finish();
     }
 }

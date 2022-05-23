@@ -54,7 +54,7 @@ public class FragmentProfile extends Fragment {
     }
 
     private void loadData(View view){
-        TextView textViewUserFullName = (TextView) view.findViewById(R.id.textViewUserFullName);
+        TextView textViewUserFullName = (TextView) view.findViewById(R.id.textViewActivityNavigationDrawerNameValue);
         //TextView textViewUserId = (TextView) findViewById(R.id.textViewUserIdValue);
 
         User user = UserSingleton.getSingleton().getUser();

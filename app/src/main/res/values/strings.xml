@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name" translatable="false">Pizzeria Mobile</string>
-    <string name="SERVER_URL" translatable="false">"http://192.168.0.15:5000/"</string> <!--No ssl url-->
+    <string name="SERVER_URL" translatable="false">"http://api1.adamenko.awkitsune.icu/"</string> <!--No ssl url-->
     <string name="SERVER_URL_SSL" translatable="false">https://192.168.0.15:5001/</string>
     <string name="SUB_URL_ACCOUNT_AUTHENTICATION" translatable="false">account/authenticate?Login=%s&amp;Password=%s</string>
     <string name="SUB_URL_ACCOUNT_AUTHORIZATION" translatable="false">account/authorize</string>
