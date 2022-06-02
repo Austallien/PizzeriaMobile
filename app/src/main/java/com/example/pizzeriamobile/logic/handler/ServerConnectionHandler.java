@@ -1,13 +1,8 @@
 package com.example.pizzeriamobile.logic.handler;
 
-import android.content.Context;
-
 import androidx.annotation.NonNull;
 
-import com.example.pizzeriamobile.R;
 import com.example.pizzeriamobile.general.Url;
-import com.example.pizzeriamobile.logic.App;
-import com.example.pizzeriamobile.logic.controller.ControllerHandler;
 import com.example.pizzeriamobile.exception.InvalidRefreshToken;
 import com.example.pizzeriamobile.preference.PreferencesHandler;
 

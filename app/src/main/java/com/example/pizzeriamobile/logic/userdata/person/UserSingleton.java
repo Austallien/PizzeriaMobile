@@ -1,8 +1,5 @@
 package com.example.pizzeriamobile.logic.userdata.person;
 
-import android.widget.Toast;
-
-import com.example.pizzeriamobile.logic.App;
 import com.example.pizzeriamobile.preference.PreferencesHandler;
 
 import org.json.JSONObject;

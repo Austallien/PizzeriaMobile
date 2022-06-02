@@ -22,7 +22,7 @@ public class User {
         this.LastName = LastName;
         this.Login = Login;
         this.Role = Role;
-        //this.Avatar = Avatar;
+        this.Avatar = Bitmap.createBitmap(200, 200, Bitmap.Config.RGB_565);
     }
 
     public int getId() {

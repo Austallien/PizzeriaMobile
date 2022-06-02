@@ -5,10 +5,6 @@ import android.content.Context;
 import com.example.pizzeriamobile.logic.App;
 import com.example.pizzeriamobile.logic.controller.ControllerHandler;
 import com.example.pizzeriamobile.logic.controller.DataController;
-import com.example.pizzeriamobile.logic.handler.ServerConnectionHandler;
-import com.example.pizzeriamobile.preference.PreferencesHandler;
-import com.example.pizzeriamobile.logic.userdata.Favourite;
-import com.example.pizzeriamobile.logic.userdata.cart.Cart;
 
 /**Runs in Thread only one time per program run*/
 public class AppPreparer implements Runnable{

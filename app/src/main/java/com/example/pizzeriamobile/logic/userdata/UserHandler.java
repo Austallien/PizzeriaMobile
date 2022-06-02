@@ -1,6 +1,5 @@
 package com.example.pizzeriamobile.logic.userdata;
 
-import com.example.pizzeriamobile.logic.controller.ControllerHandler;
 import com.example.pizzeriamobile.logic.userdata.person.User;
 import com.example.pizzeriamobile.logic.userdata.person.UserSingleton;
 import com.example.pizzeriamobile.preference.AccessPreference;

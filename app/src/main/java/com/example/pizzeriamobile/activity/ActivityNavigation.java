@@ -10,7 +10,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.example.pizzeriamobile.R;
 import com.example.pizzeriamobile.fragment.FragmentFood;
@@ -44,7 +43,7 @@ public class ActivityNavigation extends AppCompatActivity implements NavigationL
         setupMenu();
         actionBar.setTitle(Html.fromHtml(String.format(title, getResources().getString(R.string.fragmentFoodTitle)), Html.FROM_HTML_MODE_LEGACY));
         loadFragment(FragmentFood.newInstance());
-        actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(135,138,138)));
+        //actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(135,138,138)));
     }
 
     private void setupMenu(){

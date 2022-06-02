@@ -3,8 +3,6 @@ package com.example.pizzeriamobile.logic.controller;
 import com.example.pizzeriamobile.general.Url;
 import com.example.pizzeriamobile.logic.handler.ServerConnectionHandler;
 import com.example.pizzeriamobile.logic.userdata.UserHandler;
-import com.example.pizzeriamobile.logic.userdata.person.User;
-import com.example.pizzeriamobile.logic.userdata.person.UserSingleton;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/DialogActivity"
     tools:context=".activity.ActivityDialog">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -85,7 +84,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="@string/patternFieldValue"
-            android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/textViewDialogFoodPriceInscription"
             app:layout_constraintStart_toStartOf="@+id/spinnerDialogFoodVariety"
@@ -101,7 +99,6 @@
             android:inputType="number"
             android:text="1"
             android:textAlignment="center"
-            android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@+id/imageButtonFavourite"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -112,7 +109,9 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
+            android:background="@color/colorPrimary"
             android:text="-"
+            android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="@+id/editTextDialogFoodAmount"
             app:layout_constraintEnd_toStartOf="@+id/editTextDialogFoodAmount"
             app:layout_constraintTop_toTopOf="@+id/editTextDialogFoodAmount"
@@ -123,7 +122,9 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:background="@color/colorPrimary"
             android:text="+"
+            android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="@+id/editTextDialogFoodAmount"
             app:layout_constraintStart_toEndOf="@+id/editTextDialogFoodAmount"
             app:layout_constraintTop_toTopOf="@+id/editTextDialogFoodAmount"
@@ -147,7 +148,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="16dp"
+            android:background="@color/colorPrimary"
             android:text="@string/buttonCancel"
+            android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -157,7 +160,9 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
+            android:background="@color/colorPrimary"
             android:text="@string/buttonConfirm"
+            android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

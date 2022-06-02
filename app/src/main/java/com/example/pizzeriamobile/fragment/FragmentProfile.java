@@ -9,9 +9,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.pizzeriamobile.R;
+import com.example.pizzeriamobile.logic.userdata.UserHandler;
 import com.example.pizzeriamobile.logic.userdata.person.User;
 import com.example.pizzeriamobile.logic.userdata.person.UserSingleton;
 
@@ -45,29 +47,27 @@ public class FragmentProfile extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //initialize(view);
+        initialize(view);
     }
 
     private void initialize(View view){
         loadData(view);
-        listenerBinding(view);
     }
 
     private void loadData(View view){
-        TextView textViewUserFullName = (TextView) view.findViewById(R.id.textViewActivityNavigationDrawerNameValue);
-        //TextView textViewUserId = (TextView) findViewById(R.id.textViewUserIdValue);
+        User user = UserHandler.handler.getUser();
 
-        User user = UserSingleton.getSingleton().getUser();
+        ImageView imageViewAvatar = (ImageView) view.findViewById(R.id.imageViewFragmentProfileAvatar);
+        TextView textViewId = (TextView) view.findViewById(R.id.textViewFragmentProfileIdValue);
+        TextView textViewFirstName = (TextView) view.findViewById(R.id.textViewFragmentProfileFirstNameValue);
+        TextView textViewMiddleName = (TextView)view.findViewById(R.id.textViewFragmentProfileMiddleNameValue);
+        TextView textViewLastName = (TextView)view.findViewById(R.id.textViewFragmentProfileLastNameValue);
 
-        textViewUserFullName.setText(String.format("%s %s %s",user.getFirstName(),user.getMiddleName(),user.getLastName()));
-        //textViewUserId.setText(String.valueOf(user.getId()));
-    }
-
-    private void listenerBinding(View view){
-       /* Button buttonSignOut = (Button) view.findViewById(R.id.buttonSignOut);
-        Button buttonSettings = (Button) view.findViewById(R.id.buttonSettings);*/
-
-
+        imageViewAvatar.setImageBitmap(user.getAvatar());
+        textViewId.setText(user.getId() + "");
+        textViewFirstName.setText(user.getFirstName());
+        textViewMiddleName.setText(user.getMiddleName());
+        textViewLastName.setText(user.getLastName());
     }
 
 }

@@ -1,14 +1,5 @@
 package com.example.pizzeriamobile.logic.controller;
 
-import androidx.annotation.Nullable;
-import androidx.arch.core.executor.DefaultTaskExecutor;
-import androidx.arch.core.executor.TaskExecutor;
-
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.concurrent.Callable;
-
 abstract public class Controller<ReceivingType> implements Runnable{
 
     final private Thread thread;

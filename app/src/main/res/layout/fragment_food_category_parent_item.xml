@@ -9,7 +9,7 @@
         android:id="@+id/textViewCategoryName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="@color/listHeaderColor"
         android:paddingLeft="4dp"
         android:paddingTop="4dp"
         android:paddingRight="4dp"

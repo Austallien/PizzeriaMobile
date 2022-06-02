@@ -1,7 +1,6 @@
 package com.example.pizzeriamobile.logic.fragment.food.category;
 
 import android.graphics.Bitmap;
-import android.provider.ContactsContract;
 
 public class ContentItem {
     final public int Id;

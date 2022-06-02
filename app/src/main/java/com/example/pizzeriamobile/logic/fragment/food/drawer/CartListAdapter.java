@@ -89,6 +89,10 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
             view.setBackgroundColor(position % 2 == 0 ?
                     view.getContext().getResources().getColor(R.color.list_item_0, null) :
                     view.getContext().getResources().getColor(R.color.list_item_1, null));
+            else
+                view.setBackgroundColor(position % 2 == 1 ?
+                        view.getContext().getResources().getColor(R.color.list_item_0, null) :
+                        view.getContext().getResources().getColor(R.color.list_item_1, null));
 
             buttonRemove.setVisibility(buttonRemoveVisibility);
             textViewNumber.setText(textNumber);

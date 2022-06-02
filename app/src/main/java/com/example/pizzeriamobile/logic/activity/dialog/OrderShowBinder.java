@@ -32,8 +32,13 @@ public class OrderShowBinder {
     }
 
     private void initialize() {
+        bindListeners();
         load();
         display();
+    }
+
+    private void bindListeners(){
+        activity.findViewById(R.id.buttonActivityDialogOrderShowBack).setOnClickListener(onBackClickListener);
     }
 
     private void load() {
@@ -72,4 +77,11 @@ public class OrderShowBinder {
         ((TextView) activity.findViewById(R.id.textViewActivityDialogOrderShowDiscountValue)).setText(discount + "%");
         ((TextView) activity.findViewById(R.id.textViewActivityDialogOrderShowTotalDiscountValue)).setText(total * (1 - discount) + " р.");
     }
+
+    private View.OnClickListener onBackClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            activity.finish();
+        }
+    };
 }

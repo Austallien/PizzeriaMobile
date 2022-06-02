@@ -8,7 +8,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewFragmentProfileAvatar"
         android:layout_width="128dp"
         android:layout_height="128dp"
         android:layout_marginTop="32dp"
@@ -17,22 +17,117 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/textViewFragmentProfileInscription"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="44dp"
-        tools:layout_editor_absoluteY="218dp" />
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewFragmentProfileAvatar">
 
-    <TextView
-        android:id="@+id/textViewFragmentProfileValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="198dp"
-        tools:layout_editor_absoluteY="218dp" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayoutFragmentProfileInscription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textViewFragmentProfileIdInscription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/patternFieldInscription"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewFragmentProfileFirstNameInscription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/patternFieldInscription"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/textViewFragmentProfileIdInscription"
+                app:layout_constraintTop_toBottomOf="@+id/textViewFragmentProfileIdInscription" />
+
+            <TextView
+                android:id="@+id/textViewFragmentProfileMiddleNameInscription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/patternFieldInscription"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/textViewFragmentProfileFirstNameInscription"
+                app:layout_constraintTop_toBottomOf="@+id/textViewFragmentProfileFirstNameInscription" />
+
+            <TextView
+                android:id="@+id/textViewFragmentProfileLastNameInscription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/patternFieldInscription"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textViewFragmentProfileMiddleNameInscription"
+                app:layout_constraintTop_toBottomOf="@+id/textViewFragmentProfileMiddleNameInscription" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayoutFragmentProfileValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayoutFragmentProfileInscription"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textViewFragmentProfileIdValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/patternFieldValue"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewFragmentProfileFirstNameValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/patternFieldValue"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/textViewFragmentProfileIdValue"
+                app:layout_constraintTop_toBottomOf="@+id/textViewFragmentProfileIdValue" />
+
+            <TextView
+                android:id="@+id/textViewFragmentProfileMiddleNameValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/patternFieldValue"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/textViewFragmentProfileFirstNameValue"
+                app:layout_constraintTop_toBottomOf="@+id/textViewFragmentProfileFirstNameValue" />
+
+            <TextView
+                android:id="@+id/textViewFragmentProfileLastNameValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/patternFieldValue"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textViewFragmentProfileMiddleNameValue"
+                app:layout_constraintTop_toBottomOf="@+id/textViewFragmentProfileMiddleNameValue" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

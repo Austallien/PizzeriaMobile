@@ -1,6 +1,5 @@
 package com.example.pizzeriamobile.logic.controller;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.pizzeriamobile.general.Url;

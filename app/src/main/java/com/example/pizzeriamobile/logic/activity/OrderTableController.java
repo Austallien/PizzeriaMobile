@@ -48,9 +48,6 @@ public class OrderTableController {
                 //orderStatus.setText(orderData.getStatus());
                 orderReceivingMethod.setText(orderData.getReceivingMethod());
 
-                if(i%2 == 1)
-                    tableRow.setBackgroundColor(context.getResources().getColor(R.color.orderTableOddRowColor));
-
                 table.addView(tableRow);
 
                 tableRow.setOnClickListener(new View.OnClickListener() {

@@ -2,13 +2,9 @@ package com.example.pizzeriamobile.logic.fragment.order;
 
 import android.content.Context;
 import android.content.Intent;
-import android.icu.util.TimeZone;
-import android.icu.util.UniversalTimeScale;
-import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.pizzeriamobile.R;
 import com.example.pizzeriamobile.activity.ActivityDialog;
 import com.example.pizzeriamobile.logic.activity.dialog.Appearance;
-import com.example.pizzeriamobile.logic.activity.welcome.AppPreparer;
 import com.example.pizzeriamobile.model.http.receive.Order;
 
 import java.sql.Date;

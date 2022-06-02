@@ -1,7 +1,6 @@
 package com.example.pizzeriamobile.logic.fragment.food.category;
 
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pizzeriamobile.R;
-import com.example.pizzeriamobile.logic.userdata.Favourite;
 
 import java.util.ArrayList;
-import java.util.Observable;
 
 public class CategoryListContentAdapter extends RecyclerView.Adapter<CategoryListContentAdapter.ViewHolder> {
 

@@ -37,7 +37,7 @@
             android:exported="true"
             android:label="@string/activityDialogTitleWarning"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Dialog" />
+            android:theme="@style/Theme.AppCompat.DayNight.Dialog" />
     </application>
 
 </manifest>
