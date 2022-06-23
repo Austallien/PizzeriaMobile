@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.ActivityRegister">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutActivityRegisterContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.18">
+
+        <Button
+            android:id="@+id/buttonActivityRegisterCommit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/buttonConfirm"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewActivityRegisterFirstNameInscription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/inscriptionFirstName"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextActivityRegisterFirstNameValue"
+            app:layout_constraintEnd_toStartOf="@+id/editTextActivityRegisterFirstNameValue"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/editTextActivityRegisterFirstNameValue" />
+
+        <EditText
+            android:id="@+id/editTextActivityRegisterFirstNameValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/editTextActivityRegisterMiddleNameValue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewActivityRegisterMiddleNameInscriprion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/inscriptionMiddleName"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextActivityRegisterMiddleNameValue"
+            app:layout_constraintEnd_toStartOf="@+id/editTextActivityRegisterMiddleNameValue"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/editTextActivityRegisterMiddleNameValue" />
+
+        <EditText
+            android:id="@+id/editTextActivityRegisterMiddleNameValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/editTextActivityRegisterLastNameValue"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewActivityRegisterLastNameInscription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/inscriptionLastName"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextActivityRegisterLastNameValue"
+            app:layout_constraintEnd_toStartOf="@+id/editTextActivityRegisterLastNameValue"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/editTextActivityRegisterLastNameValue" />
+
+        <EditText
+            android:id="@+id/editTextActivityRegisterLastNameValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/editTextActivityRegisterPhoneValue"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewActivityRegisterPhoneInscription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/inscriptionPhone"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextActivityRegisterPhoneValue"
+            app:layout_constraintEnd_toStartOf="@+id/editTextActivityRegisterPhoneValue"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/editTextActivityRegisterPhoneValue" />
+
+        <EditText
+            android:id="@+id/editTextActivityRegisterPhoneValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:inputType="phone"
+            android:maxLength="10"
+            app:layout_constraintBottom_toTopOf="@+id/editTextActivityRegisterLoginValue"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewActivityRegisterLoginInscription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/inscriptionLogin"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextActivityRegisterLoginValue"
+            app:layout_constraintEnd_toStartOf="@+id/editTextActivityRegisterLoginValue"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/editTextActivityRegisterLoginValue" />
+
+        <EditText
+            android:id="@+id/editTextActivityRegisterLoginValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/editTextActivityRegisterPasswordValue"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewActivityRegisterPasswordInscription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/inscriptionPassword"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextActivityRegisterPasswordValue"
+            app:layout_constraintEnd_toStartOf="@+id/editTextActivityRegisterPasswordValue"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/editTextActivityRegisterPasswordValue" />
+
+        <EditText
+            android:id="@+id/editTextActivityRegisterPasswordValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/editTextActivityRegisterPasswordCommitValue"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewActivityRegisterPasswordCommitInscription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/inscriptionPasswordCommit"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextActivityRegisterPasswordCommitValue"
+            app:layout_constraintEnd_toStartOf="@+id/editTextActivityRegisterPasswordCommitValue"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/editTextActivityRegisterPasswordCommitValue" />
+
+        <EditText
+            android:id="@+id/editTextActivityRegisterPasswordCommitValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/buttonActivityRegisterCommit"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/buttonActivityRegisterCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/buttonCancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

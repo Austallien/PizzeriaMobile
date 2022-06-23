@@ -1,0 +1,82 @@
+<resources>
+
+
+    <!--Custom table headers-->
+    <string name="orderListIdInscription">Номер</string>
+    <string name="orderListDateTimeInscription">Дата и время</string>
+    <string name="orderListTotalPriceInscription">Итого</string>
+    <string name="orderListStatusInscription">Статус</string>
+    <string name="orderListReceivingMethodInscription">Метод выдачи</string>
+
+    <!--View text-->
+    <string name="buttonSignIn">Войти</string>
+    <string name="buttonSignUp">Зарегистрироваться</string>
+    <string name="buttonCancel">Отмена</string>
+    <string name="buttonConfirm">Подтвердить</string>
+    <string name="buttonPlace">Разместить</string>
+    <string name="buttonClear">Очистить</string>
+    <string name="buttonBack">Назад</string>
+    <string name="checkBoxRememberMe">Запомнить меня</string>
+    <string name="textViewNoAccount"><u>Нет аккаунта?</u></string>
+    <string name="textViewRegister">Регистрация</string>
+
+    <!--Titles-->
+    <string name="activityRegisterTitle">Регистрация</string>
+    <string name="activityDialogTitleWarning">Предупреждение</string>
+    <string name="activityDialogTitlePlace">Разместить заказ</string>
+    <string name="fragmentFoodDrawerTitle">Корзина</string>
+    <string name="fragmentFoodTitle">@string/navigationMenuFoodInscription</string>
+    <string name="fragmentProfileTitle">@string/navigationMenuProfileInscription</string>
+    <string name="fragmentOrdersTitle">@string/navigationMenuOrdersInscription</string>
+    <string name="fragmentSettingsTitle">@string/navigationMenuSettingsInscription</string>
+    <string name="fragmentOrderListTitle">Заказ #</string>
+
+    <!--Inscriptions-->
+    <string name="inscriptionLogin">Логин:</string>
+    <string name="inscriptionPassword">Пароль:</string>
+    <string name="inscriptionComposition">Состав:</string>
+    <string name="inscriptionVariety">Размер:</string>
+    <string name="inscriptionAmount">Количество:</string>
+    <string name="inscriptionTotal">Итого:</string>
+    <string name="inscriptionDiscount">Скидка:</string>
+    <string name="inscriptionTotalDiscount">Итого (со скидкой):</string>
+    <string name="inscriptionPrice">Цена:</string>
+    <string name="inscriptionCity">Город:</string>
+    <string name="inscriptionBuilding">Заведение:</string>
+    <string name="inscriptionDate">Дата:</string>
+    <string name="inscriptionTime">Время:</string>
+    <string name="inscriptionStatus">Статус:</string>
+    <string name="inscriptionDelivery">Доставка:</string>
+    <string name="inscriptionReceiving">Метод выдачи:</string>
+    <string name="inscriptionNumber">Номер:</string>
+    <string name="inscriptionFirstName">Фаимлия:</string>
+    <string name="inscriptionMiddleName">Имя:</string>
+    <string name="inscriptionLastName">Отчество:</string>
+    <string name="inscriptionId">Идентификатор:</string>
+    <string name="inscriptionPhone">Телефон:</string>
+    <string name="inscriptionPasswordCommit">Подтвердить:</string>
+
+    <!--Patterns-->
+    <string name="patternTitle">Заголовок</string>
+    <string name="patternFieldInscription">Надпись:</string>
+    <string name="patternFieldValue">Значение</string>
+    <string name="patternFieldValueNull">Пусто</string>
+
+    <!--Toast pattern-->
+    <string name="toastFillField">Заполните поле \"%s\"</string>
+    <string name="toastPasswordsNotEqual">Пароли не совпадают</string>
+    <string name="toastSuccess">Успешно</string>
+    <string name="toastFail">Произошла ошибка</string>
+
+    <!--Exception-->
+    <string name="exceptionInvalidUserAuthData">Неверный логин или пароль</string>
+
+    <!--Navigation menu items-->
+    <string name="navigationMenuFoodInscription">Еда</string>
+    <string name="navigationMenuProfileInscription">Профиль</string>
+    <string name="navigationMenuOrdersInscription">Заказы</string>
+    <string name="navigationMenuSettingsInscription">Настройки</string>
+    <string name="navigationMenuSignOutInscription">Выйти</string>
+
+    <string name="serviceInscription">В разработке...</string>
+</resources>

@@ -1,19 +1,20 @@
 <resources>
     <string name="app_name" translatable="false">Pizzeria Mobile</string>
-<!--    <string name="SERVER_URL" translatable="false">"http://api1.adamenko.awkitsune.icu/"</string> &lt;!&ndash;No ssl url&ndash;&gt;-->
-    <string name="SERVER_URL" translatable="false">"http://192.168.0.13:5000/"</string> <!--No ssl url-->
+    <string name="SERVER_URL" translatable="false">"http://api1.adamenko.awkitsune.icu/"</string> <!--No ssl url-->
+<!--    <string name="SERVER_URL" translatable="false">"http://192.168.0.13:5000/"</string> &lt;!&ndash;No ssl url&ndash;&gt;-->
     <string name="SERVER_URL_SSL" translatable="false">https://192.168.0.15:5001/</string>
     <string name="SUB_URL_ACCOUNT_AUTHENTICATION" translatable="false">account/authenticate?Login=%s&amp;Password=%s</string>
     <string name="SUB_URL_ACCOUNT_AUTHORIZATION" translatable="false">account/authorize</string>
     <string name="SUB_URL_ACCOUNT_REFRESH_ACCESS_TOKEN" translatable="false">account/refreshAccessToken</string>
     <string name="SUB_URL_ACCOUNT_DATA" translatable="false">account/data</string>
+    <string name="SUB_URL_ACCOUNT_REGISTER" translatable="false">account/register:firstName=%s&amp;middleName=%s&amp;lastName=%s&amp;phoneNumber=%s&amp;login=%s&amp;password=%s</string>
     <string name="SUB_URL_DATA_FOOD_GENERAL" translatable="false">data/food/general</string>
     <string name="SUB_URL_DATA_FOOD_SETS" translatable="false">data/food/set</string>
     <string name="SUB_URL_DATA_ADDRESS" translatable="false">data/address</string>
     <string name="SUB_URL_DATA_BUILDINGS" translatable="false">data/location/building</string>
     <string name="SUB_URL_DATA_ORDER" translatable="false">data/order/load</string>
-
-    <string name="SUB_URL_DATA_PLACE_ORDER">data/order/place:building=%s&amp;data=%s</string>
+    <string name="SUB_URL_DATA_PLACE_ORDER" translatable="false">data/order/place:building=%s&amp;data=%s</string>
+    <string name="SUB_URL_DATA_FILE" translatable="false">data/image:name=%s</string>
 
     <!--Custom table headers-->
     <string name="orderListIdInscription">Id</string>
@@ -30,15 +31,20 @@
     <string name="buttonPlace">Place</string>
     <string name="buttonClear">Clear</string>
     <string name="buttonBack">Back</string>
+    <string name="checkBoxRememberMe">Remember me</string>
+    <string name="textViewNoAccount"><u>No account?</u></string>
+    <string name="textViewRegister">Register</string>
 
     <!--Titles-->
+    <string name="activityRegisterTitle">Register</string>
     <string name="activityDialogTitleWarning">Warning</string>
     <string name="activityDialogTitlePlace">Place order</string>
     <string name="fragmentFoodDrawerTitle">Cart</string>
-    <string name="activityNavigationTitle">&lt;font color=\"#ffffff\"&gt;%s&lt;font&gt;</string>
-    <string name="fragmentFoodTitle">Food</string>
-    <string name="fragmentProfileTitle">Profile</string>
-    <string name="fragmentOrderTitle">Order</string>
+    <string name="activityNavigationTitle" translatable="false">&lt;font color=\"#ffffff\"&gt;%s&lt;font&gt;</string>
+    <string name="fragmentFoodTitle">@string/navigationMenuFoodInscription</string>
+    <string name="fragmentProfileTitle">@string/navigationMenuProfileInscription</string>
+    <string name="fragmentOrdersTitle">@string/navigationMenuOrdersInscription</string>
+    <string name="fragmentSettingsTitle">@string/navigationMenuSettingsInscription</string>
     <string name="fragmentOrderListTitle">Order #</string>
 
     <!--Inscriptions-->
@@ -58,10 +64,13 @@
     <string name="inscriptionStatus">Status:</string>
     <string name="inscriptionDelivery">Delivery:</string>
     <string name="inscriptionReceiving">Receiving:</string>
-    <string name="inscriptionId">Id:</string>
+    <string name="inscriptionNumber">Number:</string>
     <string name="inscriptionFirstName">FirstName:</string>
     <string name="inscriptionMiddleName">MiddleName:</string>
     <string name="inscriptionLastName">LastName:</string>
+    <string name="inscriptionId">Id:</string>
+    <string name="inscriptionPhone">Phone:</string>
+    <string name="inscriptionPasswordCommit">Commit:</string>
 
     <!--Patterns-->
     <string name="patternTitle">Title</string>
@@ -69,15 +78,21 @@
     <string name="patternFieldValue">Value</string>
     <string name="patternFieldValueNull">Null</string>
 
+    <!--Toast pattern-->
+    <string name="toastFillField">Fill \"%s\" field</string>
+    <string name="toastPasswordsNotEqual">Passwords not equal</string>
+    <string name="toastSuccess">Success</string>
+    <string name="toastFail">An error occurred</string>
+
     <!--Exception-->
     <string name="exceptionInvalidUserAuthData">Invalid login or password value</string>
 
     <!--Navigation menu items-->
-    <string-array name="navigationMenu">
-        <item>Food</item>
-        <item>Profile</item>
-        <item>Orders</item>
-        <item>Settings</item>
-        <item>Sign Out</item>
-    </string-array>
+    <string name="navigationMenuFoodInscription">Food</string>
+    <string name="navigationMenuProfileInscription">Profile</string>
+    <string name="navigationMenuOrdersInscription">Orders</string>
+    <string name="navigationMenuSettingsInscription">Settings</string>
+    <string name="navigationMenuSignOutInscription">Sign Out</string>
+
+    <string name="serviceInscription">In progress...</string>
 </resources>

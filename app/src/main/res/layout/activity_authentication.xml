@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.ActivityAuthentication">
+    tools:context=".view.activity.ActivityAuthentication">
 
     <TextView
         android:id="@+id/textViewLogin"
@@ -12,26 +12,14 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:text="@string/inscriptionLogin"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextLogin"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextLogin"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextActivityAuthenticationLogin"
+        app:layout_constraintEnd_toStartOf="@+id/editTextActivityAuthenticationLogin"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textViewPassword"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextLogin" />
-
-    <TextView
-        android:id="@+id/textViewPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:text="@string/inscriptionPassword"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPassword"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPassword" />
+        app:layout_constraintTop_toTopOf="@+id/editTextActivityAuthenticationLogin" />
 
     <EditText
-        android:id="@+id/editTextTextLogin"
+        android:id="@+id/editTextActivityAuthenticationLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -41,12 +29,24 @@
         android:minHeight="48dp"
         android:text="client"
         android:textAlignment="gravity"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword" />
+        app:layout_constraintBottom_toTopOf="@+id/editTextActivityAuthenticationPassword"
+        app:layout_constraintEnd_toEndOf="@+id/editTextActivityAuthenticationPassword"
+        app:layout_constraintStart_toStartOf="@+id/editTextActivityAuthenticationPassword" />
+
+    <TextView
+        android:id="@+id/textViewPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="@string/inscriptionPassword"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextActivityAuthenticationPassword"
+        app:layout_constraintEnd_toStartOf="@+id/editTextActivityAuthenticationPassword"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/editTextActivityAuthenticationPassword" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/editTextActivityAuthenticationPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -54,7 +54,7 @@
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:text="password"
-        app:layout_constraintBottom_toTopOf="@+id/anchor"
+        app:layout_constraintBottom_toTopOf="@+id/viewActvityAuthenticateAnchor"
         app:layout_constraintEnd_toStartOf="@+id/checkBoxHidePassword"
         app:layout_constraintStart_toEndOf="@+id/textViewPassword"
         tools:ignore="SpeakableTextPresentCheck" />
@@ -66,40 +66,10 @@
         android:layout_marginEnd="20dp"
         android:button="@drawable/view_checkbox_button_password"
         android:checked="false"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextActivityAuthenticationPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPassword"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPassword" />
-
-    <ImageView
-        android:id="@+id/anchor"
-        android:layout_width="8dp"
-        android:layout_height="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/buttonSignUp"
-        style="@style/Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="@string/buttonSignUp"
-        app:layout_constraintStart_toEndOf="@+id/anchor"
-        app:layout_constraintTop_toBottomOf="@+id/anchor"
-        app:rippleColor="#ffffff" />
-
-    <Button
-        android:id="@+id/buttonSignIn"
-        style="@style/Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:text="@string/buttonSignIn"
-        app:layout_constraintEnd_toStartOf="@+id/anchor"
-        app:layout_constraintTop_toBottomOf="@+id/anchor" />
+        app:layout_constraintStart_toEndOf="@+id/editTextActivityAuthenticationPassword"
+        app:layout_constraintTop_toTopOf="@+id/editTextActivityAuthenticationPassword" />
 
     <CheckBox
         android:id="@+id/checkBoxRememberMe"
@@ -107,8 +77,59 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
-        android:text="Remember me"
+        android:text="@string/checkBoxRememberMe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonSignIn"
+        style="@style/Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/buttonSignIn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutActivityAuthenticationContainerRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewActvityAuthenticateAnchor">
+
+        <TextView
+            android:id="@+id/textViewActivityAythenticationNoAccountInscription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/textViewNoAccount"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewActivityAuthenticationRegisterInscription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/textViewRegister"
+            android:textColor="@color/sky_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewActivityAythenticationNoAccountInscription"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/viewActvityAuthenticateAnchor"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

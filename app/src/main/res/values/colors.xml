@@ -28,11 +28,13 @@
     <color name="gray">#7F7F7F</color>
     <color name="light_gray">#BFBFBF</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="sky_blue">#2271B3</color>
 
     <color name="list_item_0">#FFFFFF</color>
     <color name="list_item_1">#FFF1ED</color>
 
     <color name="colorPrimary">#FF9800</color>
+    <color name="colorPrimaryDark">#D57F00</color>
     <color name="colorPrimaryVariant">#FFC107</color>
 
     <color name="colorNavigationUserPanel">#FFE4BD</color>

@@ -5,7 +5,7 @@
     android:id="@+id/drawerLayoutFragmentFood"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.FragmentFood">
+    tools:context=".view.fragment.FragmentFood">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayoutFragmentFoodContainer"
@@ -23,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/relativeLayoutFragmentFoodDrawer"
         android:layout_width="300dp"
         android:layout_height="match_parent"
@@ -31,5 +31,7 @@
         android:background="#FFFFFF"
         android:choiceMode="none"
         android:clickable="true"
-        android:focusable="true"></RelativeLayout>
+        android:focusable="true">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

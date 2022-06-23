@@ -1,14 +1,22 @@
 package com.example.pizzeriamobile.model.http.receive;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.example.pizzeriamobile.R;
+import com.example.pizzeriamobile.core.App;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -28,31 +36,31 @@ public class Product {
         public final double Price;
         public final boolean IsDeleted;
 
-        public static ArrayList<Variety> getFromJsonArray(@NonNull JSONArray JsonArray) throws JSONException {
+        public static ArrayList<Variety> getFromJsonArray(@NonNull JSONArray jsonArray) throws JSONException {
             ArrayList<Variety> list = new ArrayList<>();
-            for(int i = 0; i < JsonArray.length(); i++){
-                list.add(new Variety(JsonArray.getJSONObject(i)));
+            for(int i = 0; i < jsonArray.length(); i++){
+                list.add(new Variety(jsonArray.getJSONObject(i)));
             }
             return list;
         }
 
-        private Variety(JSONObject JsonObject) throws JSONException {
-            Id = JsonObject.getInt("id");
-            Quantity = JsonObject.getDouble("quantity");
-            MeasurementUnit = JsonObject.getString("measurementUnit");
-            Price = JsonObject.getDouble("price");
-            IsDeleted = JsonObject.getBoolean("isDeleted");
+        private Variety(JSONObject jsonObject) throws JSONException {
+            Id = jsonObject.getInt("id");
+            Quantity = jsonObject.getDouble("quantity");
+            MeasurementUnit = jsonObject.getString("measurementUnit");
+            Price = jsonObject.getDouble("price");
+            IsDeleted = jsonObject.getBoolean("isDeleted");
         }
     }
 
     /**
      * @return Product object or null
      * */
-    public static ArrayList<Product> getFromJsonArray(@NonNull JSONArray JsonArray) throws JSONException {
+    public static ArrayList<Product> getFromJsonArray(@NonNull JSONArray jsonArray) throws JSONException {
         try {
             ArrayList<Product> list = new ArrayList<>();
-            for(int i = 0; i < JsonArray.length(); i++)
-                list.add(new Product(JsonArray.getJSONObject(i)));
+            for(int i = 0; i < jsonArray.length(); i++)
+                list.add(new Product(jsonArray.getJSONObject(i)));
             return list;
         }
         catch(Exception ex){
@@ -84,18 +92,19 @@ public class Product {
 
     private Bitmap getImage(String name){
         Bitmap bmp = Bitmap.createBitmap(100,100,Bitmap.Config.RGB_565);
-        /*try {
-            HttpURLConnection con = (HttpURLConnection) new java.net.URL("http://192.168.0.15:5000/data/image&name="+name).openConnection();
+        try {
+            String path = App.context.getResources().getString(R.string.SERVER_URL) +
+                    String.format(App.context.getResources().getString(R.string.SUB_URL_DATA_FILE), name);
+            HttpURLConnection con = (HttpURLConnection) new java.net.URL(path).openConnection();
             con.setDoInput(true);
             con.connect();
             InputStream input = con.getInputStream();
-            //InputStream stream = new java.net.URL("http://192.168.0.15:5000/data/image&name="+name).openStream();
             bmp = BitmapFactory.decodeStream(input);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
         return bmp;
     }
 

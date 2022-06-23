@@ -1,6 +1,6 @@
 package com.example.pizzeriamobile.model.http.receive;
 
-import com.example.pizzeriamobile.logic.controller.ControllerHandler;
+import com.example.pizzeriamobile.core.controller.ControllerHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,15 +37,5 @@ public class Building {
         }
 
         return collection;
-    }
-
-    public boolean isLocatedInCity(String city){
-        boolean result = City.Name.equals(city);
-        return result;
-    }
-
-    public boolean isLocatedInCity(int id){
-        boolean result = City.Id == id;
-        return result;
     }
 }

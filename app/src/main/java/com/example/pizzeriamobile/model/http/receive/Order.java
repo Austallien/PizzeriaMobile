@@ -1,10 +1,7 @@
 package com.example.pizzeriamobile.model.http.receive;
 
-import android.service.controls.Control;
-
-import com.example.pizzeriamobile.logic.controller.Controller;
-import com.example.pizzeriamobile.logic.controller.ControllerHandler;
-import com.example.pizzeriamobile.logic.userdata.cart.model.CartItem;
+import com.example.pizzeriamobile.core.controller.ControllerHandler;
+import com.example.pizzeriamobile.core.userdata.cart.model.CartItem;
 
 import org.json.JSONArray;
 import org.json.JSONException;

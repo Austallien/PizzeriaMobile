@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.FragmentProfile">
+    tools:context=".view.fragment.FragmentProfile">
 
 
     <ImageView
@@ -12,6 +12,7 @@
         android:layout_width="128dp"
         android:layout_height="128dp"
         android:layout_marginTop="32dp"
+        android:background="@drawable/ic_drawer_profile_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -39,7 +40,7 @@
                 android:id="@+id/textViewFragmentProfileIdInscription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/patternFieldInscription"
+                android:text="@string/inscriptionNumber"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -49,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/patternFieldInscription"
+                android:text="@string/inscriptionFirstName"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@+id/textViewFragmentProfileIdInscription"
                 app:layout_constraintTop_toBottomOf="@+id/textViewFragmentProfileIdInscription" />
@@ -59,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/patternFieldInscription"
+                android:text="@string/inscriptionMiddleName"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@+id/textViewFragmentProfileFirstNameInscription"
                 app:layout_constraintTop_toBottomOf="@+id/textViewFragmentProfileFirstNameInscription" />
@@ -69,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/patternFieldInscription"
+                android:text="@string/inscriptionLastName"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textViewFragmentProfileMiddleNameInscription"

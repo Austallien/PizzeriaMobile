@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.ActivityDialog">
+    tools:context=".view.activity.ActivityDialog">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,10 +15,10 @@
             android:layout_width="128dp"
             android:layout_height="128dp"
             android:layout_marginTop="16dp"
-            android:background="#000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@color/black" />
 
         <ScrollView
             android:layout_width="0dp"
@@ -149,6 +149,10 @@
             android:layout_marginStart="16dp"
             android:layout_marginBottom="16dp"
             android:background="@color/colorPrimary"
+            android:paddingLeft="4dp"
+            android:paddingTop="16dp"
+            android:paddingRight="4dp"
+            android:paddingBottom="16dp"
             android:text="@string/buttonCancel"
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -161,6 +165,10 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:background="@color/colorPrimary"
+            android:paddingLeft="4dp"
+            android:paddingTop="16dp"
+            android:paddingRight="4dp"
+            android:paddingBottom="16dp"
             android:text="@string/buttonConfirm"
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"

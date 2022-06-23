@@ -15,7 +15,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
 
         <!-- Customize your theme here. -->
-        <item name="editTextStyle">@style/EditText</item>
+        <item name="android:editTextStyle">@style/EditText</item>
         <item name="android:textViewStyle">@style/TextViewInscription</item>
         <item name="android:buttonStyle">@style/Button</item>
     </style>
